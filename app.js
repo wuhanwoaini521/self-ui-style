@@ -123,15 +123,13 @@
 
     const skeleton = document.createElement('tbody');
     skeleton.id = 'skeleton';
-    skeleton.innerHTML = Array.from({ length: 6 }).map(() =>
+    skeleton.innerHTML = Array.from({ length: 5 }).map((_, i) =>
       `<tr class="skeleton-row">
-         <td><span class="skeleton" style="width:180px"></span><span class="skeleton" style="width:64px;margin-top:7px;height:8px"></span></td>
-         <td><span class="skeleton" style="width:56px"></span></td>
-         <td><span class="skeleton" style="width:64px"></span></td>
-         <td><span class="skeleton" style="width:60px"></span></td>
-         <td><span class="skeleton" style="width:80px"></span></td>
-         <td><span class="skeleton" style="width:64px"></span></td>
-         <td></td>
+         <td><span class="skeleton" style="width:${i % 2 ? 56 : 66}%"></span></td>
+         <td><span class="skeleton" style="width:52%"></span></td>
+         <td><span class="skeleton" style="width:60%"></span></td>
+         <td><span class="skeleton" style="width:46%"></span></td>
+         <td colspan="3"></td>
        </tr>`).join('');
     tbody.hidden = true;
     tbody.after(skeleton);
@@ -377,4 +375,29 @@
   });
 
   applyFilter();
+
+  /* ---------- 背景点阵视差：两层以不同速度位移，滚动时产生起伏纵深 ---------- */
+  const root = document.documentElement;
+  const scrollArea = $('.main-scroll');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let ticking = false;
+
+  function shiftBackground() {
+    if (reduceMotion.matches) return;
+    const y = scrollArea ? scrollArea.scrollTop : window.scrollY;
+    // 细点阵跟随较快、大颗粒较慢，速度差形成「表面在流动」的错觉
+    root.style.setProperty('--bg-shift-fine', `${(-y * 0.32).toFixed(2)}px`);
+    root.style.setProperty('--bg-shift-bump', `${(y * 0.12).toFixed(2)}px`);
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(shiftBackground);
+  }
+
+  if (scrollArea) scrollArea.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  shiftBackground();
 })();

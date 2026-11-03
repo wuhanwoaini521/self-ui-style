@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>巡检任务 · 方寸工作台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles/tokens.css">
 <link rel="stylesheet" href="styles/app.css">
 </head>
@@ -169,7 +172,7 @@
         <div class="metric">
           <div class="metric-icon"><svg class="ico" width="17" height="17"><use href="#i-clock"/></svg></div>
           <div class="metric-label">平均单次耗时</div>
-          <div class="metric-value">2<span class="unit">h</span> 18<span class="unit">m</span></div>
+          <div class="metric-value">2h<span class="unit">18m</span></div>
           <div class="metric-note">近 7 天，<span class="up">较上周 -12%</span></div>
         </div>
       </section>
@@ -203,6 +206,15 @@
 
         <div class="table-scroll">
           <table class="table">
+            <colgroup>
+              <col style="width:28.5%">
+              <col style="width:10.6%">
+              <col style="width:11.5%">
+              <col style="width:9.8%">
+              <col style="width:13.3%">
+              <col style="width:11.5%">
+              <col style="width:14.8%">
+            </colgroup>
             <thead>
               <tr>
                 <th scope="col">巡检任务</th>
@@ -356,7 +368,7 @@
 
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
   <div class="drawer-head">
-    <span class="drawer-grip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="drawer-grip" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div>
       <h2 id="drawer-title">新建巡检</h2>
       <p id="drawer-desc">创建后将在下一次计划时间开始执行，可随时手动重跑。</p>
