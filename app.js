@@ -151,7 +151,7 @@
     if (btnExport.disabled) return;
     const label = btnExport.innerHTML;
     btnExport.disabled = true;
-    btnExport.innerHTML = '<span class="spinner"></span>导出中';
+    btnExport.innerHTML = '<span class="spinner"><i></i><i></i><i></i></span>导出中';
     setTimeout(() => {
       btnExport.disabled = false;
       btnExport.innerHTML = label;
@@ -273,7 +273,7 @@
 
     saveBtn.disabled = true;
     const label = saveBtn.textContent;
-    saveBtn.innerHTML = '<span class="spinner"></span>保存中';
+    saveBtn.innerHTML = '<span class="spinner"><i></i><i></i><i></i></span>保存中';
     setTimeout(() => {
       saveBtn.disabled = false;
       saveBtn.textContent = label;

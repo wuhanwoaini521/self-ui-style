@@ -1,53 +1,39 @@
 /* ==========================================================================
-   方寸设计系统 · 全局变量（跨项目复用，不包含任何业务内容）
-   只改这里就能换肤；组件样式一律引用变量，不写死颜色/间距。
+   方寸 · Neumorphism / Soft UI 设计变量（跨项目复用，无业务内容）
+   规则：单色系表面 + 双光源阴影；亮阴影恒在左上 (-X/-Y)，暗阴影恒在右下 (+X/+Y)。
    ========================================================================== */
 
 :root {
-  /* ---------- 中性色：页面灰底 / 近白内容区 ---------- */
-  --c-canvas:        #eceef2; /* 页面底色 */
-  --c-canvas-deep:   #e3e6ec; /* 侧栏、工具条等次级底 */
-  --c-surface:       #fbfbfc; /* 内容卡片（近白，不刺眼） */
-  --c-surface-raised:#ffffff; /* 弹层、输入框、悬浮菜单 */
-  --c-subtle:        #f3f5f8; /* 表头、分组条 */
-  --c-inset:         #eef0f4; /* 分段控件槽、只读区块 */
-  --c-hover:         #f3f5f9;
+  /* ---------- 表面（禁止纯白/纯黑背景，全站同色系） ---------- */
+  --c-bg:          #e0e5ec; /* 主表面：页面、卡片、按钮、输入框 */
+  --c-bg-soft:     #f0f0f3; /* 抬升表面：表头、品牌块、提示卡 */
+  --c-bg-deep:     #dbe0e8; /* 按下时的底色微沉，不改变色系 */
 
-  --c-line:          #e0e4ea; /* 常规边框 */
-  --c-line-soft:     #ebeef3; /* 行分隔线 */
-  --c-line-strong:   #ccd2dc; /* 强调边框、输入框悬停 */
+  /* ---------- 双光源 ---------- */
+  --c-shadow-dark: #b8bcc2; /* 右下 (+X, +Y) */
+  --c-shadow-light:#ffffff; /* 左上 (-X, -Y) */
 
-  --c-text-strong:   #171b21; /* 标题、关键数字 */
-  --c-text:          #2b313a; /* 正文（深灰，不过度降对比） */
-  --c-text-muted:    #5b6472; /* 辅助说明 */
-  --c-text-faint:    #6b7380; /* 占位、时间戳 */
+  /* ---------- 强调色（CTA / 选中 / 焦点） ---------- */
+  --c-accent:        #6d5dfc;
+  --c-accent-hover:  #6253ee;
+  --c-accent-active: #5748e0;
+  --c-accent-ink:    #4b3fd0; /* 小字号强调文字，保证 4.5:1 */
+  --c-accent-wash:   rgba(109, 93, 252, .12);
 
-  /* ---------- 低饱和靛蓝强调色（唯一强调色） ---------- */
-  --c-accent:        #4c5f8e;
-  --c-accent-hover:  #42537c;
-  --c-accent-active: #374764;
-  --c-accent-text:   #3d4e77;
-  --c-accent-soft:   #eef1f8;
-  --c-accent-line:   #c6cfe2;
+  /* ---------- 文字（禁止高对比黑） ---------- */
+  --c-text:        #333333;
+  --c-text-strong: #26272b;
+  --c-text-muted:  #5b6370;
+  --c-text-faint:  #5c6472;
 
-  /* 渐变：仅用于主操作、选中态、品牌标识；两端颜色接近 */
-  --g-accent:        linear-gradient(180deg, #55689b 0%, #45577a 100%);
-  --g-accent-hover:  linear-gradient(180deg, #5d71a6 0%, #4a5d83 100%);
-  --g-accent-press:  linear-gradient(180deg, #3f5074 0%, #354564 100%);
+  /* ---------- 状态色：低饱和墨色，统一在浅底上 ≥4.5:1 ---------- */
+  --c-success: #2f6b4f;
+  --c-warn:    #7d5f16;
+  --c-danger:  #96403e;
+  --c-info:    var(--c-accent-ink);
 
-  /* ---------- 状态色（各自配套底色与描边，必须配图标或文字） ---------- */
-  --c-success:       #2c6f51;
-  --c-success-soft:  #e9f4ee;
-  --c-success-line:  #bfd9cb;
-  --c-warn:          #86600f;
-  --c-warn-soft:     #fbf3e0;
-  --c-warn-line:     #e7d3a4;
-  --c-danger:        #a03a37;
-  --c-danger-soft:   #fbeeec;
-  --c-danger-line:   #e7c3c0;
-  --c-info:          var(--c-accent-text);
-  --c-info-soft:     var(--c-accent-soft);
-  --c-info-line:     var(--c-accent-line);
+  /* ---------- 1px 发丝线：仅用于表格分隔与区域接缝 ---------- */
+  --c-line: #d3d8e1;
 
   /* ---------- 字体 ---------- */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
@@ -55,12 +41,12 @@
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
                "Noto Sans Mono CJK SC", monospace;
 
-  --fs-12: 12px;  /* 辅助文字、标签、表头 */
-  --fs-13: 13px;  /* 表格、按钮、表单（工具界面的主力字号） */
-  --fs-14: 14px;  /* 正文基准 */
-  --fs-16: 16px;  /* 卡片标题、弹窗标题 */
-  --fs-20: 20px;  /* 页面标题 */
-  --fs-26: 26px;  /* 关键指标数字 */
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-20: 20px;
+  --fs-26: 26px;
   --lh-tight: 1.25;
   --lh-body: 1.55;
 
@@ -69,49 +55,66 @@
   --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
   --sp-12: 48px;
 
-  /* ---------- 圆角：方正为主，绝不用胶囊形 ---------- */
-  --r-sm: 3px;  /* 标签、小徽标 */
-  --r-md: 4px;  /* 按钮、输入框（默认） */
-  --r-lg: 6px;  /* 卡片、弹层 */
-  --r-xl: 8px;  /* 抽屉、大容器上限 */
+  /* ---------- 圆角：≥12px，柔和一致（禁止直角） ---------- */
+  --r-sm: 12px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
 
-  /* ---------- 边框 ---------- */
-  --bw: 1px;
-  --border: var(--bw) solid var(--c-line);
-  --border-soft: var(--bw) solid var(--c-line-soft);
-
-  /* ---------- 阴影：范围小、透明度低、方向自上而下 ---------- */
-  --shadow-1: 0 1px 1px rgba(23, 27, 33, .05);                                   /* 按钮 */
-  --shadow-2: 0 1px 2px rgba(23, 27, 33, .06), 0 2px 6px -2px rgba(23, 27, 33, .08); /* 悬浮菜单 */
-  --shadow-3: 0 2px 4px rgba(23, 27, 33, .05), 0 12px 28px -8px rgba(23, 27, 33, .18); /* 抽屉、弹窗 */
-  --focus-shadow: 0 0 0 3px rgba(76, 95, 142, .16);
-
-  /* ---------- 控件尺寸（三种高度，全站统一） ---------- */
+  /* ---------- 控件尺寸 ---------- */
   --h-sm: 28px;
-  --h-md: 32px;  /* 工具条、表格行内操作 */
-  --h-lg: 36px;  /* 表单、常规按钮 */
-  --h-xl: 40px;  /* 主操作、页面级按钮 */
+  --h-md: 32px;
+  --h-lg: 36px;
+  --h-xl: 40px;
   --sidebar-w: 232px;
 
-  /* ---------- 动效：只做背景/边框/位移，不做弹跳 ---------- */
-  --t-fast: 120ms ease;
-  --t-base: 160ms ease;
-  --t-slow: 220ms cubic-bezier(.2, 0, 0, 1);
+  /* ---------- 动效：软塑料般的柔韧（Smooth Molding） ---------- */
+  --t: 300ms ease-in-out;
+
+  /* ---------- 阴影（移动端基准：4/8） ---------- */
+  --sh-raised:          4px 4px 8px var(--c-shadow-dark), -4px -4px 8px var(--c-shadow-light);
+  --sh-raised-xs:       2px 2px 4px var(--c-shadow-dark), -2px -2px 4px var(--c-shadow-light);
+  --sh-raised-hover:    2px 2px 4px var(--c-shadow-dark), -2px -2px 4px var(--c-shadow-light);
+  --sh-raised-hover-xs: 1px 1px 2px var(--c-shadow-dark), -1px -1px 2px var(--c-shadow-light);
+  --sh-inset:           inset 4px 4px 8px var(--c-shadow-dark), inset -4px -4px 8px var(--c-shadow-light);
+  --sh-inset-sm:        inset 2px 2px 4px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+  --sh-inset-xs:        inset 2px 2px 4px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+  --sh-input:           inset 4px 4px 8px var(--c-shadow-dark), inset -4px -4px 8px var(--c-shadow-light);
+  --sh-input-focus:     inset 2px 2px 4px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+  --sh-accent:          4px 4px 8px rgba(74, 60, 190, .38), -4px -4px 8px var(--c-shadow-light);
+  --sh-accent-hover:    2px 2px 4px rgba(74, 60, 190, .42), -2px -2px 4px var(--c-shadow-light);
+  --sh-accent-active:   inset 2px 2px 4px rgba(48, 36, 140, .5), inset -2px -2px 4px rgba(255, 255, 255, .28);
 }
 
-/* 全局键盘聚焦环：所有可交互元素共用，保证键盘可见性 */
-:where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--c-accent);
+/* 桌面优先：md 以上放大光影（8/16），保持同一光源方向 */
+@media (min-width: 768px) {
+  :root {
+    --sh-raised:        8px 8px 16px var(--c-shadow-dark), -8px -8px 16px var(--c-shadow-light);
+    --sh-raised-xs:     4px 4px 8px var(--c-shadow-dark), -4px -4px 8px var(--c-shadow-light);
+    --sh-raised-hover:  4px 4px 8px var(--c-shadow-dark), -4px -4px 8px var(--c-shadow-light);
+    --sh-raised-hover-xs: 2px 2px 4px var(--c-shadow-dark), -2px -2px 4px var(--c-shadow-light);
+    --sh-inset:         inset 8px 8px 16px var(--c-shadow-dark), inset -8px -8px 16px var(--c-shadow-light);
+    --sh-inset-sm:      inset 4px 4px 8px var(--c-shadow-dark), inset -4px -4px 8px var(--c-shadow-light);
+    --sh-inset-xs:      inset 2px 2px 4px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+    --sh-input:         inset 6px 6px 12px var(--c-shadow-dark), inset -6px -6px 12px var(--c-shadow-light);
+    --sh-input-focus:   inset 2px 2px 4px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+    --sh-accent:        8px 8px 16px rgba(74, 60, 190, .34), -8px -8px 16px var(--c-shadow-light);
+    --sh-accent-hover:  4px 4px 8px rgba(74, 60, 190, .4), -4px -4px 8px var(--c-shadow-light);
+    --sh-accent-active: inset 4px 4px 8px rgba(48, 36, 140, .5), inset -4px -4px 8px rgba(255, 255, 255, .28);
+  }
+}
+
+/* 键盘焦点：软表面不牺牲可访问性，聚焦环只对键盘出现 */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--c-accent-ink);
   outline-offset: 2px;
   border-radius: var(--r-md);
 }
 
-/* 点阵纹理：只用于标识、图标、抓手等局部细节 */
-.dot-texture {
-  background-image: radial-gradient(currentColor 1px, transparent 1.15px);
-  background-size: 4px 4px;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
