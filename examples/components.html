@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>方寸设计系统 · 组件展示</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../src/theme/index.css">
+<link rel="stylesheet" href="gallery.css">
+</head>
+<body class="ds-theme">
+<div class="g-shell">
+  <header class="g-head">
+    <div>
+      <h1>方寸设计系统 · 组件展示</h1>
+      <p>全部组件来自 <code>src/ui/ui.css</code>，样式作用域为 <code>.ds-theme</code>；数值来自 <code>src/tokens/tokens.css</code>。</p>
+    </div>
+    <a class="ds-btn" href="../index.html">
+      <svg class="ds-ico" width="15" height="15"><use href="#i-grid"/></svg>工作台样板
+    </a>
+  </header>
+
+  <main class="g-main">
+
+    <section class="g-sec" id="tokens">
+      <h2>颜色与表面</h2>
+      <p class="g-lead">浅底 + 单一靛紫强调色。层次靠背景明度、轻微双向阴影与 1px 细线建立，不靠大面积渐变。</p>
+      <div class="g-swatches">
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-bg)"></span><b>--c-bg</b><code>#f7fafc</code><em>页面底色</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-bg-soft)"></span><b>--c-bg-soft</b><code>#eef3f8</code><em>表头 / 提示底</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-bg-deep)"></span><b>--c-bg-deep</b><code>#e7eef6</code><em>按下态</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-accent)"></span><b>--c-accent</b><code>#6d5dfc</code><em>主操作填充</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-accent-ink)"></span><b>--c-accent-ink</b><code>#4b3fd0</code><em>强调文字</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-text)"></span><b>--c-text</b><code>#333333</code><em>正文</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-success)"></span><b>--c-success</b><code>#2f6b4f</code><em>成功</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-warn)"></span><b>--c-warn</b><code>#7d5f16</code><em>警告</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-danger)"></span><b>--c-danger</b><code>#96403e</code><em>失败</em></div>
+        <div class="g-swatch"><span class="g-chip" style="background:var(--c-line)"></span><b>--c-line</b><code>#dde7f1</code><em>分隔线</em></div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="type">
+      <h2>字体与字号</h2>
+      <p class="g-lead">系统无衬线兜底，中文基准 14px；编号、时间、计数用等宽。所有行高不低于 1.4。</p>
+      <div class="g-card">
+        <div class="g-type"><span class="g-type-meta">26 / 600</span><span style="font-size:26px;font-weight:600;letter-spacing:-.2px">指标数值 2h 18m</span></div>
+        <div class="g-type"><span class="g-type-meta">20 / 600</span><span style="font-size:20px;font-weight:600;letter-spacing:.2px">页面标题 巡检任务</span></div>
+        <div class="g-type"><span class="g-type-meta">16 / 600</span><span style="font-size:16px;font-weight:600">抽屉标题 新建巡检</span></div>
+        <div class="g-type"><span class="g-type-meta">14 / 400</span><span>常规正文：统一管理巡检的范围、环境与执行状态。</span></div>
+        <div class="g-type"><span class="g-type-meta">13 / 500</span><span style="font-size:13px;font-weight:500">表格主字段 登录与权限回归</span></div>
+        <div class="g-type"><span class="g-type-meta">12 / 400</span><span style="font-size:12px;color:var(--c-text-muted)">辅助说明 最近一次同步在 08:42 超时</span></div>
+        <div class="g-type"><span class="g-type-meta">12 mono</span><span class="ds-mono" style="font-size:12px;color:var(--c-text-faint)">QA-I-1042 · 68% · 08:42</span></div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="buttons">
+      <h2>按钮</h2>
+      <p class="g-lead">圆角 8px，无胶囊形。默认浮起，悬停收回阴影，按下内凹；主按钮用强调色实心，聚焦有 1px 强调环。</p>
+      <div class="g-card g-demo">
+        <div class="g-demo-row">
+          <span class="g-row-label">主按钮</span>
+          <button class="ds-btn ds-btn-primary ds-btn-lg" type="button"><span class="ds-dot-mark" aria-hidden="true"></span>新建巡检</button>
+          <button class="ds-btn ds-btn-primary" type="button">保存更改</button>
+          <button class="ds-btn ds-btn-primary ds-btn-sm" type="button">重跑</button>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">次按钮</span>
+          <button class="ds-btn ds-btn-lg" type="button">导出 CSV</button>
+          <button class="ds-btn" type="button"><svg class="ds-ico" width="14" height="14"><use href="#i-refresh"/></svg>刷新</button>
+          <button class="ds-btn ds-btn-sm" type="button">查看详情</button>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">文字 / 图标</span>
+          <button class="ds-btn ds-btn-ghost" type="button">取消</button>
+          <button class="ds-btn ds-btn-ghost ds-btn-sm" type="button">清除筛选</button>
+          <button class="ds-btn ds-btn-icon" type="button" aria-label="更多操作"><svg class="ds-ico" width="15" height="15"><use href="#i-sliders"/></svg></button>
+          <button class="ds-btn ds-btn-icon ds-btn-sm" type="button" aria-label="关闭"><svg class="ds-ico" width="13" height="13"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">禁用</span>
+          <button class="ds-btn ds-btn-primary" type="button" disabled>创建巡检</button>
+          <button class="ds-btn" type="button" disabled>导出</button>
+          <button class="ds-btn ds-btn-ghost" type="button" disabled>取消</button>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">加载中</span>
+          <button class="ds-btn ds-btn-primary" type="button" disabled><span class="ds-spinner" aria-hidden="true"><i></i><i></i><i></i></span>保存中</button>
+          <button class="ds-btn" type="button" disabled><span class="ds-spinner" aria-hidden="true"><i></i><i></i><i></i></span>刷新中</button>
+        </div>
+        <p class="g-note">悬停、按下、键盘聚焦可直接在本页交互查看；Tab 键聚焦后为 2px 强调色外环。</p>
+      </div>
+    </section>
+
+    <section class="g-sec" id="forms">
+      <h2>输入控件</h2>
+      <p class="g-lead">输入框内凹：默认 3/6 双阴影，聚焦收到 1/2 并加 1px 强调描边。可交互控件与只读内容通过表面方向区分。</p>
+      <div class="g-card g-form-grid">
+        <div class="ds-field">
+          <label class="ds-field-label" for="g-name">任务名称 <span class="ds-req" aria-hidden="true">*</span></label>
+          <input class="ds-input" id="g-name" type="text" placeholder="例如：登录与权限回归" aria-describedby="g-name-hint">
+          <span class="ds-field-hint" id="g-name-hint">中文与数字均可，最多 60 字。</span>
+        </div>
+        <div class="ds-field ds-is-invalid">
+          <label class="ds-field-label" for="g-env">巡检环境</label>
+          <select class="ds-select" id="g-env"><option>预发布</option><option>生产（只读）</option></select>
+          <span class="ds-field-error"><svg class="ds-ico" width="12" height="12"><use href="#i-alert"/></svg>生产环境需二次确认。</span>
+        </div>
+        <div class="ds-field">
+          <label class="ds-field-label" for="g-readonly">任务编号</label>
+          <input class="ds-input" id="g-readonly" type="text" value="QA-I-1042" readonly>
+          <span class="ds-field-hint">只读字段不使用内凹阴影。</span>
+        </div>
+        <div class="ds-field">
+          <span class="ds-field-label" id="g-scope-label">巡检范围</span>
+          <div class="ds-scope-grid" role="group" aria-labelledby="g-scope-label">
+            <label class="ds-check"><input type="checkbox" checked>登录与权限</label>
+            <label class="ds-check"><input type="checkbox">订单结算</label>
+            <label class="ds-check"><input type="checkbox">搜索与推荐</label>
+            <label class="ds-check"><input type="checkbox">数据导出</label>
+          </div>
+        </div>
+        <div class="ds-field g-span-2">
+          <label class="ds-field-label" for="g-note">备注</label>
+          <textarea class="ds-textarea" id="g-note" placeholder="补充说明改动范围、已知风险或需要关注的历史缺陷。"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="tags">
+      <h2>标签、进度与分段</h2>
+      <p class="g-lead">状态不只靠颜色：每个标签都带图标与文字。分段控件用于切换视图筛选，选中项描边而非加深底色。</p>
+      <div class="g-card g-demo">
+        <div class="g-demo-row">
+          <span class="g-row-label">状态标签</span>
+          <span class="ds-tag ds-tag--info"><svg class="ds-ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span>
+          <span class="ds-tag ds-tag--warn"><svg class="ds-ico" width="12" height="12"><use href="#i-alert"/></svg>待复检</span>
+          <span class="ds-tag ds-tag--success"><svg class="ds-ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span>
+          <span class="ds-tag ds-tag--danger"><svg class="ds-ico" width="12" height="12"><use href="#i-x"/></svg>失败</span>
+          <span class="ds-tag ds-tag--neutral"><svg class="ds-ico" width="12" height="12"><use href="#i-dot"/></svg>草稿</span>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">进度</span>
+          <span class="ds-progress-cell"><span class="ds-progress"><span style="width:68%"></span></span><span class="ds-progress-num">68%</span></span>
+          <span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num">100%</span></span>
+          <span class="ds-progress-cell"><span class="ds-progress"><span style="width:0"></span></span><span class="ds-progress-num">0%</span></span>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">分段筛选</span>
+          <div class="ds-segmented" id="g-seg" role="tablist" aria-label="状态筛选">
+            <button type="button" role="tab" aria-selected="true">全部 <span class="ds-count">8</span></button>
+            <button type="button" role="tab" aria-selected="false">进行中 <span class="ds-count">2</span></button>
+            <button type="button" role="tab" aria-selected="false">已通过 <span class="ds-count">3</span></button>
+            <button type="button" role="tab" aria-selected="false">失败 <span class="ds-count">1</span></button>
+          </div>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">头像 / 导航项</span>
+          <span class="ds-avatar">林</span>
+          <span class="ds-avatar">周</span>
+          <div class="ds-nav" style="width:216px">
+            <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-bug"/></svg><span>缺陷跟踪</span><span class="ds-badge ds-mono">38</span></a>
+            <a class="ds-nav-item" href="#" aria-current="page"><svg class="ds-ico" width="16" height="16"><use href="#i-activity"/></svg><span>巡检任务</span><span class="ds-badge ds-mono">12</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="cards">
+      <h2>卡片与指标</h2>
+      <p class="g-lead">卡片无描边，用 8/16 双向软阴影浮起；指标卡内数值最大，说明文字降一级。</p>
+      <div class="ds-metrics">
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-activity"/></svg></div>
+          <div class="ds-metric-label">进行中的巡检</div>
+          <div class="ds-metric-value">12</div>
+          <div class="ds-metric-note">其中 3 个将在今天到期</div>
+        </div>
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-chart"/></svg></div>
+          <div class="ds-metric-label">用例覆盖率</div>
+          <div class="ds-metric-value">86.4<span class="ds-unit">%</span></div>
+          <div class="ds-metric-note">目标 90%，仍有 21 个场景未覆盖</div>
+        </div>
+      </div>
+
+      <div class="g-card g-detail">
+        <div class="ds-card-head">
+          <h2>巡检详情</h2>
+          <span class="sub">QA-I-1042</span>
+          <div class="tools">
+            <span class="ds-tag ds-tag--info"><svg class="ds-ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span>
+            <button class="ds-btn ds-btn-sm" type="button">重跑</button>
+          </div>
+        </div>
+        <dl class="ds-desc">
+          <dt>所属项目</dt><dd>QA 平台</dd>
+          <dt>执行环境</dt><dd>预发布 · 只读校验</dd>
+          <dt>负责人</dt><dd><span class="ds-cell-owner"><span class="ds-avatar">林</span>林清</span></dd>
+          <dt>巡检范围</dt><dd>登录与权限、订单结算</dd>
+          <dt>进度</dt><dd><span class="ds-progress-cell"><span class="ds-progress"><span style="width:68%"></span></span><span class="ds-progress-num">68%</span></span></dd>
+          <dt>最近更新</dt><dd class="ds-mono" style="font-size:12px;color:var(--c-text-faint)">2025-11-03 08:42</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="g-sec" id="table">
+      <h2>表格</h2>
+      <p class="g-lead">表头浅底、行间 1px 细线、行高 55px；主字段完整换行不省略，行内操作保持轻量。</p>
+      <div class="ds-table-panel">
+        <div class="ds-table-toolbar">
+          <div class="ds-table-search">
+            <svg class="ds-ico" width="14" height="14"><use href="#i-search"/></svg>
+            <input type="text" placeholder="筛选任务或负责人" aria-label="筛选任务或负责人">
+          </div>
+          <div class="ds-spacer"></div>
+          <button class="ds-btn ds-btn-icon ds-btn-sm" type="button" aria-label="刷新"><svg class="ds-ico" width="15" height="15"><use href="#i-refresh"/></svg></button>
+          <button class="ds-btn ds-btn-sm" type="button"><svg class="ds-ico" width="13" height="13"><use href="#i-download"/></svg>导出</button>
+        </div>
+        <div class="ds-table-scroll">
+          <table class="ds-table">
+            <colgroup><col style="width:40%"><col style="width:16%"><col style="width:18%"><col style="width:26%"></colgroup>
+            <thead><tr><th>巡检任务</th><th>环境</th><th>状态</th><th>进度</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="ds-cell-title">登录与权限回归</div><div class="ds-cell-meta ds-mono">QA-I-1042</div></td>
+                <td>预发布</td>
+                <td><span class="ds-tag ds-tag--info"><svg class="ds-ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:68%"></span></span><span class="ds-progress-num">68%</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="ds-cell-title">订单结算全链路</div><div class="ds-cell-meta ds-mono">QA-I-1039</div></td>
+                <td>生产（只读）</td>
+                <td><span class="ds-tag ds-tag--warn"><svg class="ds-ico" width="12" height="12"><use href="#i-alert"/></svg>待复检</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num">100%</span></span></td>
+              </tr>
+              <tr>
+                <td><div class="ds-cell-title">搜索相关性抽样评估——覆盖多语言分词、同义词扩展与拼写纠错策略</div><div class="ds-cell-meta ds-mono">QA-I-1024</div></td>
+                <td>预发布</td>
+                <td><span class="ds-tag ds-tag--neutral"><svg class="ds-ico" width="12" height="12"><use href="#i-dot"/></svg>草稿</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:0"></span></span><span class="ds-progress-num">0%</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ds-table-foot"><span>共 3 条 · 每页 20 条</span><span class="ds-spacer"></span><span>最近同步 2 分钟前</span></div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="feedback">
+      <h2>提示与反馈</h2>
+      <p class="g-lead">横幅用于页面级异常，Toast 用于操作结果，空态用图标 + 一句原因 + 一个出口，加载用点阵呼吸。</p>
+      <div class="ds-banner ds-banner--warn">
+        <svg class="ds-ico" width="17" height="17"><use href="#i-alert"/></svg>
+        <div><strong>3 个任务未同步到最新结果</strong><p>最近一次同步在 08:42 超时，重试不会中断正在运行的任务。</p></div>
+        <button class="ds-btn ds-btn-sm" type="button">重试同步</button>
+        <button class="ds-btn ds-btn-ghost ds-btn-icon" type="button" aria-label="关闭横幅"><svg class="ds-ico" width="13" height="13"><use href="#i-x"/></svg></button>
+      </div>
+
+      <div class="g-card g-demo">
+        <div class="g-demo-row">
+          <span class="g-row-label">Toast</span>
+          <button class="ds-btn ds-btn-sm" type="button" data-toast="success">成功</button>
+          <button class="ds-btn ds-btn-sm" type="button" data-toast="danger">失败</button>
+          <button class="ds-btn ds-btn-sm" type="button" data-toast="info">处理中</button>
+        </div>
+        <div class="g-demo-row">
+          <span class="g-row-label">抽屉 / 弹窗</span>
+          <button class="ds-btn ds-btn-primary ds-btn-sm" type="button" id="g-open">打开抽屉表单</button>
+        </div>
+      </div>
+
+      <div class="g-grid-2">
+        <div class="ds-empty" style="box-shadow:var(--sh-raised);border-radius:var(--r-lg);padding:32px 16px">
+          <div class="ds-empty-mark"><svg class="ds-ico" width="20" height="20"><use href="#i-inbox"/></svg></div>
+          <h3>没有匹配的巡检任务</h3>
+          <p>换个关键词，或清除状态筛选后再试。</p>
+          <button class="ds-btn ds-btn-sm" type="button">清除筛选</button>
+        </div>
+        <div class="g-card" style="padding:0">
+          <div class="ds-skeleton-row"><span class="ds-skeleton" style="width:56%"></span><span class="ds-skeleton" style="width:100%"></span><span class="ds-skeleton" style="width:66%"></span></div>
+          <div class="ds-skeleton-row"><span class="ds-skeleton" style="width:66%"></span><span class="ds-skeleton" style="width:100%"></span><span class="ds-skeleton" style="width:56%"></span></div>
+          <div class="ds-skeleton-row"><span class="ds-skeleton" style="width:56%"></span><span class="ds-skeleton" style="width:100%"></span><span class="ds-skeleton" style="width:66%"></span></div>
+          <div class="ds-skeleton-row"><span class="ds-skeleton" style="width:66%"></span><span class="ds-skeleton" style="width:100%"></span><span class="ds-skeleton" style="width:56%"></span></div>
+          <div class="ds-skeleton-row"><span class="ds-skeleton" style="width:56%"></span><span class="ds-skeleton" style="width:100%"></span><span class="ds-skeleton" style="width:66%"></span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="g-foot">
+    <span>方寸设计系统 v0.4 · 数值与状态以 tokens 和组件样式为准</span>
+    <a href="../index.html">工作台样板 →</a>
+  </footer>
+</div>
+
+<!-- 抽屉演示 -->
+<div class="ds-scrim" id="g-scrim"></div>
+<aside class="ds-drawer" id="g-drawer" role="dialog" aria-modal="true" aria-labelledby="g-drawer-title" aria-hidden="true">
+  <div class="ds-drawer-head">
+    <div class="ds-drawer-grip" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div>
+      <h2 id="g-drawer-title">新建巡检</h2>
+      <p>抽屉演示：遮罩点击、Esc、Tab 焦点锁与关闭回焦由 DS.drawer 提供。</p>
+    </div>
+    <button class="ds-btn ds-btn-ghost ds-btn-icon" type="button" data-ds-close aria-label="关闭">
+      <svg class="ds-ico" width="14" height="14"><use href="#i-x"/></svg>
+    </button>
+  </div>
+  <form class="ds-drawer-body" id="g-form">
+    <div class="ds-field">
+      <label class="ds-field-label" for="g-d-name">任务名称 <span class="ds-req" aria-hidden="true">*</span></label>
+      <input class="ds-input" id="g-d-name" type="text" placeholder="例如：登录与权限回归" maxlength="60">
+      <span class="ds-field-hint">中文与数字均可，最多 60 字。</span>
+    </div>
+    <div class="ds-field">
+      <label class="ds-field-label" for="g-d-env">巡检环境</label>
+      <select class="ds-select" id="g-d-env"><option>预发布</option><option>灰度</option><option>生产（只读）</option></select>
+    </div>
+    <div class="ds-field">
+      <label class="ds-field-label" for="g-d-note">备注</label>
+      <textarea class="ds-textarea" id="g-d-note" placeholder="补充说明改动范围、已知风险。"></textarea>
+    </div>
+  </form>
+  <div class="ds-drawer-foot">
+    <span class="ds-foot-note">将保存为草稿。</span>
+    <button class="ds-btn" type="button" data-ds-close>取消</button>
+    <button class="ds-btn ds-btn-primary" type="submit" form="g-form" id="g-d-save">创建巡检</button>
+  </div>
+</aside>
+
+<div class="ds-toast-stack" aria-live="polite"></div>
+
+<script src="../src/ui/icons.js"></script>
+<script src="../src/ui/ui.js"></script>
+<script src="gallery.js"></script>
+</body>
+</html>

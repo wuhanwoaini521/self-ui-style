@@ -2,7 +2,7 @@
 
 跨项目复用的桌面端视觉系统。样板页面（巡检任务工作台）只是验证载体，**本文件中「通用规则」部分可直接套用到 QA 平台、旅游助手、运营工具等任何后台项目**。
 
-视觉基准是 Pencil 源文件 [`design.pen`](./design.pen) 与 [`design-previews/`](./design-previews/)（工作台、抽屉、组件、状态四张画板）；代码是它的可运行实现。
+视觉基准是 Pencil 源文件 [`design/design.pen`](./design/design.pen) 与 [`design/design-previews/`](./design/design-previews/)（工作台、抽屉、组件、状态四张画板）；代码是它的可运行实现。
 
 ---
 
@@ -33,7 +33,7 @@
 
 ## 2. 设计变量
 
-来源：`styles/tokens.css`。换肤只改这一个文件。
+来源：`src/tokens/tokens.css`。换肤只改这一个文件。
 
 ### 2.1 表面与光源
 
@@ -209,8 +209,8 @@
 
 | 属于通用系统 | 属于样板页业务 |
 |---|---|
-| `styles/tokens.css` 全部变量 | 「衡准 · 质量工作台」品牌名与 Logo |
-| `styles/app.css` 的组件与状态 | 导航项（测试用例 / 缺陷跟踪 / 巡检任务…） |
+| `src/tokens/tokens.css` 全部变量 | 「衡准 · 质量工作台」品牌名与 Logo |
+| `src/ui/ui.css` 的组件与状态 | 导航项（测试用例 / 缺陷跟踪 / 巡检任务…） |
 | 间距 / 字号 / 圆角 / 阴影 / 动效规则 | 指标口径（进行中巡检、覆盖率、平均耗时） |
 | 表格 / 抽屉 / 反馈的结构与交互范式 | 表格字段（环境、负责人、进度）、示例数据 |
 | 无障碍与键盘行为 | 表单选项（项目、环境、巡检范围） |
@@ -298,7 +298,7 @@
 - 仅浅色主题；深色需重算双光源（暗底、亮暗互换）。
 - 低对比新拟物对手部障碍用户不友好，生产环境建议提供「高对比模式」开关。
 - 表格无行选择 / 批量操作、无表头吸顶。
-- `app.js` 中的网络请求为 `setTimeout` 模拟，接真实接口需替换 3 处。
+- `src/ui/ui.js` 与 `src/app/workspace.js` 中的请求为 `setTimeout` 模拟，接真实接口需替换 3 处。
 - 字体走 Google Fonts；完全离线时回退 `PingFang SC / Microsoft YaHei`，字宽略有差异。
 
 ---
@@ -306,11 +306,19 @@
 ## 8. 目录
 
 ```
-index.html            样板页（业务内容，可整体替换）
-app.js                样板交互（模拟请求，接后端时替换）
-styles/tokens.css     设计变量 —— 唯一换肤入口
-styles/app.css        组件样式 —— 跨项目复制这层
-DESIGN.md             本规范
-design.pen            Pencil 设计源文件（视觉基准）
-design-previews/      设计导出：工作台 / 抽屉 / 组件 / 状态四张画板 + HTML 参考
+index.html                 样板页（业务内容，可整体替换）
+styles 已拆分为四层：
+  src/tokens/tokens.css    设计变量 —— 作用域 .ds-theme，唯一换肤入口
+  src/theme/base.css       基础样式：字体栈、点阵背景、焦点环、等宽类
+  src/ui/ui.css            通用组件（ds- 前缀）—— 跨项目复用的主体
+  src/ui/ui.js             通用行为：DS.toast() / DS.drawer()
+  src/ui/icons.js          线性图标精灵（18 个 symbol）
+  src/app/workspace.css    样板页布局（业务）
+  src/app/workspace.js     样板页交互（业务）
+examples/components.html   组件展示页 + gallery.css/js（仅示例）
+docs/                      接入与迁移指南、视口截图
+design/                    design.pen 与设计导出、点阵素材
+skills/design-system/      供 AI Agent 使用的设计系统规则
+DESIGN.md                  本规范（视觉规则与验收数据）
+CHANGELOG.md               版本与变更记录
 ```

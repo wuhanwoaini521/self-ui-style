@@ -7,205 +7,142 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/app.css">
+<link rel="stylesheet" href="src/theme/index.css">
+<link rel="stylesheet" href="src/app/workspace.css">
 </head>
-<body>
+<body class="ds-theme">
 
-<!-- 图标精灵：统一 16px 线性风格，1.5 描边 -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-mark" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <circle cx="6" cy="6" r="1.5"/><circle cx="12" cy="6" r="1.5"/><circle cx="18" cy="6" r="1.5"/>
-      <circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/>
-      <circle cx="6" cy="18" r="1.5"/><circle cx="12" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/>
-    </g>
-  </symbol>
-  <symbol id="i-grid" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-    <rect x="2.5" y="2.5" width="4.6" height="4.6" rx="1"/><rect x="8.9" y="2.5" width="4.6" height="4.6" rx="1"/>
-    <rect x="2.5" y="8.9" width="4.6" height="4.6" rx="1"/><rect x="8.9" y="8.9" width="4.6" height="4.6" rx="1"/>
-  </symbol>
-  <symbol id="i-layers" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-    <path d="M8 2 14 5.3 8 8.6 2 5.3 8 2Z"/><path d="M2.6 8.6 8 11.8l5.4-3.2"/><path d="M2.6 11.4 8 14.6l5.4-3.2"/>
-  </symbol>
-  <symbol id="i-bug" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M5.6 5.2a2.4 2.4 0 0 1 4.8 0"/><rect x="4.6" y="5.4" width="6.8" height="6.4" rx="3.2"/>
-    <path d="M2.4 7.4h2.2M11.4 7.4h2.2M2.6 11.2h2M11.4 11.2h2M6 2.6 7 4M10 2.6 9 4M8 11.8v2"/>
-  </symbol>
-  <symbol id="i-activity" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M1.8 8h2.6l1.8-4.2 2.6 8.4 1.8-4.2h3.6"/>
-  </symbol>
-  <symbol id="i-chart" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-    <path d="M3 13V8.4M8 13V3.4M13 13V6.2M2 13.4h12"/>
-  </symbol>
-  <symbol id="i-users" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="6" cy="5.8" r="2.3"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/>
-    <path d="M10.4 3.9a2.1 2.1 0 0 1 0 3.9M11.6 9.7c1.5.4 2.4 1.5 2.4 3.3"/>
-  </symbol>
-  <symbol id="i-sliders" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-    <path d="M2 4.6h4.2M9.4 4.6H14M2 11.4h2.4M7.6 11.4H14"/>
-    <circle cx="7.8" cy="4.6" r="1.6"/><circle cx="6" cy="11.4" r="1.6"/>
-  </symbol>
-  <symbol id="i-search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-    <circle cx="7" cy="7" r="4.3"/><path d="M10.2 10.2 13.6 13.6"/>
-  </symbol>
-  <symbol id="i-refresh" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M13.2 8A5.2 5.2 0 1 1 11.2 4"/><path d="M13.2 2.2v3h-3"/>
-  </symbol>
-  <symbol id="i-download" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 2.4v7.4M5 7 8 10.1 11 7M2.8 13.2h10.4"/>
-  </symbol>
-  <symbol id="i-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M3.2 8.4 6.4 11.5 12.8 4.8"/>
-  </symbol>
-  <symbol id="i-alert" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 2.4 14.2 13.2H1.8L8 2.4Z"/><path d="M8 6.2v3.1"/><circle cx="8" cy="11.5" r=".7" fill="currentColor" stroke="none"/>
-  </symbol>
-  <symbol id="i-x" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-    <path d="M4.2 4.2 11.8 11.8M11.8 4.2 4.2 11.8"/>
-  </symbol>
-  <symbol id="i-clock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="8" cy="8" r="5.4"/><path d="M8 4.8v3.5l2.2 1.4"/>
-  </symbol>
-  <symbol id="i-dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.2" fill="currentColor"/></symbol>
-  <symbol id="i-info" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-    <circle cx="8" cy="8" r="5.4"/><path d="M8 7.3v3.6"/><circle cx="8" cy="5.2" r=".7" fill="currentColor" stroke="none"/>
-  </symbol>
-  <symbol id="i-inbox" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M2.2 8.8 4 3.2h8l1.8 5.6v3.6H2.2V8.8Z"/><path d="M2.2 9.4h3l.8 1.6h4l.8-1.6h3"/>
-  </symbol>
-</svg>
 
-<div class="app">
+<div class="ds-app">
 
   <!-- ================= 左侧导航 ================= -->
-  <aside class="sidebar">
-    <div class="brand">
-      <span class="brand-mark" aria-hidden="true">
+  <aside class="ds-sidebar">
+    <div class="ds-brand">
+      <span class="ds-brand-mark" aria-hidden="true">
         <svg width="16" height="16" fill="currentColor"><use href="#i-mark"/></svg>
       </span>
-      <span class="brand-name">
+      <span class="ds-brand-name">
         <strong>衡准 · 质量工作台</strong>
         <span>QA Platform</span>
       </span>
     </div>
 
-    <nav class="nav" aria-label="主导航">
-      <div class="nav-group">
-        <div class="nav-title">工作区</div>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-grid"/></svg><span>概览</span></a>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-layers"/></svg><span>测试用例</span></a>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-bug"/></svg><span>缺陷跟踪</span><span class="badge">38</span></a>
-        <a class="nav-item" href="#" aria-current="page"><svg class="ico" width="16" height="16"><use href="#i-activity"/></svg><span>巡检任务</span><span class="badge">12</span></a>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-chart"/></svg><span>质量报告</span></a>
+    <nav class="ds-nav" aria-label="主导航">
+      <div class="ds-nav-group">
+        <div class="ds-nav-title">工作区</div>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-grid"/></svg><span>概览</span></a>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-layers"/></svg><span>测试用例</span></a>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-bug"/></svg><span>缺陷跟踪</span><span class="ds-badge">38</span></a>
+        <a class="ds-nav-item" href="#" aria-current="page"><svg class="ds-ico" width="16" height="16"><use href="#i-activity"/></svg><span>巡检任务</span><span class="ds-badge">12</span></a>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-chart"/></svg><span>质量报告</span></a>
       </div>
-      <div class="nav-group">
-        <div class="nav-title">管理</div>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-users"/></svg><span>团队与权限</span></a>
-        <a class="nav-item" href="#"><svg class="ico" width="16" height="16"><use href="#i-sliders"/></svg><span>项目设置</span></a>
+      <div class="ds-nav-group">
+        <div class="ds-nav-title">管理</div>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-users"/></svg><span>团队与权限</span></a>
+        <a class="ds-nav-item" href="#"><svg class="ds-ico" width="16" height="16"><use href="#i-sliders"/></svg><span>项目设置</span></a>
       </div>
     </nav>
 
-    <div class="sidebar-foot">
-      <button class="user-chip" type="button">
-        <span class="avatar" aria-hidden="true">林</span>
-        <span class="who"><span>林清</span><span>测试负责人</span></span>
+    <div class="ds-sidebar-foot">
+      <button class="ds-user-chip" type="button">
+        <span class="ds-avatar" aria-hidden="true">林</span>
+        <span class="ds-who"><span>林清</span><span>测试负责人</span></span>
       </button>
     </div>
   </aside>
 
   <!-- ================= 主区域 ================= -->
-  <div class="main">
-    <header class="topbar">
-      <div class="page-title">
+  <div class="ds-main">
+    <header class="ds-topbar">
+      <div class="ds-page-title">
         <h1>巡检任务</h1>
         <p>统一管理自动化巡检的范围、环境与执行状态，按需重跑并追踪结果。</p>
       </div>
-      <div class="topbar-tools">
-        <div class="search">
-          <svg class="ico" width="14" height="14"><use href="#i-search"/></svg>
-          <label class="sr-only" for="global-search">全局搜索</label>
+      <div class="ds-topbar-tools">
+        <div class="ds-search">
+          <svg class="ds-ico" width="14" height="14"><use href="#i-search"/></svg>
+          <label class="ds-sr-only" for="global-search">全局搜索</label>
           <input id="global-search" type="search" placeholder="搜索任务、用例或成员" autocomplete="off">
           <kbd>⌘K</kbd>
         </div>
-        <button class="btn btn-primary btn-lg" type="button" id="btn-create">
-          <span class="dot-mark" aria-hidden="true"></span>新建巡检
+        <button class="ds-btn ds-btn-primary ds-btn-lg" type="button" id="btn-create">
+          <span class="ds-dot-mark" aria-hidden="true"></span>新建巡检
         </button>
       </div>
     </header>
 
-    <div class="main-scroll">
+    <div class="ds-main-scroll">
 
       <!-- 内联提示：同步失败 + 重试（失败反馈的页面级形态） -->
-      <div class="banner banner--warn" id="sync-banner" role="status">
-        <svg class="ico" width="16" height="16"><use href="#i-alert"/></svg>
+      <div class="ds-banner ds-banner--warn" id="sync-banner" role="status">
+        <svg class="ds-ico" width="16" height="16"><use href="#i-alert"/></svg>
         <div>
           <strong>3 个任务未同步到最新结果</strong>
           <p>最近一次同步在 08:42 超时，当前进度可能滞后于实际执行。重试不会中断正在运行的任务。</p>
         </div>
-        <button class="btn btn-sm" type="button" id="btn-retry-sync">重试同步</button>
-        <button class="btn btn-ghost btn-icon" type="button" data-dismiss="sync-banner" aria-label="关闭提示">
-          <svg class="ico" width="14" height="14"><use href="#i-x"/></svg>
+        <button class="ds-btn ds-btn-sm" type="button" id="btn-retry-sync">重试同步</button>
+        <button class="ds-btn ds-btn-ghost ds-btn-icon" type="button" data-dismiss="sync-banner" aria-label="关闭提示">
+          <svg class="ds-ico" width="14" height="14"><use href="#i-x"/></svg>
         </button>
       </div>
 
       <!-- 关键指标 -->
-      <section class="metrics" aria-label="关键指标">
-        <div class="metric">
-          <div class="metric-icon"><svg class="ico" width="17" height="17"><use href="#i-activity"/></svg></div>
-          <div class="metric-label">进行中的巡检</div>
-          <div class="metric-value">12</div>
-          <div class="metric-note">其中 3 个将在今天到期</div>
+      <section class="ds-metrics" aria-label="关键指标">
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-activity"/></svg></div>
+          <div class="ds-metric-label">进行中的巡检</div>
+          <div class="ds-metric-value">12</div>
+          <div class="ds-metric-note">其中 3 个将在今天到期</div>
         </div>
-        <div class="metric">
-          <div class="metric-icon"><svg class="ico" width="17" height="17"><use href="#i-bug"/></svg></div>
-          <div class="metric-label">待处理缺陷</div>
-          <div class="metric-value">38</div>
-          <div class="metric-note"><span class="up">较上周减少 9 个</span></div>
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-bug"/></svg></div>
+          <div class="ds-metric-label">待处理缺陷</div>
+          <div class="ds-metric-value">38</div>
+          <div class="ds-metric-note"><span class="ds-up">较上周减少 9 个</span></div>
         </div>
-        <div class="metric">
-          <div class="metric-icon"><svg class="ico" width="17" height="17"><use href="#i-layers"/></svg></div>
-          <div class="metric-label">用例覆盖率</div>
-          <div class="metric-value">86.4<span class="unit">%</span></div>
-          <div class="metric-note">目标 90%，仍有 21 个场景未覆盖</div>
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-layers"/></svg></div>
+          <div class="ds-metric-label">用例覆盖率</div>
+          <div class="ds-metric-value">86.4<span class="ds-unit">%</span></div>
+          <div class="ds-metric-note">目标 90%，仍有 21 个场景未覆盖</div>
         </div>
-        <div class="metric">
-          <div class="metric-icon"><svg class="ico" width="17" height="17"><use href="#i-clock"/></svg></div>
-          <div class="metric-label">平均单次耗时</div>
-          <div class="metric-value">2h<span class="unit">18m</span></div>
-          <div class="metric-note">近 7 天，<span class="up">较上周 -12%</span></div>
+        <div class="ds-metric">
+          <div class="ds-metric-icon"><svg class="ds-ico" width="17" height="17"><use href="#i-clock"/></svg></div>
+          <div class="ds-metric-label">平均单次耗时</div>
+          <div class="ds-metric-value">2h<span class="ds-unit">18m</span></div>
+          <div class="ds-metric-note">近 7 天，<span class="ds-up">较上周 -12%</span></div>
         </div>
       </section>
 
       <!-- 主内容区：数据表格 -->
-      <section class="card table-panel" aria-label="巡检任务列表">
-        <div class="table-toolbar">
-          <div class="table-search">
-            <svg class="ico" width="13" height="13"><use href="#i-search"/></svg>
-            <label class="sr-only" for="table-filter">在列表中搜索</label>
+      <section class="ds-card ds-table-panel" aria-label="巡检任务列表">
+        <div class="ds-table-toolbar">
+          <div class="ds-table-search">
+            <svg class="ds-ico" width="13" height="13"><use href="#i-search"/></svg>
+            <label class="ds-sr-only" for="table-filter">在列表中搜索</label>
             <input id="table-filter" type="search" placeholder="筛选任务或负责人" autocomplete="off">
           </div>
 
-          <div class="segmented" role="tablist" aria-label="按状态筛选">
-            <button type="button" role="tab" aria-selected="true" data-status="all">全部<span class="count">8</span></button>
-            <button type="button" role="tab" aria-selected="false" data-status="running">进行中<span class="count">2</span></button>
-            <button type="button" role="tab" aria-selected="false" data-status="review">待复检<span class="count">1</span></button>
-            <button type="button" role="tab" aria-selected="false" data-status="passed">已通过<span class="count">3</span></button>
-            <button type="button" role="tab" aria-selected="false" data-status="failed">失败<span class="count">1</span></button>
+          <div class="ds-segmented" role="tablist" aria-label="按状态筛选">
+            <button type="button" role="tab" aria-selected="true" data-status="all">全部<span class="ds-count">8</span></button>
+            <button type="button" role="tab" aria-selected="false" data-status="running">进行中<span class="ds-count">2</span></button>
+            <button type="button" role="tab" aria-selected="false" data-status="review">待复检<span class="ds-count">1</span></button>
+            <button type="button" role="tab" aria-selected="false" data-status="passed">已通过<span class="ds-count">3</span></button>
+            <button type="button" role="tab" aria-selected="false" data-status="failed">失败<span class="ds-count">1</span></button>
           </div>
 
-          <span class="spacer"></span>
+          <span class="ds-spacer"></span>
 
-          <button class="btn btn-icon" type="button" id="btn-refresh" aria-label="刷新列表" title="刷新（演示加载状态）">
-            <svg class="ico" width="15" height="15"><use href="#i-refresh"/></svg>
+          <button class="ds-btn ds-btn-icon" type="button" id="btn-refresh" aria-label="刷新列表" title="刷新（演示加载状态）">
+            <svg class="ds-ico" width="15" height="15"><use href="#i-refresh"/></svg>
           </button>
-          <button class="btn btn-sm" type="button" id="btn-export">
-            <svg class="ico" width="14" height="14"><use href="#i-download"/></svg>导出
+          <button class="ds-btn ds-btn-sm" type="button" id="btn-export">
+            <svg class="ds-ico" width="14" height="14"><use href="#i-download"/></svg>导出
           </button>
         </div>
 
-        <div class="table-scroll">
-          <table class="table">
+        <div class="ds-table-scroll">
+          <table class="ds-table">
             <colgroup>
               <col style="width:28.5%">
               <col style="width:10.6%">
@@ -223,139 +160,139 @@
                 <th scope="col">状态</th>
                 <th scope="col">进度</th>
                 <th scope="col">更新时间</th>
-                <th scope="col" class="th-right">操作</th>
+                <th scope="col" class="ds-th-right">操作</th>
               </tr>
             </thead>
             <tbody id="rows">
               <tr data-status="running" data-name="登录与权限回归" data-env="预发布" data-owner="林清">
                 <td>
-                  <span class="cell-title" title="登录与权限回归">登录与权限回归</span>
-                  <span class="cell-meta mono">QA-I-1042</span>
+                  <span class="ds-cell-title" title="登录与权限回归">登录与权限回归</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1042</span>
                 </td>
                 <td>预发布</td>
-                <td><span class="cell-owner"><span class="avatar">林</span>林清</span></td>
-                <td><span class="tag tag--info"><svg class="ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:68%"></span></span><span class="progress-num mono">68%</span></span></td>
-                <td class="cell-meta">4 分钟前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">林</span>林清</span></td>
+                <td><span class="ds-tag ds-tag--info"><svg class="ds-ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:68%"></span></span><span class="ds-progress-num ds-mono">68%</span></span></td>
+                <td class="ds-cell-meta">4 分钟前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="review" data-name="订单结算全链路" data-env="生产（只读）" data-owner="周宇">
                 <td>
-                  <span class="cell-title" title="订单结算全链路">订单结算全链路</span>
-                  <span class="cell-meta mono">QA-I-1039</span>
+                  <span class="ds-cell-title" title="订单结算全链路">订单结算全链路</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1039</span>
                 </td>
                 <td>生产（只读）</td>
-                <td><span class="cell-owner"><span class="avatar">周</span>周宇</span></td>
-                <td><span class="tag tag--warn"><svg class="ico" width="12" height="12"><use href="#i-alert"/></svg>待复检</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:100%"></span></span><span class="progress-num mono">100%</span></span></td>
-                <td class="cell-meta">32 分钟前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">周</span>周宇</span></td>
+                <td><span class="ds-tag ds-tag--warn"><svg class="ds-ico" width="12" height="12"><use href="#i-alert"/></svg>待复检</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num ds-mono">100%</span></span></td>
+                <td class="ds-cell-meta">32 分钟前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="passed" data-name="会员中心改版验收" data-env="预发布" data-owner="何苗">
                 <td>
-                  <span class="cell-title" title="会员中心改版验收">会员中心改版验收</span>
-                  <span class="cell-meta mono">QA-I-1036</span>
+                  <span class="ds-cell-title" title="会员中心改版验收">会员中心改版验收</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1036</span>
                 </td>
                 <td>预发布</td>
-                <td><span class="cell-owner"><span class="avatar">何</span>何苗</span></td>
-                <td><span class="tag tag--success"><svg class="ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:100%"></span></span><span class="progress-num mono">100%</span></span></td>
-                <td class="cell-meta">2 小时前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">何</span>何苗</span></td>
+                <td><span class="ds-tag ds-tag--success"><svg class="ds-ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num ds-mono">100%</span></span></td>
+                <td class="ds-cell-meta">2 小时前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="failed" data-name="消息推送时区异常" data-env="灰度" data-owner="陈亦">
                 <td>
-                  <span class="cell-title" title="消息推送时区异常">消息推送时区异常</span>
-                  <span class="cell-meta mono">QA-I-1031</span>
+                  <span class="ds-cell-title" title="消息推送时区异常">消息推送时区异常</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1031</span>
                 </td>
                 <td>灰度</td>
-                <td><span class="cell-owner"><span class="avatar">陈</span>陈亦</span></td>
-                <td><span class="tag tag--danger"><svg class="ico" width="12" height="12"><use href="#i-x"/></svg>失败</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:41%"></span></span><span class="progress-num mono">41%</span></span></td>
-                <td class="cell-meta">3 小时前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">陈</span>陈亦</span></td>
+                <td><span class="ds-tag ds-tag--danger"><svg class="ds-ico" width="12" height="12"><use href="#i-x"/></svg>失败</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:41%"></span></span><span class="ds-progress-num ds-mono">41%</span></span></td>
+                <td class="ds-cell-meta">3 小时前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="passed" data-name="支付回调幂等验证" data-env="生产（只读）" data-owner="周宇">
                 <td>
-                  <span class="cell-title" title="支付回调幂等验证">支付回调幂等验证</span>
-                  <span class="cell-meta mono">QA-I-1028</span>
+                  <span class="ds-cell-title" title="支付回调幂等验证">支付回调幂等验证</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1028</span>
                 </td>
                 <td>生产（只读）</td>
-                <td><span class="cell-owner"><span class="avatar">周</span>周宇</span></td>
-                <td><span class="tag tag--success"><svg class="ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:100%"></span></span><span class="progress-num mono">100%</span></span></td>
-                <td class="cell-meta">昨天 18:20</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">周</span>周宇</span></td>
+                <td><span class="ds-tag ds-tag--success"><svg class="ds-ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num ds-mono">100%</span></span></td>
+                <td class="ds-cell-meta">昨天 18:20</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="draft" data-name="搜索相关性抽样评估（多语言分词 / 同义词 / 拼写纠错）" data-env="预发布" data-owner="林清">
                 <td>
-                  <span class="cell-title" title="搜索相关性抽样评估——覆盖多语言分词、同义词扩展与拼写纠错策略">搜索相关性抽样评估——覆盖多语言分词、同义词扩展与拼写纠错策略</span>
-                  <span class="cell-meta mono">QA-I-1024</span>
+                  <span class="ds-cell-title" title="搜索相关性抽样评估——覆盖多语言分词、同义词扩展与拼写纠错策略">搜索相关性抽样评估——覆盖多语言分词、同义词扩展与拼写纠错策略</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1024</span>
                 </td>
                 <td>预发布</td>
-                <td><span class="cell-owner"><span class="avatar">林</span>林清</span></td>
-                <td><span class="tag tag--neutral"><svg class="ico" width="12" height="12"><use href="#i-dot"/></svg>草稿</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:0%"></span></span><span class="progress-num mono">0%</span></span></td>
-                <td class="cell-meta">昨天 16:02</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">林</span>林清</span></td>
+                <td><span class="ds-tag ds-tag--neutral"><svg class="ds-ico" width="12" height="12"><use href="#i-dot"/></svg>草稿</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:0%"></span></span><span class="ds-progress-num ds-mono">0%</span></span></td>
+                <td class="ds-cell-meta">昨天 16:02</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="running" data-name="数据导出权限校验" data-env="测试" data-owner="何苗">
                 <td>
-                  <span class="cell-title" title="数据导出权限校验">数据导出权限校验</span>
-                  <span class="cell-meta mono">QA-I-1019</span>
+                  <span class="ds-cell-title" title="数据导出权限校验">数据导出权限校验</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1019</span>
                 </td>
                 <td>测试</td>
-                <td><span class="cell-owner"><span class="avatar">何</span>何苗</span></td>
-                <td><span class="tag tag--info"><svg class="ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:22%"></span></span><span class="progress-num mono">22%</span></span></td>
-                <td class="cell-meta">2 天前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">何</span>何苗</span></td>
+                <td><span class="ds-tag ds-tag--info"><svg class="ds-ico" width="12" height="12"><use href="#i-clock"/></svg>进行中</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:22%"></span></span><span class="ds-progress-num ds-mono">22%</span></span></td>
+                <td class="ds-cell-meta">2 天前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
               <tr data-status="passed" data-name="移动端首屏加载性能" data-env="灰度" data-owner="陈亦">
                 <td>
-                  <span class="cell-title" title="移动端首屏加载性能">移动端首屏加载性能</span>
-                  <span class="cell-meta mono">QA-I-1012</span>
+                  <span class="ds-cell-title" title="移动端首屏加载性能">移动端首屏加载性能</span>
+                  <span class="ds-cell-meta ds-mono">QA-I-1012</span>
                 </td>
                 <td>灰度</td>
-                <td><span class="cell-owner"><span class="avatar">陈</span>陈亦</span></td>
-                <td><span class="tag tag--success"><svg class="ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
-                <td><span class="progress-cell"><span class="progress"><span style="width:100%"></span></span><span class="progress-num mono">100%</span></span></td>
-                <td class="cell-meta">2 天前</td>
-                <td class="cell-actions">
-                  <button class="btn btn-ghost" type="button" data-action="view">查看</button>
-                  <button class="btn btn-ghost" type="button" data-action="rerun">重跑</button>
+                <td><span class="ds-cell-owner"><span class="ds-avatar">陈</span>陈亦</span></td>
+                <td><span class="ds-tag ds-tag--success"><svg class="ds-ico" width="12" height="12"><use href="#i-check"/></svg>已通过</span></td>
+                <td><span class="ds-progress-cell"><span class="ds-progress"><span style="width:100%"></span></span><span class="ds-progress-num ds-mono">100%</span></span></td>
+                <td class="ds-cell-meta">2 天前</td>
+                <td class="ds-cell-actions">
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="view">查看</button>
+                  <button class="ds-btn ds-btn-ghost" type="button" data-action="rerun">重跑</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="table-foot">
+        <div class="ds-table-foot">
           <span id="row-count">共 8 条</span>
           <span aria-hidden="true">·</span>
           <span>每页 20 条</span>
-          <span class="spacer"></span>
+          <span class="ds-spacer"></span>
           <span>最近同步 2 分钟前</span>
         </div>
       </section>
@@ -364,58 +301,58 @@
 </div>
 
 <!-- ================= 抽屉：新建 / 编辑 ================= -->
-<div class="scrim" id="scrim"></div>
+<div class="ds-scrim" id="scrim"></div>
 
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
-  <div class="drawer-head">
-    <span class="drawer-grip" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+<aside class="ds-drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
+  <div class="ds-drawer-head">
+    <span class="ds-drawer-grip" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div>
       <h2 id="drawer-title">新建巡检</h2>
       <p id="drawer-desc">创建后将在下一次计划时间开始执行，可随时手动重跑。</p>
     </div>
-    <button class="btn btn-ghost btn-icon" type="button" data-close-drawer aria-label="关闭">
-      <svg class="ico" width="15" height="15"><use href="#i-x"/></svg>
+    <button class="ds-btn ds-btn-ghost ds-btn-icon" type="button" data-ds-close aria-label="关闭">
+      <svg class="ds-ico" width="15" height="15"><use href="#i-x"/></svg>
     </button>
   </div>
 
-  <form class="drawer-body" id="task-form" novalidate>
-    <div class="field" id="field-name">
-      <label class="field-label" for="f-name">任务名称 <span class="req" aria-hidden="true">*</span></label>
-      <input class="input" id="f-name" name="name" type="text" maxlength="60"
+  <form class="ds-drawer-body" id="task-form" novalidate>
+    <div class="ds-field" id="field-name">
+      <label class="ds-field-label" for="f-name">任务名称 <span class="ds-req" aria-hidden="true">*</span></label>
+      <input class="ds-input" id="f-name" name="name" type="text" maxlength="60"
              placeholder="例如：登录与权限回归" autocomplete="off" required
              aria-describedby="f-name-hint f-name-error">
-      <div class="field-row">
-        <span class="field-hint" id="f-name-hint">中文与数字均可，最多 60 字。</span>
-        <span class="field-hint mono" id="f-name-count">0/60</span>
+      <div class="ds-field-row">
+        <span class="ds-field-hint" id="f-name-hint">中文与数字均可，最多 60 字。</span>
+        <span class="ds-field-hint ds-mono" id="f-name-count">0/60</span>
       </div>
-      <span class="field-error" id="f-name-error">
-        <svg class="ico" width="12" height="12"><use href="#i-alert"/></svg>请填写任务名称后再提交。
+      <span class="ds-field-error" id="f-name-error">
+        <svg class="ds-ico" width="12" height="12"><use href="#i-alert"/></svg>请填写任务名称后再提交。
       </span>
     </div>
 
-    <div class="field">
-      <label class="field-label" for="f-project">所属项目</label>
-      <select class="select" id="f-project" name="project">
+    <div class="ds-field">
+      <label class="ds-field-label" for="f-project">所属项目</label>
+      <select class="ds-select" id="f-project" name="project">
         <option>QA 平台</option>
         <option>旅游助手</option>
         <option>运营工具</option>
       </select>
     </div>
 
-    <div class="field">
-      <label class="field-label" for="f-env">巡检环境</label>
-      <select class="select" id="f-env" name="env">
+    <div class="ds-field">
+      <label class="ds-field-label" for="f-env">巡检环境</label>
+      <select class="ds-select" id="f-env" name="env">
         <option>预发布</option>
         <option>灰度</option>
         <option>生产（只读）</option>
         <option>测试</option>
       </select>
-      <span class="field-hint">生产环境仅执行只读校验，不会写入数据。</span>
+      <span class="ds-field-hint">生产环境仅执行只读校验，不会写入数据。</span>
     </div>
 
-    <div class="field">
-      <label class="field-label" for="f-owner">负责人</label>
-      <select class="select" id="f-owner" name="owner">
+    <div class="ds-field">
+      <label class="ds-field-label" for="f-owner">负责人</label>
+      <select class="ds-select" id="f-owner" name="owner">
         <option>林清</option>
         <option>周宇</option>
         <option>何苗</option>
@@ -423,33 +360,35 @@
       </select>
     </div>
 
-    <div class="field">
-      <span class="field-label" id="scope-label">巡检范围</span>
-      <div class="scope-grid" role="group" aria-labelledby="scope-label">
-        <label class="check"><input type="checkbox" name="scope" value="auth" checked>登录与权限</label>
-        <label class="check"><input type="checkbox" name="scope" value="order">订单结算</label>
-        <label class="check"><input type="checkbox" name="scope" value="search">搜索与推荐</label>
-        <label class="check"><input type="checkbox" name="scope" value="export">数据导出</label>
+    <div class="ds-field">
+      <span class="ds-field-label" id="scope-label">巡检范围</span>
+      <div class="ds-scope-grid" role="group" aria-labelledby="scope-label">
+        <label class="ds-check"><input type="checkbox" name="scope" value="auth" checked>登录与权限</label>
+        <label class="ds-check"><input type="checkbox" name="scope" value="order">订单结算</label>
+        <label class="ds-check"><input type="checkbox" name="scope" value="search">搜索与推荐</label>
+        <label class="ds-check"><input type="checkbox" name="scope" value="export">数据导出</label>
       </div>
     </div>
 
-    <div class="field">
-      <label class="field-label" for="f-note">备注</label>
-      <textarea class="textarea" id="f-note" name="note" maxlength="300"
+    <div class="ds-field">
+      <label class="ds-field-label" for="f-note">备注</label>
+      <textarea class="ds-textarea" id="f-note" name="note" maxlength="300"
                 placeholder="补充说明改动范围、已知风险或需要关注的历史缺陷。"></textarea>
     </div>
   </form>
 
-  <div class="drawer-foot">
-    <span class="foot-note" id="drawer-mode-note">将保存为草稿，可在列表中继续编辑。</span>
-    <button class="btn" type="button" data-close-drawer>取消</button>
-    <button class="btn btn-primary" type="submit" form="task-form" id="btn-save">创建巡检</button>
+  <div class="ds-drawer-foot">
+    <span class="ds-foot-note" id="drawer-mode-note">将保存为草稿，可在列表中继续编辑。</span>
+    <button class="ds-btn" type="button" data-ds-close>取消</button>
+    <button class="ds-btn ds-btn-primary" type="submit" form="task-form" id="btn-save">创建巡检</button>
   </div>
 </aside>
 
 <!-- 提示 -->
-<div class="toast-stack" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div class="ds-toast-stack" id="toasts" aria-live="polite" aria-atomic="false"></div>
 
-<script src="app.js"></script>
+<script src="src/ui/icons.js"></script>
+<script src="src/ui/ui.js"></script>
+<script src="src/app/workspace.js"></script>
 </body>
 </html>

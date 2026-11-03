@@ -1,0 +1,37 @@
+{
+  "name": "@self/ui-style",
+  "version": "0.4.0",
+  "description": "方寸 · 个人桌面端设计系统：新拟物表面、22px 点阵背景、克制的靛紫强调色",
+  "type": "module",
+  "license": "MIT",
+  "style": "./src/theme/index.css",
+  "main": "./src/index.js",
+  "files": [
+    "src",
+    "examples",
+    "docs",
+    "design",
+    "skills",
+    "tools",
+    "DESIGN.md",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./ui.js": "./src/ui/ui.js",
+    "./icons.js": "./src/ui/icons.js",
+    "./theme.css": "./src/theme/index.css",
+    "./tokens.css": "./src/tokens/tokens.css",
+    "./base.css": "./src/theme/base.css",
+    "./ui.css": "./src/ui/ui.css"
+  },
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "verify": "node tools/verify.mjs",
+    "screenshot": "node tools/screenshot.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

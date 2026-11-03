@@ -1,0 +1,4 @@
+/* 一次性引入设计系统样式（顺序不可调换：变量 → 基础 → 组件） */
+@import url("../tokens/tokens.css");
+@import url("./base.css");
+@import url("../ui/ui.css");

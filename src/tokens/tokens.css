@@ -1,9 +1,10 @@
 /* ==========================================================================
-   方寸 · Neumorphism / Soft UI 设计变量（跨项目复用，无业务内容）
+   方寸设计系统 · 设计变量（tokens）
+   只放值，不含选择器以外的逻辑；作用域 .ds-theme，避免污染宿主项目。
    规则：单色系表面 + 双光源阴影；亮阴影恒在左上 (-X/-Y)，暗阴影恒在右下 (+X/+Y)。
    ========================================================================== */
 
-:root {
+.ds-theme {
   /* ---------- 表面（禁止纯白/纯黑背景，全站同色系） ---------- */
   --c-bg:          #f7fafc; /* 主表面：页面、卡片、按钮、输入框 */
   --c-bg-soft:     #eef3f8; /* 抬升表面：表头、品牌块、提示卡 */
@@ -83,6 +84,11 @@
   --sidebar-w: 232px;
 
   /* ---------- 动效：软塑料般的柔韧（Smooth Molding） ---------- */
+  /* 层级 */
+  --z-scrim: 40;
+  --z-drawer: 50;
+  --z-toast: 60;
+
   --t: 300ms ease-in-out;
 
   /* ---------- 阴影（移动端基准：4/8） ---------- */
@@ -106,7 +112,7 @@
 
 /* 桌面优先：md 以上放大光影（8/16），保持同一光源方向 */
 @media (min-width: 768px) {
-  :root {
+  .ds-theme {
     --sh-raised:        8px 8px 16px var(--c-shadow-dark), -8px -8px 16px var(--c-shadow-light);
     --sh-raised-xs:     4px 4px 8px var(--c-shadow-dark), -4px -4px 8px var(--c-shadow-light);
     --sh-raised-hover:  4px 4px 8px var(--c-shadow-dark), -4px -4px 8px var(--c-shadow-light);
@@ -119,20 +125,5 @@
     --sh-accent:        8px 8px 16px rgba(74, 60, 190, .34), -8px -8px 16px var(--c-shadow-light);
     --sh-accent-hover:  4px 4px 8px rgba(74, 60, 190, .4), -4px -4px 8px var(--c-shadow-light);
     --sh-accent-active: inset 4px 4px 8px rgba(48, 36, 140, .5), inset -4px -4px 8px rgba(255, 255, 255, .28);
-  }
-}
-
-/* 键盘焦点：软表面不牺牲可访问性，聚焦环只对键盘出现 */
-:where(a, button, [tabindex]):focus-visible {
-  outline: 2px solid var(--c-accent-ink);
-  outline-offset: 2px;
-  border-radius: var(--r-md);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    transition-duration: 1ms !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
   }
 }

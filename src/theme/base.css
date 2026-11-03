@@ -1,0 +1,58 @@
+/* ==========================================================================
+   方寸设计系统 · 主题入口（base）
+   基础排版、点阵背景、键盘焦点、动效降级。全部限定在 .ds-theme 作用域内，
+   宿主项目只在需要主题的容器（通常是 body）上加一个 class 即可接入。
+   ========================================================================== */
+
+.ds-theme {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  /* 点阵在上（可见），整屏柔光垫底。点阵整体平铺、连续，不做逐格光影，避免拼块 */
+  background-image:
+    var(--bg-dots),
+    var(--bg-ambient-light),
+    var(--bg-ambient-shade);
+  background-size:
+    var(--dot-gap) var(--dot-gap),
+    100% 100%,
+    100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ds-theme *,
+.ds-theme *::before,
+.ds-theme *::after { box-sizing: border-box; }
+
+.ds-theme :where(h1, h2, h3, p) { margin: 0; }
+.ds-theme :where(button, input, select, textarea) { font: inherit; color: inherit; }
+.ds-theme :where(svg) { display: block; }
+
+.ds-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+.ds-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 键盘焦点：软表面不牺牲可访问性，聚焦环只对键盘出现 */
+.ds-theme :where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--c-accent-ink);
+  outline-offset: 2px;
+  border-radius: var(--r-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-theme *,
+  .ds-theme *::before,
+  .ds-theme *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
