@@ -1,5 +1,30 @@
 # 变更记录
 
+## 0.8.1 — 2026-11-03
+
+- 修正 Combobox 的原生表单属性透传及 ConfirmDialog 局部 Portal 容器。
+
+## 0.8.0 — 2026-11-03
+
+- 新增 React Combobox（本地筛选与键盘选择）、基于 AlertDialog 的 ConfirmDialog、原生语义表格外壳及布局/描述列表原语。
+- 为 ConfirmDialog、Combobox 的键盘选择与正式 tarball 消费补充自动化验证。
+- 能力清单与通用模板文档同步标注已完成范围和未实现边界。
+
+## 0.7.0 — 2026-11-03
+
+- 新增 React 18+ / TypeScript 组件入口 `@self/ui-style/react`，当前整体标记实验中；使用 Radix Primitives 提供浮层、键盘与焦点行为。
+- 新增中性 React 消费示例和 `npm run package:consumer`，从构建 tarball 安装后做 TS 与生产构建检查。
+- 修正 React portal 主题作用域、搜索输入外观、进度标签必需性及 NumberInput 类型约束。
+- 明确数据表、异步表单生命周期等尚未实现；不把原生 table 样式称为 DataTable。
+
+## 0.6.0 — 2026-11-03
+
+- 新增实验中的 React + TypeScript 入口 `@self/ui-style/react`，基于 React 18+ 与 Radix 原语。
+- 提供按钮、文本、表单基础、复选/单选/开关、标签、状态反馈、Dialog/Drawer、Toast、Tabs、Select、菜单、Tooltip/Popover、布局原语及分页等初版组件。
+- 新增 DesignSystemProvider 局部主题/浮层挂载配置、默认与紧凑密度、显式点阵背景选项。
+- 补充 SSR 安全导入、StrictMode、表单关联、Dialog 焦点、Toast 常驻行为的自动化测试。
+- React 组件整体标记为实验中；DataTable、Combobox、异步表单生命周期等尚未实现。
+
 ## 0.4.1 — 2026-11-03
 
 记录已采纳的实现决策：表格长标题完整换行并允许行高增加；字体继续使用 Google Fonts 在线加载与系统回退，暂不内嵌；深色主题、表格增强及更细的 Pencil 组件资产按需求规划；保留三视口截图并优先无损压缩。

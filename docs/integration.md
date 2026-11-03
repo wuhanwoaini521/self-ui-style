@@ -1,6 +1,6 @@
 # 接入指南
 
-本设计系统不依赖任何框架、构建工具或运行时库：**CSS 变量 + 一组 `.ds-` 前缀类 + 两个原生 JS 工具**。React、Vue、Svelte、服务端模板都能直接用，只把类名映射到自己的模板即可。
+设计 Tokens、CSS 与原生 JS 工具不依赖框架；仓库另提供 **React 18+ + TypeScript 组件层（实验中）**。React 层使用 Radix Primitives 作为交互基础，其他框架当前通过原生 CSS 类使用，不提供 Vue/Svelte 封装。React 安装与状态清单见 [`react-components.md`](react-components.md)。
 
 ## 1. 安装
 
@@ -8,9 +8,9 @@
 
 ```bash
 # 同一台机器 / monorepo 里
-npm install file:../self-ui-style#v0.4.1
+npm install file:../self-ui-style#v0.8.1
 # 或私有 Git 仓库（走 SSH，能固定 tag 或 commit）
-npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.4.1
+npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.8.1
 ```
 
 安装后在 `package.json` 里会留下固定版本：
@@ -163,7 +163,8 @@ DS.toast({ type: 'danger', title: '导出失败', desc: '服务返回 502，请�
 
 | 技术栈 | 做法 |
 | --- | --- |
-| React / Vue / Svelte | 直接把 `ds-` 类写进模板；`DS.toast/drawer` 可在 `useEffect`/`onMounted` 里初始化，也可以用自己的状态管理重写交互，样式不变 |
+| React 18+ | 使用 `@self/ui-style/react` 实验中组件层，需显式导入 `@self/ui-style/react/style.css` 并包在 `DesignSystemProvider` 中 |
+| Vue / Svelte / 原生 HTML | 使用框架无关 `ds-` CSS 类与可选 `DS.toast/drawer`，自行管理框架生命周期；没有官方框架包装层 |
 | 服务端渲染 | 输出同样的类名即可；`icons.js` 可以在构建期把 sprite 内联进 HTML，避免运行时注入 |
 | 小程序 / 桌面壳 | 复用 `tokens.css` 的颜色与尺寸变量，组件规格对照 `DESIGN.md` 重写，不要硬套包含 DOM 结构的 CSS |
 | 原生 / 低代码 | 只用 CSS 层，`ui.js` 可选 |

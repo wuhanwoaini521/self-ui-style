@@ -12,12 +12,13 @@
     var type = opts.type || 'info';
     var icon = { success: 'i-check', danger: 'i-x', info: 'i-info' }[type] || 'i-info';
 
-    var stack = document.querySelector('.ds-toast-stack');
+    var container = opts.container || document.body;
+    var stack = container.querySelector('.ds-toast-stack');
     if (!stack) {
       stack = document.createElement('div');
       stack.className = 'ds-toast-stack';
       stack.setAttribute('aria-live', 'polite');
-      document.body.appendChild(stack);
+      container.appendChild(stack);
     }
 
     var el = document.createElement('div');
@@ -31,7 +32,7 @@
     if (opts.desc) descEl.textContent = opts.desc; else descEl.remove();
 
     var timer;
-    var close = function () { clearTimeout(timer); el.remove(); };
+    var close = function () { clearTimeout(timer); el.remove(); if (!stack.children.length) stack.remove(); };
 
     if (opts.action) {
       var actionBtn = document.createElement('button');
@@ -54,7 +55,7 @@
     el.appendChild(closeBtn);
 
     stack.appendChild(el);
-    timer = setTimeout(close, opts.timeout || 6000);
+    if (opts.timeout !== 0) timer = setTimeout(close, opts.timeout == null ? 6000 : opts.timeout);
     return el;
   };
 
@@ -65,6 +66,19 @@
     var panel = config.panel;
     var scrim = config.scrim;
     var restoreTo = null;
+    var originalOverflow = null;
+    var disposed = false;
+    var keyHandler = function (e) {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      var items = focusables();
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+    };
 
     function focusables() {
       return Array.prototype.slice
@@ -82,6 +96,7 @@
       if (scrim) scrim.classList.add('ds-is-open');
       panel.classList.add('ds-is-open');
       panel.setAttribute('aria-hidden', 'false');
+      originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       var target = o.focus || panel.querySelector('input, select, textarea, button');
       if (target) {
@@ -95,28 +110,25 @@
       if (scrim) scrim.classList.remove('ds-is-open');
       panel.classList.remove('ds-is-open');
       panel.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (restoreTo && restoreTo.focus) restoreTo.focus();
+      document.body.style.overflow = originalOverflow || '';
+      originalOverflow = null;
+      if (restoreTo && restoreTo.focus && restoreTo.isConnected) restoreTo.focus();
       if (config.onClose) config.onClose();
     }
 
+    var closeButtons = Array.from(panel.querySelectorAll('[data-ds-close]'));
     if (scrim) scrim.addEventListener('click', close);
-    panel.querySelectorAll('[data-ds-close]').forEach(function (btn) {
-      btn.addEventListener('click', close);
-    });
+    closeButtons.forEach(function (btn) { btn.addEventListener('click', close); });
+    document.addEventListener('keydown', keyHandler);
 
-    document.addEventListener('keydown', function (e) {
-      if (!isOpen()) return;
-      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-      if (e.key !== 'Tab') return;
-      var items = focusables();
-      if (!items.length) return;
-      var first = items[0];
-      var last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    });
-
-    return { open: open, close: close, isOpen: isOpen };
+    function dispose() {
+      if (disposed) return;
+      disposed = true;
+      close();
+      document.removeEventListener('keydown', keyHandler);
+      if (scrim) scrim.removeEventListener('click', close);
+      closeButtons.forEach(function (btn) { btn.removeEventListener('click', close); });
+    }
+    return { open: open, close: close, isOpen: isOpen, destroy: dispose, dispose: dispose };
   };
-})(window);
+})(globalThis);

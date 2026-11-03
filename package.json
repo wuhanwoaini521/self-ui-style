@@ -1,37 +1,87 @@
 {
   "name": "@self/ui-style",
-  "version": "0.4.1",
-  "description": "方寸 · 个人桌面端设计系统：新拟物表面、22px 点阵背景、克制的靛紫强调色",
+  "version": "0.8.1",
+  "description": "方寸设计系统：框架无关设计 Tokens、CSS 与 React 基础组件（实验中）",
   "type": "module",
   "license": "MIT",
   "style": "./src/theme/index.css",
   "main": "./src/index.js",
   "files": [
-    "src",
-    "examples",
+    "dist",
+    "examples/components.html",
+    "examples/gallery.css",
+    "examples/gallery.js",
+    "src/tokens",
+    "src/theme",
+    "src/ui",
+    "src/react",
     "docs",
-    "design",
     "skills",
     "tools",
     "DESIGN.md",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "exports": {
     ".": "./src/index.js",
-    "./ui.js": "./src/ui/ui.js",
-    "./icons.js": "./src/ui/icons.js",
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./react/style.css": "./src/react/index.css",
     "./theme.css": "./src/theme/index.css",
     "./tokens.css": "./src/tokens/tokens.css",
+    "./background.css": "./src/theme/background.css",
     "./base.css": "./src/theme/base.css",
-    "./ui.css": "./src/ui/ui.css"
+    "./ui.css": "./src/ui/ui.css",
+    "./ui.js": "./src/ui/ui.js",
+    "./icons.js": "./src/ui/icons.js"
   },
   "scripts": {
     "start": "python3 -m http.server 8000",
-    "verify": "node tools/verify.mjs",
-    "screenshot": "node tools/screenshot.mjs"
+    "verify": "npm run typecheck && npm run test && npm run build && node tools/verify.mjs",
+    "screenshot": "node tools/screenshot.mjs",
+    "package:consumer": "bash tools/package-consumer.sh",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --environment jsdom",
+    "build": "tsc -p tsconfig.build.json && vite build -c vite.react.config.ts"
   },
   "engines": {
     "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.3.1",
+    "@radix-ui/react-alert-dialog": "^1.2.1",
+    "@radix-ui/react-checkbox": "^1.4.1",
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-dropdown-menu": "^2.2.1",
+    "@radix-ui/react-popover": "^1.3.1",
+    "@radix-ui/react-radio-group": "^1.5.1",
+    "@radix-ui/react-select": "^2.4.1",
+    "@radix-ui/react-switch": "^1.4.1",
+    "@radix-ui/react-tabs": "^1.2.1",
+    "@radix-ui/react-tooltip": "^1.4.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/jest-axe": "^3.5.9",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jest-axe": "^10.0.0",
+    "jsdom": "^26.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vitest": "^4.1.12"
   }
 }

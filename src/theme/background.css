@@ -1,0 +1,11 @@
+/* Optional page texture is intentionally separate from semantic theme tokens. */
+.ds-theme--dotted {
+  --c-dot: #bfccde;
+  --dot-gap: 22px;
+  --bg-dots: radial-gradient(circle, var(--c-dot) 0.5px, rgba(191, 204, 222, 0) 2.4px);
+  --bg-ambient-light: radial-gradient(ellipse 78% 72% at 26% 18%, rgba(255, 255, 255, .62), rgba(255, 255, 255, 0) 72%);
+  --bg-ambient-shade: radial-gradient(ellipse 72% 70% at 78% 82%, rgba(188, 203, 222, .3), rgba(188, 203, 222, 0) 74%);
+  background-image: var(--bg-dots), var(--bg-ambient-light), var(--bg-ambient-shade);
+  background-size: var(--dot-gap) var(--dot-gap), 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+}

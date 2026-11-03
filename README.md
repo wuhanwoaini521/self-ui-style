@@ -1,6 +1,6 @@
-# 方寸 · 个人桌面端设计系统
+# 方寸 · 设计系统与 React 组件（实验中）
 
-一套从真实项目里长出来的浅色新拟物视觉系统：**方正小圆角、22px 点阵底纹、克制的靛紫强调色、轻微双向阴影、适合长时间盯屏的内容区**。它同时是一份可运行的工作台样板、一套 `ds-` 前缀的通用组件、一份 Pencil 设计源文件，和一份给 AI Agent 用的规则集。
+一套以浅色新拟物为基准的可复用设计语言，包含框架无关 Tokens/CSS/原生 JS，以及 **React 18+ + TypeScript 组件层（实验中）**。适用于按需复用基础视觉与交互的项目；工作台仅作组合示例，不是通用页面模板。
 
 - 样板页（业务示例）：`index.html` —「衡准 · 质量工作台 / 巡检任务」
 - 组件展示（通用示例）：`examples/components.html`
@@ -27,7 +27,7 @@ src/
   theme/index.css          一次性引入变量 + 基础 + 组件
   ui/ui.css                通用组件样式（.ds- 前缀，跨项目复用主体）
   ui/ui.js                 DS.toast() / DS.drawer()（原生 JS，无依赖）
-  ui/icons.js              18 个线性图标 symbol（构建时或运行时注入）
+  ui/icons.js              线性 SVG 图标 symbol
   app/workspace.css        样板页布局（业务）
   app/workspace.js         样板页交互（业务，模拟请求）
   index.js                 ESM 入口：注入图标 + 导出 DS
@@ -39,9 +39,18 @@ design/
   design-previews/         工作台 / 抽屉 / 组件 / 状态四张导出图
   design-assets/bg-dot.png 画板背景素材（页面用 CSS 点阵还原）
 docs/
+  component-inventory.md   能力清单与稳定性边界
+  templates.md             通用页面组合指引
   integration.md           新项目接入（安装、引入、示例、冲突、版本）
+  react-components.md      React 组件 API、状态与缺口
+  component-inventory.md   能力清单与稳定性边界
+  templates.md             通用页面组合指引
+  third-party-licenses.md  第三方依赖许可
   migration.md             已有项目逐页迁移
   screenshots/             三视口 × 三状态截图
+  templates.md             通用页面组合指引
+  component-inventory.md   能力清单与稳定性边界
+examples/react-consumer/   通过正式 tarball exports 的独立 React 消费验证
 skills/design-system/      AI Agent 规则（SKILL.md）
 tools/verify.mjs           自检：布局、对比度、组件样式、键盘、交互
 tools/screenshot.mjs       生成 docs/screenshots
@@ -49,13 +58,23 @@ DESIGN.md                  设计规范与验收记录
 CHANGELOG.md               版本与变更记录
 ```
 
+## React 消费示例
+
+`examples/react-consumer/` 通过打包生成的 tarball 和正式 `@self/ui-style/react` exports 导入组件，运行 StrictMode、局部主题、FormField、Dialog、Toast 示例。重新验证：
+
+```bash
+npm run package:consumer
+```
+
+React API 处于实验中，完整边界见 [`docs/react-components.md`](docs/react-components.md)。
+
 ## 环境与命令
 
-需要 Node ≥ 18（自检脚本用原生 `fetch` 与 `WebSocket`）和本机 Chrome/Chromium（可用 `CHROME_BIN` 指定）。项目本身零依赖、无构建步骤。
+需要 Node ≥ 18（自检脚本用原生 `fetch` 与 `WebSocket`）和本机 Chrome/Chromium（可用 `CHROME_BIN` 指定）。框架无关层无需运行时依赖；React 层使用 React 18+ peer dependencies 与 Radix Primitives。
 
 ```bash
 npm start                 # python3 -m http.server 8000，打开 http://localhost:8000
-npm run verify            # 49 项检查：三视口溢出、对比度、样式抽查、键盘、抽屉/筛选/空态/加载/失败 toast
+npm run verify            # 类型检查、React 测试、生产构建与 49 项原生页面自检
 npm run screenshot        # 重新生成 docs/screenshots（1x，三视口 × 工作台/抽屉/组件页）
 ```
 
@@ -95,19 +114,21 @@ npm run screenshot        # 重新生成 docs/screenshots（1x，三视口 × �
 ## 新项目接入
 
 ```bash
-npm install file:../self-ui-style#v0.4.1     # 或 git+ssh://…/self-ui-style.git#v0.4.1
+npm install file:../self-ui-style#v0.8.1     # 或 git+ssh://…/self-ui-style.git#v0.8.1
 ```
 
 ```js
 import '@self/ui-style/theme.css';
 import { DS } from '@self/ui-style';
+// React 项目可选：import '@self/ui-style/react/style.css';
+// import { DesignSystemProvider, Button } from '@self/ui-style/react';
 ```
 
 ```html
 <body class="ds-theme"> … <button class="ds-btn ds-btn-primary">保存</button> … </body>
 ```
 
-固定版本、子树导入、纯 HTML 引用、React/Vue/SSR 差异、样式冲突处理见 **`docs/integration.md`**。
+框架无关层接入见 **`docs/integration.md`**；React API 和实验中状态见 **`docs/react-components.md`**。Vue/Svelte 当前仅支持复用 CSS 类，不提供框架封装。
 
 ## 已有项目逐页迁移
 
@@ -125,7 +146,7 @@ import { DS } from '@self/ui-style';
 | --- | --- |
 | 巡检任务 · 质量工作台（1440×900） | `index.html` + `src/app/workspace.css` |
 | 新建巡检 · 抽屉 | `index.html` 的 `#drawer` + `DS.drawer` |
-| 组件规范 | `src/ui/ui.css`、`examples/components.html` |
+| 组件规范 | `src/ui/ui.css`、`examples/components.html`、`docs/react-components.md` |
 | 状态与反馈 | `DS.toast`、`.ds-empty`、`.ds-skeleton`、`.ds-banner`、`examples/components.html#feedback` |
 
 数值以 `src/tokens/tokens.css` 为准；`design/` 里的 PNG 是设计期导出，页面已改用 CSS 复刻点阵底纹（不再引用 PNG）。
@@ -189,7 +210,7 @@ import { DS } from '@self/ui-style';
 
 ## 版本维护
 
-当前版本 **0.4.1**（见 `package.json` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
+当前版本 **0.8.1**（React 层处于实验中，见 `package.json`、`docs/react-components.md` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
 
 ## 许可
 

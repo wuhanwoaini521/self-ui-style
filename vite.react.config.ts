@@ -1,0 +1,2 @@
+import { defineConfig } from 'vite';
+export default defineConfig({ build: { lib: { entry: 'src/react/index.tsx', formats: ['es'], fileName: () => 'index.js' }, rollupOptions: { external: ['react', 'react-dom', 'react/jsx-runtime', '@radix-ui/react-dialog', '@radix-ui/react-tooltip', '@radix-ui/react-popover', '@radix-ui/react-dropdown-menu', '@radix-ui/react-tabs', '@radix-ui/react-select', '@radix-ui/react-checkbox', '@radix-ui/react-switch', '@radix-ui/react-radio-group', '@radix-ui/react-accordion'] }, outDir: 'dist/react', emptyOutDir: false } });

@@ -40,15 +40,6 @@
   --c-stroke:        rgba(196, 210, 227, .7); /* 标签 / 复选组外缘 */
   --c-stroke-accent: rgba(109, 93, 252, .45); /* 选中项：导航、分段 */
 
-  /* ---------- 背景点阵：22px 网格，单层连续平铺 ---------- */
-  --c-dot:   #bfccde; /* 点阵色：比暗影略深，中心落在 #f7fafc 上约 #c0cde0 */
-  --dot-gap: 22px;
-  --bg-dots: radial-gradient(circle, var(--c-dot) 0.5px, rgba(191, 204, 222, 0) 2.4px);
-
-  /* 整屏柔光：一张覆盖视口的大椭圆，负责整体的「光从左上打来」 */
-  --bg-ambient-light: radial-gradient(ellipse 78% 72% at 26% 18%, rgba(255, 255, 255, .62), rgba(255, 255, 255, 0) 72%);
-  --bg-ambient-shade: radial-gradient(ellipse 72% 70% at 78% 82%, rgba(188, 203, 222, .3), rgba(188, 203, 222, 0) 74%);
-
   /* ---------- 字体 ---------- */
   --font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI",
                "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;

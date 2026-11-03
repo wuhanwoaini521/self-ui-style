@@ -11,16 +11,7 @@
   line-height: var(--lh-body);
   color: var(--c-text);
   background-color: var(--c-bg);
-  /* 点阵在上（可见），整屏柔光垫底。点阵整体平铺、连续，不做逐格光影，避免拼块 */
-  background-image:
-    var(--bg-dots),
-    var(--bg-ambient-light),
-    var(--bg-ambient-shade);
-  background-size:
-    var(--dot-gap) var(--dot-gap),
-    100% 100%,
-    100% 100%;
-  background-repeat: repeat, no-repeat, no-repeat;
+  background-image: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
