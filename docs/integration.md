@@ -8,9 +8,9 @@
 
 ```bash
 # 同一台机器 / monorepo 里
-npm install file:../self-ui-style#v0.4.0
+npm install file:../self-ui-style#v0.4.1
 # 或私有 Git 仓库（走 SSH，能固定 tag 或 commit）
-npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.4.0
+npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.4.1
 ```
 
 安装后在 `package.json` 里会留下固定版本：
@@ -51,7 +51,7 @@ import '@self/ui-style/ui.css';
 <script src="./node_modules/@self/ui-style/src/ui/ui.js"></script>
 ```
 
-字体默认走 Google Fonts（见各页 `<head>`），离线环境会回退到系统字体：
+字体维持 Google Fonts 在线加载（见各页 `<head>`），并配置系统字体回退；当前不内嵌字体文件。离线或字体服务不可用时会使用系统字体，字宽可能略有差异。若项目要求离线运行或跨设备截图一致，再评估字体许可并加入 WOFF2 子集：
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -174,9 +174,10 @@ DS.toast({ type: 'danger', title: '导出失败', desc: '服务返回 502，请�
 - 项目侧固定 `file:` / Git tag 版本；升级时先在一个代表性页面替换并截图对比，再推广。
 - 改了本仓库的 tokens 或组件，请在 `CHANGELOG.md` 记录，并重新跑 `npm run verify`、`npm run screenshot`。
 
-## 8. 已知限制
+## 8. 已知限制与按需扩展
 
-- 只有浅色主题；深色需要重算双光源方向与阴影颜色（暗底、亮暗互换）。
+- 当前只有浅色主题；需要深色时，应重新校准双光源方向与阴影颜色。
 - 新拟物对比度天然偏低，本系统把正文对比度守在 12:1、最小文字 4.5:1；对低视力用户建议额外提供高对比模式。
-- 表格没有行选择、批量操作、表头吸顶；需要时在业务层扩展，不要修改通用组件语义。
+- 通用表格不含行选择、批量操作或表头吸顶；按业务需求在业务层扩展。
+- 更细的 Pencil 组件资产拆分不属于运行时依赖，可在设计稿需要跨项目维护时再补充。
 - 抽屉与 Toast 是 DOM 工具，不带虚拟列表、动画编排或焦点管理之外的无障碍树计算。

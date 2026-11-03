@@ -95,7 +95,7 @@ npm run screenshot        # 重新生成 docs/screenshots（1x，三视口 × �
 ## 新项目接入
 
 ```bash
-npm install file:../self-ui-style#v0.4.0     # 或 git+ssh://…/self-ui-style.git#v0.4.0
+npm install file:../self-ui-style#v0.4.1     # 或 git+ssh://…/self-ui-style.git#v0.4.1
 ```
 
 ```js
@@ -130,9 +130,12 @@ import { DS } from '@self/ui-style';
 
 数值以 `src/tokens/tokens.css` 为准；`design/` 里的 PNG 是设计期导出，页面已改用 CSS 复刻点阵底纹（不再引用 PNG）。
 
-两处**有意差异**：
-1. 长标题行：设计稿把任务行固定 55px，两行长标题在稿里会溢出；实现允许该行自动增高（约 72px），优先保证可读性。
-2. 字体：设计稿标注 Noto Sans SC / JetBrains Mono；页面通过 Google Fonts 引入，离线时回退系统字体，字宽会略有差异。
+### 已采纳的实现取舍
+
+- **长标题行**：设计稿任务行高 55px，但两行标题会溢出；网页让该行自动增高（示例约 72px），避免内容重叠，保证完整可读。
+- **字体**：维持 Google Fonts 在线加载 Noto Sans SC / JetBrains Mono，并保留系统字体回退。暂不内嵌字体文件；离线时字宽可能略有差异。若项目需要离线运行或跨设备截图一致，再评估许可并加入 WOFF2 子集。
+- **按需扩展**：深色主题、行选择/批量操作/表头吸顶，以及更细的 Pencil 组件资产拆分，当前不纳入基础系统；有项目需求时再实现。
+- **截图**：保留 1280×800、1440×900、1920×1080 三种视口，便于持续核对布局；当前体积可接受，后续优先无损压缩。
 
 ## 截图
 
@@ -176,18 +179,17 @@ import { DS } from '@self/ui-style';
 
 - 真实后端接口（页面用 `setTimeout` 模拟）、真实生产数据量下的表格性能。
 - Safari / Firefox、Windows 字体渲染、高对比模式与屏幕阅读器实测。
-- 深色主题（未实现）。
 
-## 已知限制
+## 已知限制与按需扩展
 
-- 仅浅色主题；深色需重算双光源与阴影颜色。
+- 当前仅提供浅色主题；深色主题需重新校准双光源与阴影。
 - 新拟物本身对比度偏低，本系统把最弱文字守在 4.5:1；对低视力用户建议额外提供高对比模式。
-- 表格无行选择、批量操作、表头吸顶。
+- 通用表格不含行选择、批量操作或表头吸顶；这些能力由具体业务需要时再扩展。
 - 抽屉/Toast 是 DOM 工具，不含虚拟列表或动画编排。
 
 ## 版本维护
 
-当前版本 **0.4.0**（见 `package.json` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
+当前版本 **0.4.1**（见 `package.json` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
 
 ## 许可
 
