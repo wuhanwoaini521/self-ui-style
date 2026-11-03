@@ -35,16 +35,18 @@
   /* ---------- 1px 发丝线：仅用于表格分隔与区域接缝 ---------- */
   --c-line: #dde7f1;
 
-  /* ---------- 背景点阵：同色系纹理，靠明暗差而非色相表达起伏 ---------- */
-  --c-dot:        rgba(201, 212, 226, .55); /* 细点阵 */
-  --c-dot-light:  rgba(255, 255, 255, .9);  /* 颗粒左上高光 */
-  --c-dot-strong: rgba(201, 212, 226, .5);  /* 颗粒右下暗影 */
-  --dot-gap:      24px;                     /* 细点阵网格 */
-  --bump-gap:     72px;                     /* 大颗粒网格（起伏层） */
+  /* ---------- 混色描边：只用于标签、凹槽块与选中态，卡片本身不用 ---------- */
+  --c-stroke:        rgba(196, 210, 227, .7); /* 标签 / 复选组外缘 */
+  --c-stroke-accent: rgba(109, 93, 252, .45); /* 选中项：导航、分段 */
 
-  /* 滚动视差位移，由 app.js 写入；两层速度不同才有纵深 */
-  --bg-shift-fine: 0px;
-  --bg-shift-bump: 0px;
+  /* ---------- 背景点阵：22px 网格，单层连续平铺 ---------- */
+  --c-dot:   #bfccde; /* 点阵色：比暗影略深，中心落在 #f7fafc 上约 #c0cde0 */
+  --dot-gap: 22px;
+  --bg-dots: radial-gradient(circle, var(--c-dot) 0.5px, rgba(191, 204, 222, 0) 2.4px);
+
+  /* 整屏柔光：一张覆盖视口的大椭圆，负责整体的「光从左上打来」 */
+  --bg-ambient-light: radial-gradient(ellipse 78% 72% at 26% 18%, rgba(255, 255, 255, .62), rgba(255, 255, 255, 0) 72%);
+  --bg-ambient-shade: radial-gradient(ellipse 72% 70% at 78% 82%, rgba(188, 203, 222, .3), rgba(188, 203, 222, 0) 74%);
 
   /* ---------- 字体 ---------- */
   --font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -96,8 +98,10 @@
   --sh-accent:          4px 4px 8px rgba(74, 60, 190, .38), -4px -4px 8px var(--c-shadow-light);
   --sh-accent-hover:    2px 2px 4px rgba(74, 60, 190, .42), -2px -2px 4px var(--c-shadow-light);
   --sh-accent-active:   inset 2px 2px 4px rgba(48, 36, 140, .5), inset -2px -2px 4px rgba(255, 255, 255, .28);
-  --sh-input-sm:        inset 2px 2px 5px var(--c-shadow-dark), inset -4px -4px 8px var(--c-shadow-light);
   --sh-track:           inset 1px 1px 3px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+
+  /* 选中芯片：1px 贴地投影，靠描边区分，不浮起 */
+  --sh-selected: 0 1px 3px #b8c8dc;
 }
 
 /* 桌面优先：md 以上放大光影（8/16），保持同一光源方向 */

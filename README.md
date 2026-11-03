@@ -1,9 +1,9 @@
-# 方寸 UI 视觉系统（v0.2 · Neumorphism）
+# 方寸 UI 视觉系统（v0.3 · Neumorphism）
 
 桌面端工具软件的新拟物（Soft UI）视觉系统 + 可运行样板页「巡检任务工作台」。
 
 - 直接打开 `index.html` 预览，或 `python3 -m http.server 8000`。
-- 设计变量：`styles/tokens.css`（唯一换肤入口：颜色、双光源阴影、圆角、间距、动效）
+- 设计变量：`styles/tokens.css`（唯一换肤入口：颜色、双光源阴影、22px 点阵背景、圆角、间距、动效）
 - 组件样式：`styles/app.css`（按钮 / 输入 / 选择器 / 标签 / 卡片 / 表格 / 导航 / 抽屉 / 提示）
 - 规范、自检清单与三视口验收数据：[`DESIGN.md`](./DESIGN.md)
 
@@ -20,4 +20,4 @@
 | 组件规范（按钮 / 输入 / 标签 / 色板 / 阴影） | `design-previews/03-components.png` |
 | 状态与反馈（空态 / 骨架 / Toast） | `design-previews/04-states.png` |
 
-另附主界面的 HTML + Tailwind 导出：`design-previews/01-workspace.html`。
+画板背景素材在 `design-assets/`（仅设计稿引用，页面本身用 CSS 点阵还原）。

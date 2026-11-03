@@ -16,21 +16,16 @@ body {
   line-height: var(--lh-body);
   color: var(--c-text);
   background-color: var(--c-bg);
-  /* 背景三层：大颗粒明暗（起伏）+ 细点阵（纹理），滚动时两速视差 */
+  /* 点阵在上（可见），整屏柔光垫底。点阵整体平铺、连续，不做逐格光影，避免拼块 */
   background-image:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 55%),
-    radial-gradient(circle at 70% 70%, rgba(201, 212, 226, .42), rgba(201, 212, 226, 0) 55%),
-    radial-gradient(circle, var(--c-dot) 1px, transparent 1.2px);
+    var(--bg-dots),
+    var(--bg-ambient-light),
+    var(--bg-ambient-shade);
   background-size:
-    var(--bump-gap) var(--bump-gap),
-    var(--bump-gap) var(--bump-gap),
-    var(--dot-gap) var(--dot-gap);
-  background-position:
-    0 var(--bg-shift-bump),
-    0 var(--bg-shift-bump),
-    0 var(--bg-shift-fine);
-  background-repeat: repeat;
-  background-attachment: fixed;
+    var(--dot-gap) var(--dot-gap),
+    100% 100%,
+    100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -74,7 +69,7 @@ svg { display: block; }
   align-items: center;
   gap: var(--sp-6);
   padding: var(--sp-3) var(--sp-6);
-  background: var(--c-bg);
+  background: transparent; /* 让底部点阵透出，接缝仍用发丝线 */
   box-shadow: inset 0 -1px 0 var(--c-line);
 }
 
@@ -86,7 +81,7 @@ svg { display: block; }
   letter-spacing: .2px;
   color: var(--c-text-strong);
 }
-.page-title p { font-size: var(--fs-12); color: var(--c-text-muted); }
+.page-title p { font-size: var(--fs-12); line-height: 1.4; color: var(--c-text-muted); }
 
 .topbar-tools {
   display: flex;
@@ -119,7 +114,7 @@ svg { display: block; }
   background: var(--c-bg);
   border: 0;
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-input);
+  box-shadow: var(--sh-inset-sm);
   transition: box-shadow var(--t), background-color var(--t);
 }
 .search input::placeholder { color: var(--c-text-faint); opacity: 1; }
@@ -136,8 +131,9 @@ svg { display: block; }
   line-height: 16px;
   color: var(--c-text-muted);
   background: var(--c-bg);
+  box-shadow: var(--sh-inset-sm);
   border-radius: var(--r-xs);
-  box-shadow: var(--sh-inset-xs);
+  box-shadow: none;
 }
 
 /* ---------- 按钮：凸起 → hover 缩光 → active 内凹 ---------- */
@@ -315,14 +311,12 @@ svg { display: block; }
   cursor: pointer;
 }
 
-/* 分段控件：容器凸起，选中项内凹 */
+/* 分段控件：无底轨道整体浮起，选中项再浮一层并加 1px 强调描边 */
 .segmented {
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 3px;
-  background: var(--c-bg);
-  border: 0;
   border-radius: var(--r-sm);
   box-shadow: var(--sh-raised-xs);
 }
@@ -340,18 +334,19 @@ svg { display: block; }
   cursor: pointer;
   transition: box-shadow var(--t), color var(--t), background-color var(--t);
 }
-.segmented button:hover { color: var(--c-text); background: rgba(255, 255, 255, .4); }
+.segmented button:hover { color: var(--c-text); background: rgba(255, 255, 255, .55); }
 .segmented button[aria-selected="true"] {
   color: var(--c-accent-ink);
   font-weight: 500;
-  background: transparent;
-  box-shadow: var(--sh-inset-sm);
+  background: var(--c-bg);
+  border: 1px solid var(--c-stroke-accent);
+  box-shadow: var(--sh-raised-xs);
 }
 .segmented button[disabled] { color: var(--c-text-faint); opacity: .55; cursor: not-allowed; background: transparent; box-shadow: none; }
 .segmented .count { color: var(--c-text-muted); font-family: var(--font-mono); }
 .segmented button[aria-selected="true"] .count { color: var(--c-accent-ink); }
 
-/* ---------- 状态标签：内凹小芯片，图标 + 文字 + 颜色三重表达 ---------- */
+/* ---------- 状态标签：浮起小芯片，图标 + 文字 + 颜色三重表达 ---------- */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -362,10 +357,10 @@ svg { display: block; }
   font-weight: 500;
   line-height: 1;
   color: var(--c-text-muted);
-  background: transparent;
-  border: 0;
+  background: var(--c-bg);
+  border: 1px solid var(--c-stroke);
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-inset-xs);
+  box-shadow: var(--sh-selected);
   white-space: nowrap;
 }
 .tag .ico { flex: none; }
@@ -391,10 +386,9 @@ svg { display: block; }
 }
 .progress-num { font-size: var(--fs-12); color: var(--c-text-muted); }
 
-/* ---------- 卡片：抬升，无边框 ---------- */
+/* ---------- 卡片：凸起 8/16，无描边，靠光源与发丝线分层 ---------- */
 .card {
   background: var(--c-bg);
-  border: 0;
   border-radius: var(--r-xl);
   box-shadow: var(--sh-raised);
 }
@@ -427,18 +421,20 @@ svg { display: block; }
   align-items: center;
   padding: var(--sp-4);
   background: var(--c-bg);
-  border: 0;
   border-radius: var(--r-xl);
   box-shadow: var(--sh-raised);
+  transition: box-shadow var(--t);
 }
+.metric:hover { box-shadow: var(--sh-raised-hover); }
 .metric-icon {
   grid-area: icon;
   display: grid;
   place-items: center;
   width: 38px; height: 38px;
   color: var(--c-accent-ink);
+  background: var(--c-bg);
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-inset-sm);
+  box-shadow: var(--sh-raised-xs);
 }
 .metric-label {
   grid-area: label;
@@ -465,7 +461,11 @@ svg { display: block; }
 .metric-note .down { color: var(--c-warn); }
 
 /* ---------- 表格 ---------- */
-.table-panel { margin-top: var(--sp-4); overflow: hidden; }
+.table-panel {
+  margin-top: var(--sp-4);
+  overflow: hidden;
+  box-shadow: var(--sh-raised);
+}
 .table-toolbar {
   display: flex;
   align-items: center;
@@ -490,7 +490,7 @@ svg { display: block; }
   background: var(--c-bg);
   border: 0;
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-input);
+  box-shadow: var(--sh-inset-sm);
   transition: box-shadow var(--t);
 }
 .table-search input::placeholder { color: var(--c-text-faint); opacity: 1; }
@@ -548,7 +548,7 @@ svg { display: block; }
   color: var(--c-accent-ink);
   background: var(--c-bg);
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-inset-xs);
+  box-shadow: var(--sh-raised-xs);
 }
 .cell-actions, .th-right { text-align: right; white-space: nowrap; }
 .cell-actions .btn + .btn { margin-left: 2px; }
@@ -571,7 +571,7 @@ svg { display: block; }
   flex-direction: column;
   min-height: 0;
   padding: var(--sp-3) 12px var(--sp-2);
-  background: var(--c-bg);
+  background: transparent; /* 与页面共用底层点阵，只留一条发丝接缝 */
   box-shadow: inset -1px 0 0 var(--c-line);
 }
 .brand {
@@ -623,12 +623,13 @@ svg { display: block; }
   transition: box-shadow var(--t), color var(--t), background-color var(--t);
 }
 .nav-item .ico { flex: none; }
-.nav-item:hover { color: var(--c-text); background: rgba(255, 255, 255, .4); }
+.nav-item:hover { color: var(--c-text); background: rgba(255, 255, 255, .55); }
 .nav-item[aria-current="page"] {
   color: var(--c-accent-ink);
   font-weight: 500;
-  background: transparent;
-  box-shadow: var(--sh-inset-sm);
+  background: var(--c-bg);
+  border: 1px solid var(--c-stroke-accent);
+  box-shadow: var(--sh-raised-xs);
 }
 .nav-item .badge {
   margin-left: auto;
@@ -639,9 +640,9 @@ svg { display: block; }
   text-align: center;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  background: transparent;
+  background: var(--c-bg);
   border-radius: var(--r-xs);
-  box-shadow: var(--sh-inset-xs);
+  box-shadow: var(--sh-raised-xs);
 }
 .nav-item[aria-current="page"] .badge { color: var(--c-accent-ink); }
 
@@ -691,7 +692,6 @@ svg { display: block; }
   width: 460px;
   max-width: calc(100vw - 32px);
   background: var(--c-bg);
-  border: 0;
   border-radius: var(--r-xl);
   box-shadow: var(--sh-raised);
   opacity: 0;
@@ -745,8 +745,9 @@ svg { display: block; }
   grid-template-columns: 1fr 1fr;
   gap: 10px 12px;
   padding: 12px;
+  border: 1px solid var(--c-stroke);
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-input-sm);
+  box-shadow: none;
 }
 
 /* ---------- 提示 ---------- */
@@ -767,7 +768,6 @@ svg { display: block; }
   gap: 9px;
   padding: var(--sp-3);
   background: var(--c-bg-soft);
-  border: 0;
   border-radius: var(--r-lg);
   box-shadow: var(--sh-raised);
   animation: toast-in var(--t);
@@ -785,7 +785,7 @@ svg { display: block; }
 .toast-desc { font-size: var(--fs-12); color: var(--c-text-muted); margin-top: 2px; }
 .toast .btn-ghost { flex: none; height: 26px; font-size: var(--fs-12); }
 
-/* 内联提示：凹入表面，靠图标与文字色表达语义 */
+/* 内联提示：浮起表面 + 淡描边，靠图标与文字色表达语义 */
 .banner {
   display: flex;
   align-items: flex-start;
@@ -793,9 +793,8 @@ svg { display: block; }
   padding: var(--sp-3) var(--sp-4);
   font-size: var(--fs-13);
   background: var(--c-bg);
-  border: 0;
   border-radius: var(--r-lg);
-  box-shadow: var(--sh-inset-sm);
+  box-shadow: var(--sh-raised-xs);
   color: var(--c-text);
 }
 .banner .ico { flex: none; margin-top: 2px; color: var(--c-accent-ink); }
@@ -821,8 +820,10 @@ svg { display: block; }
   width: 48px; height: 48px;
   margin-bottom: 2px;
   color: var(--c-text-muted);
+  background: var(--c-bg);
+  border: 1px solid var(--c-stroke);
   border-radius: var(--r-sm);
-  box-shadow: var(--sh-inset-sm);
+  box-shadow: var(--sh-raised-xs);
 }
 .empty h3 { font-size: var(--fs-14); font-weight: 600; color: var(--c-text); }
 .empty p { font-size: var(--fs-12); color: var(--c-text-muted); max-width: 320px; }

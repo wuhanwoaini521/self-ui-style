@@ -10,7 +10,12 @@
       "clip": true,
       "width": 1440,
       "height": 900,
-      "fill": "$bg",
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "design-assets/bg-dot.png",
+        "mode": "cover"
+      },
       "children": [
         {
           "type": "frame",
@@ -18,7 +23,6 @@
           "name": "侧栏",
           "width": 232,
           "height": "fill_container",
-          "fill": "#f7fafcff",
           "stroke": "$line",
           "strokeWidth": {
             "right": 1
@@ -281,27 +285,28 @@
                           "id": "Nlbis",
                           "name": "计数",
                           "height": 17,
+                          "fill": "$bg",
                           "cornerRadius": 6,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 4
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -2,
-                                "y": -2
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 4
+                              "blur": 8
                             }
                           ],
                           "padding": [
@@ -330,11 +335,15 @@
                       "name": "导航项 · 巡检任务",
                       "width": "fill_container",
                       "height": 32,
+                      "fill": "$bg",
                       "cornerRadius": 8,
+                      "stroke": "#6d5dfc73",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "effect": [
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#c9d4e2",
                           "offset": {
                             "x": 4,
@@ -344,7 +353,7 @@
                         },
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#ffffff",
                           "offset": {
                             "x": -4,
@@ -385,27 +394,28 @@
                           "id": "eScRp",
                           "name": "计数",
                           "height": 17,
+                          "fill": "$bg",
                           "cornerRadius": 6,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 4
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -2,
-                                "y": -2
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 4
+                              "blur": 8
                             }
                           ],
                           "padding": [
@@ -620,23 +630,23 @@
                       "effect": [
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 2,
-                            "y": 2
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 4
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -2,
-                            "y": -2
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 4
+                          "blur": 8
                         }
                       ],
                       "layout": "vertical",
@@ -702,25 +712,6 @@
           "name": "主区域",
           "width": "fill_container",
           "height": "fill_container",
-          "fill": {
-            "type": "gradient",
-            "gradientType": "linear",
-            "enabled": true,
-            "rotation": 0,
-            "size": {
-              "height": 1
-            },
-            "colors": [
-              {
-                "color": "#000000ff",
-                "position": 0
-              },
-              {
-                "color": "#ffffffff",
-                "position": 1
-              }
-            ]
-          },
           "layout": "vertical",
           "children": [
             {
@@ -728,7 +719,6 @@
               "id": "d3nDQS",
               "name": "顶栏",
               "width": "fill_container",
-              "fill": "$bg",
               "stroke": "$line",
               "strokeWidth": {
                 "bottom": 1
@@ -796,20 +786,20 @@
                           "shadowType": "inner",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 3,
-                            "y": 3
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 6
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
                           "shadowType": "inner",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -6,
-                            "y": -6
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 12
+                          "blur": 8
                         }
                       ],
                       "gap": 8,
@@ -846,6 +836,7 @@
                           "id": "M8B3Ke",
                           "name": "快捷键",
                           "height": 18,
+                          "fill": "$bg",
                           "cornerRadius": 6,
                           "effect": [
                             {
@@ -853,20 +844,20 @@
                               "shadowType": "inner",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 4
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
                               "shadowType": "inner",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -2,
-                                "y": -2
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 4
+                              "blur": 8
                             }
                           ],
                           "padding": [
@@ -958,7 +949,7 @@
               "name": "内容区",
               "width": "fill_container",
               "height": "fill_container",
-              "fill": "$bg",
+              "fill": "#00000000",
               "layout": "vertical",
               "gap": 16,
               "padding": [
@@ -978,7 +969,7 @@
                   "effect": [
                     {
                       "type": "shadow",
-                      "shadowType": "inner",
+                      "shadowType": "outer",
                       "color": "#c9d4e2",
                       "offset": {
                         "x": 4,
@@ -988,7 +979,7 @@
                     },
                     {
                       "type": "shadow",
-                      "shadowType": "inner",
+                      "shadowType": "outer",
                       "color": "#ffffff",
                       "offset": {
                         "x": -4,
@@ -1167,11 +1158,12 @@
                           "name": "图标块",
                           "width": 38,
                           "height": 38,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
                                 "x": 4,
@@ -1181,7 +1173,7 @@
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
                                 "x": -4,
@@ -1312,11 +1304,12 @@
                           "name": "图标块",
                           "width": 38,
                           "height": 38,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
                                 "x": 4,
@@ -1326,7 +1319,7 @@
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
                                 "x": -4,
@@ -1457,11 +1450,12 @@
                           "name": "图标块",
                           "width": 38,
                           "height": 38,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
                                 "x": 4,
@@ -1471,7 +1465,7 @@
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
                                 "x": -4,
@@ -1612,11 +1606,12 @@
                           "name": "图标块",
                           "width": 38,
                           "height": 38,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
                                 "x": 4,
@@ -1626,7 +1621,7 @@
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
                                 "x": -4,
@@ -1793,10 +1788,10 @@
                               "shadowType": "inner",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 5
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
@@ -1876,11 +1871,15 @@
                               "id": "q97xan",
                               "name": "分段 · 全部",
                               "height": 26,
+                              "fill": "$bg",
                               "cornerRadius": 8,
+                              "stroke": "#6d5dfc73",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
                                     "x": 4,
@@ -1890,7 +1889,7 @@
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
                                     "x": -4,
@@ -2471,27 +2470,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -2543,29 +2543,21 @@
                               "id": "aV4C8",
                               "name": "标签 · 进行中",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -2873,27 +2865,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -2945,29 +2938,21 @@
                               "id": "tSwEl",
                               "name": "标签 · 待复检",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -3275,27 +3260,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -3347,29 +3333,21 @@
                               "id": "nQGm6",
                               "name": "标签 · 已通过",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -3677,27 +3655,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -3749,29 +3728,21 @@
                               "id": "lUH8T",
                               "name": "标签 · 失败",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -4079,27 +4050,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -4151,29 +4123,21 @@
                               "id": "lL2p3",
                               "name": "标签 · 已通过",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -4481,27 +4445,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -4553,29 +4518,21 @@
                               "id": "WOfNk",
                               "name": "标签 · 草稿",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -4872,27 +4829,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -4944,29 +4902,21 @@
                               "id": "R15qSX",
                               "name": "标签 · 进行中",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -5271,27 +5221,28 @@
                                   "name": "头像",
                                   "width": 24,
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
-                                        "x": 2,
-                                        "y": 2
+                                        "x": 4,
+                                        "y": 4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
-                                        "x": -2,
-                                        "y": -2
+                                        "x": -4,
+                                        "y": -4
                                       },
-                                      "blur": 4
+                                      "blur": 8
                                     }
                                   ],
                                   "layout": "vertical",
@@ -5343,29 +5294,21 @@
                               "id": "ZutUQ",
                               "name": "标签 · 已通过",
                               "height": 24,
+                              "fill": "$bg",
                               "cornerRadius": 8,
-                              "effect": [
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#c9d4e2",
-                                  "offset": {
-                                    "x": 2,
-                                    "y": 2
-                                  },
-                                  "blur": 4
+                              "stroke": "#c4d2e3b3",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "effect": {
+                                "type": "shadow",
+                                "shadowType": "outer",
+                                "color": "#b8c8dc",
+                                "offset": {
+                                  "x": 0,
+                                  "y": 1
                                 },
-                                {
-                                  "type": "shadow",
-                                  "shadowType": "inner",
-                                  "color": "#ffffff",
-                                  "offset": {
-                                    "x": -2,
-                                    "y": -2
-                                  },
-                                  "blur": 4
-                                }
-                              ],
+                                "blur": 3
+                              },
                               "gap": 5,
                               "padding": [
                                 0,
@@ -5629,7 +5572,12 @@
       "clip": true,
       "width": 1440,
       "height": 900,
-      "fill": "$bg",
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "design-assets/bg-dot.png",
+        "mode": "cover"
+      },
       "layout": "none",
       "children": [
         {
@@ -5640,7 +5588,7 @@
           "name": "底页",
           "width": 1440,
           "height": 900,
-          "fill": "$bg",
+          "fill": "#00000000",
           "children": [
             {
               "type": "frame",
@@ -5648,7 +5596,7 @@
               "name": "侧栏",
               "width": 232,
               "height": "fill_container",
-              "fill": "$bg",
+              "fill": "#00000000",
               "stroke": "$line",
               "strokeWidth": {
                 "right": 1
@@ -5911,27 +5859,28 @@
                               "id": "e2Tnk",
                               "name": "计数",
                               "height": 17,
+                              "fill": "$bg",
                               "cornerRadius": 6,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 2,
-                                    "y": 2
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
-                                    "x": -2,
-                                    "y": -2
+                                    "x": -4,
+                                    "y": -4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 }
                               ],
                               "padding": [
@@ -5960,11 +5909,12 @@
                           "name": "导航项 · 巡检任务",
                           "width": "fill_container",
                           "height": 32,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
                                 "x": 4,
@@ -5974,7 +5924,7 @@
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
                                 "x": -4,
@@ -6015,27 +5965,28 @@
                               "id": "GPAW6",
                               "name": "计数",
                               "height": 17,
+                              "fill": "$bg",
                               "cornerRadius": 6,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 2,
-                                    "y": 2
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
-                                    "x": -2,
-                                    "y": -2
+                                    "x": -4,
+                                    "y": -4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 }
                               ],
                               "padding": [
@@ -6250,23 +6201,23 @@
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 4
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -2,
-                                "y": -2
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 4
+                              "blur": 8
                             }
                           ],
                           "layout": "vertical",
@@ -6332,7 +6283,7 @@
               "name": "主区域",
               "width": "fill_container",
               "height": "fill_container",
-              "fill": "$bg",
+              "fill": "#00000000",
               "layout": "vertical",
               "children": [
                 {
@@ -6340,7 +6291,6 @@
                   "id": "n26oEF",
                   "name": "顶栏",
                   "width": "fill_container",
-                  "fill": "$bg",
                   "stroke": "$line",
                   "strokeWidth": {
                     "bottom": 1
@@ -6408,20 +6358,20 @@
                               "shadowType": "inner",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 3,
-                                "y": 3
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 6
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
                               "shadowType": "inner",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -6,
-                                "y": -6
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 12
+                              "blur": 8
                             }
                           ],
                           "gap": 8,
@@ -6458,6 +6408,7 @@
                               "id": "fEVRz",
                               "name": "快捷键",
                               "height": 18,
+                              "fill": "$bg",
                               "cornerRadius": 6,
                               "effect": [
                                 {
@@ -6465,20 +6416,20 @@
                                   "shadowType": "inner",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 2,
-                                    "y": 2
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
                                   "shadowType": "inner",
                                   "color": "#ffffff",
                                   "offset": {
-                                    "x": -2,
-                                    "y": -2
+                                    "x": -4,
+                                    "y": -4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 }
                               ],
                               "padding": [
@@ -6570,7 +6521,7 @@
                   "name": "内容区",
                   "width": "fill_container",
                   "height": "fill_container",
-                  "fill": "$bg",
+                  "fill": "#00000000",
                   "layout": "vertical",
                   "gap": 16,
                   "padding": [
@@ -6590,7 +6541,7 @@
                       "effect": [
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#c9d4e2",
                           "offset": {
                             "x": 4,
@@ -6600,7 +6551,7 @@
                         },
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#ffffff",
                           "offset": {
                             "x": -4,
@@ -6779,11 +6730,12 @@
                               "name": "图标块",
                               "width": 38,
                               "height": 38,
+                              "fill": "$bg",
                               "cornerRadius": 8,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
                                     "x": 4,
@@ -6793,7 +6745,7 @@
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
                                     "x": -4,
@@ -6924,11 +6876,12 @@
                               "name": "图标块",
                               "width": 38,
                               "height": 38,
+                              "fill": "$bg",
                               "cornerRadius": 8,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
                                     "x": 4,
@@ -6938,7 +6891,7 @@
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
                                     "x": -4,
@@ -7069,11 +7022,12 @@
                               "name": "图标块",
                               "width": 38,
                               "height": 38,
+                              "fill": "$bg",
                               "cornerRadius": 8,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
                                     "x": 4,
@@ -7083,7 +7037,7 @@
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
                                     "x": -4,
@@ -7224,11 +7178,12 @@
                               "name": "图标块",
                               "width": 38,
                               "height": 38,
+                              "fill": "$bg",
                               "cornerRadius": 8,
                               "effect": [
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#c9d4e2",
                                   "offset": {
                                     "x": 4,
@@ -7238,7 +7193,7 @@
                                 },
                                 {
                                   "type": "shadow",
-                                  "shadowType": "inner",
+                                  "shadowType": "outer",
                                   "color": "#ffffff",
                                   "offset": {
                                     "x": -4,
@@ -7405,10 +7360,10 @@
                                   "shadowType": "inner",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 2,
-                                    "y": 2
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 5
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
@@ -7488,11 +7443,15 @@
                                   "id": "R1T8e2",
                                   "name": "分段 · 全部",
                                   "height": 26,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
+                                  "stroke": "#6d5dfc73",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
                                   "effect": [
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#c9d4e2",
                                       "offset": {
                                         "x": 4,
@@ -7502,7 +7461,7 @@
                                     },
                                     {
                                       "type": "shadow",
-                                      "shadowType": "inner",
+                                      "shadowType": "outer",
                                       "color": "#ffffff",
                                       "offset": {
                                         "x": -4,
@@ -8083,27 +8042,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -8155,29 +8115,21 @@
                                   "id": "n3z4j",
                                   "name": "标签 · 进行中",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -8485,27 +8437,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -8557,29 +8510,21 @@
                                   "id": "ezLE6",
                                   "name": "标签 · 待复检",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -8887,27 +8832,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -8959,29 +8905,21 @@
                                   "id": "A4LYFh",
                                   "name": "标签 · 已通过",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -9289,27 +9227,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -9361,29 +9300,21 @@
                                   "id": "q90cJS",
                                   "name": "标签 · 失败",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -9691,27 +9622,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -9763,29 +9695,21 @@
                                   "id": "qjZWI",
                                   "name": "标签 · 已通过",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -10093,27 +10017,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -10165,29 +10090,21 @@
                                   "id": "dx7B7",
                                   "name": "标签 · 草稿",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -10484,27 +10401,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -10556,29 +10474,21 @@
                                   "id": "d6Uax",
                                   "name": "标签 · 进行中",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -10883,27 +10793,28 @@
                                       "name": "头像",
                                       "width": 24,
                                       "height": 24,
+                                      "fill": "$bg",
                                       "cornerRadius": 8,
                                       "effect": [
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#c9d4e2",
                                           "offset": {
-                                            "x": 2,
-                                            "y": 2
+                                            "x": 4,
+                                            "y": 4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         },
                                         {
                                           "type": "shadow",
-                                          "shadowType": "inner",
+                                          "shadowType": "outer",
                                           "color": "#ffffff",
                                           "offset": {
-                                            "x": -2,
-                                            "y": -2
+                                            "x": -4,
+                                            "y": -4
                                           },
-                                          "blur": 4
+                                          "blur": 8
                                         }
                                       ],
                                       "layout": "vertical",
@@ -10955,29 +10866,21 @@
                                   "id": "FHbY8",
                                   "name": "标签 · 已通过",
                                   "height": 24,
+                                  "fill": "$bg",
                                   "cornerRadius": 8,
-                                  "effect": [
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#c9d4e2",
-                                      "offset": {
-                                        "x": 2,
-                                        "y": 2
-                                      },
-                                      "blur": 4
+                                  "stroke": "#c4d2e3b3",
+                                  "strokeWidth": 1,
+                                  "strokeAlignment": "inner",
+                                  "effect": {
+                                    "type": "shadow",
+                                    "shadowType": "outer",
+                                    "color": "#b8c8dc",
+                                    "offset": {
+                                      "x": 0,
+                                      "y": 1
                                     },
-                                    {
-                                      "type": "shadow",
-                                      "shadowType": "inner",
-                                      "color": "#ffffff",
-                                      "offset": {
-                                        "x": -2,
-                                        "y": -2
-                                      },
-                                      "blur": 4
-                                    }
-                                  ],
+                                    "blur": 3
+                                  },
                                   "gap": 5,
                                   "padding": [
                                     0,
@@ -11824,28 +11727,9 @@
                       "name": "范围选项",
                       "width": "fill_container",
                       "cornerRadius": 8,
-                      "effect": [
-                        {
-                          "type": "shadow",
-                          "shadowType": "inner",
-                          "color": "#c9d4e2",
-                          "offset": {
-                            "x": 2,
-                            "y": 2
-                          },
-                          "blur": 5
-                        },
-                        {
-                          "type": "shadow",
-                          "shadowType": "inner",
-                          "color": "#ffffff",
-                          "offset": {
-                            "x": -4,
-                            "y": -4
-                          },
-                          "blur": 8
-                        }
-                      ],
+                      "stroke": "#c4d2e3b3",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "gap": 12,
                       "padding": 12,
                       "children": [
@@ -11959,20 +11843,20 @@
                                   "shadowType": "inner",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 1,
-                                    "y": 1
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 3
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
                                   "shadowType": "inner",
                                   "color": "#ffffff",
                                   "offset": {
-                                    "x": -2,
-                                    "y": -2
+                                    "x": -4,
+                                    "y": -4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 }
                               ],
                               "layout": "vertical",
@@ -12013,20 +11897,20 @@
                                   "shadowType": "inner",
                                   "color": "#c9d4e2",
                                   "offset": {
-                                    "x": 1,
-                                    "y": 1
+                                    "x": 4,
+                                    "y": 4
                                   },
-                                  "blur": 3
+                                  "blur": 8
                                 },
                                 {
                                   "type": "shadow",
                                   "shadowType": "inner",
                                   "color": "#ffffff",
                                   "offset": {
-                                    "x": -2,
-                                    "y": -2
+                                    "x": -4,
+                                    "y": -4
                                   },
-                                  "blur": 4
+                                  "blur": 8
                                 }
                               ],
                               "layout": "vertical",
@@ -12119,27 +12003,28 @@
                           "name": "头像",
                           "width": 22,
                           "height": 22,
+                          "fill": "$bg",
                           "cornerRadius": 8,
                           "effect": [
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#c9d4e2",
                               "offset": {
-                                "x": 2,
-                                "y": 2
+                                "x": 4,
+                                "y": 4
                               },
-                              "blur": 4
+                              "blur": 8
                             },
                             {
                               "type": "shadow",
-                              "shadowType": "inner",
+                              "shadowType": "outer",
                               "color": "#ffffff",
                               "offset": {
-                                "x": -2,
-                                "y": -2
+                                "x": -4,
+                                "y": -4
                               },
-                              "blur": 4
+                              "blur": 8
                             }
                           ],
                           "layout": "vertical",
@@ -12489,7 +12374,7 @@
                   "fill": "$text-faint",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "默认凸起 → hover 阴影缩小 → active 内凹；禁止位移动画。",
+                  "content": "默认浮起（淡描边）→ hover 阴影缩小 → active 转内凹；禁止位移动画。",
                   "fontFamily": "$font-sans",
                   "fontSize": 12,
                   "fontWeight": "normal"
@@ -12665,7 +12550,7 @@
                   "id": "GTLbq",
                   "name": "按钮 · Active",
                   "height": 36,
-                  "fill": "$bg-deep",
+                  "fill": "$bg",
                   "cornerRadius": 8,
                   "effect": [
                     {
@@ -12893,20 +12778,20 @@
                           "shadowType": "inner",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 3,
-                            "y": 3
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 6
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
                           "shadowType": "inner",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -6,
-                            "y": -6
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 12
+                          "blur": 8
                         }
                       ],
                       "padding": [
@@ -12966,20 +12851,20 @@
                           "shadowType": "inner",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 1,
-                            "y": 1
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 3
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
                           "shadowType": "inner",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -2,
-                            "y": -2
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 4
+                          "blur": 8
                         }
                       ],
                       "padding": [
@@ -13039,20 +12924,20 @@
                           "shadowType": "inner",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 3,
-                            "y": 3
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 6
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
                           "shadowType": "inner",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -6,
-                            "y": -6
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 12
+                          "blur": 8
                         }
                       ],
                       "padding": [
@@ -13137,20 +13022,20 @@
                           "shadowType": "inner",
                           "color": "#c9d4e2",
                           "offset": {
-                            "x": 1,
-                            "y": 1
+                            "x": 4,
+                            "y": 4
                           },
-                          "blur": 3
+                          "blur": 8
                         },
                         {
                           "type": "shadow",
                           "shadowType": "inner",
                           "color": "#ffffff",
                           "offset": {
-                            "x": -2,
-                            "y": -2
+                            "x": -4,
+                            "y": -4
                           },
-                          "blur": 4
+                          "blur": 8
                         }
                       ],
                       "padding": [
@@ -13255,29 +13140,21 @@
                   "id": "Y4a5b",
                   "name": "标签 · 进行中",
                   "height": 24,
+                  "fill": "$bg",
                   "cornerRadius": 8,
-                  "effect": [
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#c9d4e2",
-                      "offset": {
-                        "x": 2,
-                        "y": 2
-                      },
-                      "blur": 4
+                  "stroke": "#c4d2e3b3",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#b8c8dc",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
                     },
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#ffffff",
-                      "offset": {
-                        "x": -2,
-                        "y": -2
-                      },
-                      "blur": 4
-                    }
-                  ],
+                    "blur": 3
+                  },
                   "gap": 5,
                   "padding": [
                     0,
@@ -13312,29 +13189,21 @@
                   "id": "z3tKV",
                   "name": "标签 · 已通过",
                   "height": 24,
+                  "fill": "$bg",
                   "cornerRadius": 8,
-                  "effect": [
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#c9d4e2",
-                      "offset": {
-                        "x": 2,
-                        "y": 2
-                      },
-                      "blur": 4
+                  "stroke": "#c4d2e3b3",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#b8c8dc",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
                     },
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#ffffff",
-                      "offset": {
-                        "x": -2,
-                        "y": -2
-                      },
-                      "blur": 4
-                    }
-                  ],
+                    "blur": 3
+                  },
                   "gap": 5,
                   "padding": [
                     0,
@@ -13369,29 +13238,21 @@
                   "id": "cQ2Jf",
                   "name": "标签 · 待复检",
                   "height": 24,
+                  "fill": "$bg",
                   "cornerRadius": 8,
-                  "effect": [
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#c9d4e2",
-                      "offset": {
-                        "x": 2,
-                        "y": 2
-                      },
-                      "blur": 4
+                  "stroke": "#c4d2e3b3",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#b8c8dc",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
                     },
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#ffffff",
-                      "offset": {
-                        "x": -2,
-                        "y": -2
-                      },
-                      "blur": 4
-                    }
-                  ],
+                    "blur": 3
+                  },
                   "gap": 5,
                   "padding": [
                     0,
@@ -13426,29 +13287,21 @@
                   "id": "L250aZ",
                   "name": "标签 · 失败",
                   "height": 24,
+                  "fill": "$bg",
                   "cornerRadius": 8,
-                  "effect": [
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#c9d4e2",
-                      "offset": {
-                        "x": 2,
-                        "y": 2
-                      },
-                      "blur": 4
+                  "stroke": "#c4d2e3b3",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#b8c8dc",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
                     },
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#ffffff",
-                      "offset": {
-                        "x": -2,
-                        "y": -2
-                      },
-                      "blur": 4
-                    }
-                  ],
+                    "blur": 3
+                  },
                   "gap": 5,
                   "padding": [
                     0,
@@ -13483,29 +13336,21 @@
                   "id": "gaqZp",
                   "name": "标签 · 草稿",
                   "height": 24,
+                  "fill": "$bg",
                   "cornerRadius": 8,
-                  "effect": [
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#c9d4e2",
-                      "offset": {
-                        "x": 2,
-                        "y": 2
-                      },
-                      "blur": 4
+                  "stroke": "#c4d2e3b3",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#b8c8dc",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
                     },
-                    {
-                      "type": "shadow",
-                      "shadowType": "inner",
-                      "color": "#ffffff",
-                      "offset": {
-                        "x": -2,
-                        "y": -2
-                      },
-                      "blur": 4
-                    }
-                  ],
+                    "blur": 3
+                  },
                   "gap": 5,
                   "padding": [
                     0,
@@ -14140,7 +13985,7 @@
                 {
                   "type": "frame",
                   "id": "sCBLd",
-                  "name": "阴影块 · inset-sm 4/8",
+                  "name": "阴影块 · inset-sm（选中/凹槽）",
                   "width": "fill_container",
                   "height": 72,
                   "fill": "$bg",
@@ -14187,7 +14032,7 @@
                       "id": "iusrt",
                       "name": "用途",
                       "fill": "$text-faint",
-                      "content": "按下 / 选中",
+                      "content": "输入框内凹",
                       "fontFamily": "$font-sans",
                       "fontSize": 11,
                       "fontWeight": "normal"
@@ -14197,7 +14042,7 @@
                 {
                   "type": "frame",
                   "id": "XkekV",
-                  "name": "阴影块 · inset-xs 2/4",
+                  "name": "阴影块 · inset-xs（轨道）",
                   "width": "fill_container",
                   "height": 72,
                   "fill": "$bg",
@@ -14208,20 +14053,20 @@
                       "shadowType": "inner",
                       "color": "#c9d4e2",
                       "offset": {
-                        "x": 2,
-                        "y": 2
+                        "x": 4,
+                        "y": 4
                       },
-                      "blur": 4
+                      "blur": 8
                     },
                     {
                       "type": "shadow",
                       "shadowType": "inner",
                       "color": "#ffffff",
                       "offset": {
-                        "x": -2,
-                        "y": -2
+                        "x": -4,
+                        "y": -4
                       },
-                      "blur": 4
+                      "blur": 8
                     }
                   ],
                   "layout": "vertical",
@@ -14244,7 +14089,7 @@
                       "id": "Um6xO",
                       "name": "用途",
                       "fill": "$text-faint",
-                      "content": "标签 / 徽标",
+                      "content": "进度轨道",
                       "fontFamily": "$font-sans",
                       "fontSize": 11,
                       "fontWeight": "normal"
@@ -14254,7 +14099,7 @@
                 {
                   "type": "frame",
                   "id": "S5fAUJ",
-                  "name": "阴影块 · input 6/12",
+                  "name": "阴影块 · input 3/6",
                   "width": "fill_container",
                   "height": 72,
                   "fill": "$bg",
@@ -14265,20 +14110,20 @@
                       "shadowType": "inner",
                       "color": "#c9d4e2",
                       "offset": {
-                        "x": 6,
-                        "y": 6
+                        "x": 3,
+                        "y": 3
                       },
-                      "blur": 12
+                      "blur": 6
                     },
                     {
                       "type": "shadow",
                       "shadowType": "inner",
                       "color": "#ffffff",
                       "offset": {
-                        "x": -6,
-                        "y": -6
+                        "x": -3,
+                        "y": -3
                       },
-                      "blur": 12
+                      "blur": 6
                     }
                   ],
                   "layout": "vertical",
@@ -14446,11 +14291,15 @@
                       "name": "空态图标",
                       "width": 48,
                       "height": 48,
+                      "fill": "$bg",
                       "cornerRadius": 8,
+                      "stroke": "#c4d2e3b3",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "effect": [
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#c9d4e2",
                           "offset": {
                             "x": 4,
@@ -14460,7 +14309,7 @@
                         },
                         {
                           "type": "shadow",
-                          "shadowType": "inner",
+                          "shadowType": "outer",
                           "color": "#ffffff",
                           "offset": {
                             "x": -4,
