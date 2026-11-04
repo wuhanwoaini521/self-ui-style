@@ -1,5 +1,6 @@
 node_modules/
-dist/
+/dist/
+/examples/react-consumer/dist/
 *.tgz
 playwright-report/
 test-results/

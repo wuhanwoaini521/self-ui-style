@@ -43,6 +43,7 @@
     "verify": "npm run typecheck && npm run test && npm run build && node tools/verify.mjs",
     "screenshot": "node tools/screenshot.mjs",
     "package:consumer": "bash tools/package-consumer.sh",
+    "prepare": "npm run build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --environment jsdom",
     "build": "tsc -p tsconfig.build.json && vite build -c vite.react.config.ts"
