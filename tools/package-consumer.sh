@@ -7,8 +7,7 @@ npm run build
 npm pack --pack-destination artifacts >/dev/null
 npm run test -- --run
 cd examples/react-consumer
-npm install --package-lock-only --ignore-scripts --force
-rm -rf node_modules/@self/ui-style
-npm install --force
+# 显式重装 tarball，刷新同版本本地快照的 integrity，避免命中旧 lockfile 缓存。
+npm install --force ../../artifacts/self-ui-style-0.8.1.tgz
 npm run typecheck
 npm run build

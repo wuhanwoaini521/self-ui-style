@@ -25,6 +25,17 @@
 .ds-theme :where(svg) { display: block; }
 
 .ds-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.ds-number { font-variant-numeric: lining-nums tabular-nums; }
+.ds-heading { font-size: var(--fs-20); font-weight: 600; line-height: var(--lh-tight); color: var(--c-text-strong); }
+.ds-text-muted { font-size: var(--fs-13); line-height: var(--lh-body); color: var(--c-text-muted); }
+.ds-text-small { font-size: var(--fs-12); line-height: 1.5; color: var(--c-text-faint); }
+.ds-link { color: var(--c-accent-ink); text-underline-offset: 3px; }
+.ds-link:hover { color: var(--c-accent); }
+.ds-code, .ds-kbd { font-family: var(--font-mono); font-size: .92em; }
+.ds-kbd { padding: 1px 6px; border-radius: var(--r-xs); background: var(--c-bg); box-shadow: var(--sh-inset-xs); }
+
+.ds-theme[data-density="compact"] { --sp-2: 6px; --sp-3: 8px; --sp-4: 12px; --h-sm: 24px; --h-md: 28px; --h-lg: 32px; --h-xl: 36px; }
+.ds-theme[data-density="compact"] .ds-table td { padding-top: 6px; padding-bottom: 6px; }
 
 .ds-sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -32,7 +43,7 @@
 }
 
 /* 键盘焦点：软表面不牺牲可访问性，聚焦环只对键盘出现 */
-.ds-theme :where(a, button, [tabindex]):focus-visible {
+.ds-theme :where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--c-accent-ink);
   outline-offset: 2px;
   border-radius: var(--r-md);

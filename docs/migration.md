@@ -2,6 +2,14 @@
 
 目标：**一次只换一页**，随时可以停下或回退，业务功能和交互语义保持不变。
 
+## 从 0.8.1 试用工作台增量
+
+1. 此增量尚未发布，固定的 `v0.8.1` 不含新能力。先在库目录执行 `npm run verify`、`npm run build`、`npm pack --pack-destination artifacts`，在消费项目 `npm install /绝对路径/artifacts/self-ui-style-0.8.1.tgz`；不要把该本地快照当成已发布版本。React 使用方重新构建以获取新增 Provider 类型，CSS-only 使用方更新同一快照的样式文件。
+2. **不用改 import 或现有组件 API**。选择一页给 `.ds-theme` 加 `data-surface="workbench"`（React：Provider `surface="workbench"`）；按需启用已有 compact 密度。点阵沿用现有开关，不移除也不减弱。
+3. TabsList 如需内容导航外观，显式加 `className="ds-tabs"`；不改原分段控件调用。去掉消费端为标签、普通单元格、装饰图标强加的凸起阴影，避免覆盖库的新层级。状态展示仍使用 Badge，不换成按钮。
+4. 按 [工作台说明](workbench.md) 检查 Portal 目标作用域，以及 1280×800、1440×900、1920×1080 下的文字、输入焦点、hover/active/disabled、表格滚动、弹层和回焦；高信息量页面不要一开始就全站启用。
+5. 回滚只需移除 `surface` / `data-surface` 与新增 `.ds-tabs` 类；密度和点阵可独立保留。若要完全撤销包升级，恢复原固定版本与 lockfile。没有数据格式或业务状态迁移。
+
 ## 0. 先确认三件事
 
 1. 目标项目用什么技术栈、能不能直接在入口引一个 CSS 文件（不能就先从 `tokens.css` 手动映射）。

@@ -2,6 +2,10 @@
 
 设计 Tokens、CSS 与原生 JS 工具不依赖框架；仓库另提供 **React 18+ + TypeScript 组件层（实验中）**。React 层使用 Radix Primitives 作为交互基础，其他框架当前通过原生 CSS 类使用，不提供 Vue/Svelte 封装。React 安装与状态清单见 [`react-components.md`](react-components.md)。
 
+## 可选的密集工作台外观
+
+现有入口和默认外观无需变更。升级到包含未发布增量的本地包后，可在主题根增加 `data-surface="workbench"`，按需组合已有 `data-density="compact"`、`ds-theme--dotted`；React 对应 `surface="workbench" density="compact" dotted`。点阵原样保留。组件层级、文字工具类、完整接入与示例见 [工作台说明](workbench.md)。下方 0.8.1 固定版本命令不会自动包含未发布变更。
+
 ## 1. 安装
 
 ### 1.1 从本地或私有仓库固定版本（推荐）

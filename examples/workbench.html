@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>通用工作台 · 方寸</title>
+  <link rel="stylesheet" href="../src/theme/index.css">
+  <link rel="stylesheet" href="./workbench.css">
+</head>
+<body class="ds-theme ds-theme--dotted" data-surface="workbench" data-density="compact">
+  <div class="wb-shell">
+    <aside class="wb-sidebar" aria-label="工作区导航">
+      <a class="wb-brand ds-link" href="../examples/components.html">⠿ 方寸 <span>Workbench</span></a>
+      <nav class="ds-nav" aria-label="主导航">
+        <div class="ds-nav-group"><p class="ds-nav-title">工作区</p>
+          <a class="ds-nav-item" href="#records" aria-current="page">条目总览 <span class="ds-badge">12</span></a>
+          <a class="ds-nav-item" href="./components.html">组件参考</a>
+          <a class="ds-nav-item" href="../docs/integration.md">接入说明</a>
+        </div>
+      </nav>
+      <p class="ds-text-small">通用组合示例<br>不包含业务规则</p>
+    </aside>
+    <main id="records" class="wb-main">
+      <header class="wb-header">
+        <div><p class="ds-text-small">工作区 / 条目</p><h1 class="ds-heading">条目总览</h1><p class="ds-text-muted">在同一视图中浏览状态、负责人和最近更新。</p></div>
+        <button class="ds-btn ds-btn-primary" id="summary-open"><span class="ds-dot-mark" aria-hidden="true"></span>查看摘要</button>
+      </header>
+      <section class="ds-metrics wb-metrics" aria-label="概览指标">
+        <div class="ds-metric"><span class="ds-metric-label">全部条目</span><strong class="ds-metric-value ds-number">12</strong><span class="ds-metric-note">当前示例工作区</span></div>
+        <div class="ds-metric"><span class="ds-metric-label">进行中</span><strong class="ds-metric-value ds-number">7</strong><span class="ds-metric-note">按当前状态统计</span></div>
+        <div class="ds-metric"><span class="ds-metric-label">已归档</span><strong class="ds-metric-value ds-number">3</strong><span class="ds-metric-note">保留历史记录</span></div>
+        <div class="ds-metric"><span class="ds-metric-label">待整理</span><strong class="ds-metric-value ds-number">2</strong><span class="ds-metric-note">尚未开始处理</span></div>
+      </section>
+      <section class="ds-card ds-table-panel wb-records" aria-label="条目列表">
+        <div class="ds-segmented ds-tabs" role="tablist" aria-label="条目视图">
+          <button id="tab-all" role="tab" aria-selected="true" aria-controls="record-panel" data-view="all">全部 <span class="ds-count">12</span></button>
+          <button id="tab-active" role="tab" aria-selected="false" aria-controls="record-panel" tabindex="-1" data-view="active">进行中 <span class="ds-count">7</span></button>
+          <button id="tab-archived" role="tab" aria-selected="false" aria-controls="record-panel" tabindex="-1" data-view="archived">已归档 <span class="ds-count">3</span></button>
+          <button role="tab" aria-selected="false" tabindex="-1" disabled>共享视图</button>
+        </div>
+        <div id="record-panel" role="tabpanel" aria-labelledby="tab-all">
+          <form class="ds-table-toolbar wb-filters" role="search" aria-label="筛选条目">
+            <label class="wb-search"><span class="ds-sr-only">搜索名称或编号</span><input class="ds-input" id="record-search" type="search" placeholder="搜索名称或编号…"></label>
+            <label class="wb-owner"><span class="ds-text-muted">负责人</span><select class="ds-select" id="owner-filter"><option value="all">全部成员</option><option>林晓</option><option>陈予</option><option>Alex</option></select></label>
+            <button class="ds-btn" type="reset">重置筛选</button>
+            <span class="ds-spacer"></span><button class="ds-btn ds-btn-ghost" type="button" disabled>批量操作</button>
+          </form>
+          <div class="ds-table-scroll" role="region" aria-label="条目数据（可横向滚动）" tabindex="0">
+            <table class="ds-table"><caption class="ds-sr-only">条目名称、状态、负责人、数量、更新时间与操作</caption>
+              <colgroup><col style="width:34%"><col style="width:13%"><col style="width:12%"><col style="width:10%"><col style="width:19%"><col style="width:12%"></colgroup>
+              <thead><tr><th scope="col">名称 / 编号</th><th scope="col">状态</th><th scope="col">负责人</th><th scope="col" class="wb-numeric">数量</th><th scope="col">最近更新</th><th scope="col" class="ds-th-right">操作</th></tr></thead>
+              <tbody id="record-rows"></tbody>
+            </table>
+          </div>
+          <div class="ds-table-foot"><span id="record-count" role="status" aria-live="polite"></span><span class="ds-spacer"></span><span>所有时间均为本地时间 · 示例数据</span></div>
+        </div>
+      </section>
+      <p class="ds-text-small wb-note">状态标签仅表达状态；带文字的操作按钮可通过键盘访问。点阵和工作台表面可分别启用。</p>
+    </main>
+  </div>
+  <dialog class="wb-dialog" id="summary" aria-labelledby="summary-title">
+    <h2 class="ds-heading" id="summary-title">工作区摘要</h2>
+    <p class="ds-text">当前共有 <span class="ds-number">12</span> 个条目，其中 <span class="ds-number">7</span> 个进行中。筛选仅影响列表，不改变概览指标。</p>
+    <p class="ds-text-muted">这是通用组合示例，没有连接远程服务。</p>
+    <form method="dialog"><button class="ds-btn ds-btn-primary" autofocus>关闭摘要</button></form>
+  </dialog>
+  <script defer src="./workbench.js"></script>
+</body>
+</html>

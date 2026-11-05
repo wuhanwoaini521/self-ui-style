@@ -79,10 +79,10 @@ export function Combobox({ options, value, defaultValue = '', onValueChange, lab
 }
 
 const OverlayContext = createContext<HTMLElement | null>(null);
-export function DesignSystemProvider({ children, container, className = '', dotted = false, density = 'default', locale = 'zh-CN', style }: { children: ReactNode; container?: HTMLElement | null; className?: string; dotted?: boolean; density?: 'default' | 'compact'; locale?: string; style?: React.CSSProperties }) {
+export function DesignSystemProvider({ children, container, className = '', dotted = false, density = 'default', surface = 'default', locale = 'zh-CN', style }: { children: ReactNode; container?: HTMLElement | null; className?: string; dotted?: boolean; density?: 'default' | 'compact'; surface?: 'default' | 'workbench'; locale?: string; style?: React.CSSProperties }) {
  const [local, setLocal] = useState<HTMLElement | null>(null);
  const target = container ?? local;
- return <OverlayContext.Provider value={target}><div ref={container ? undefined : setLocal} className={`ds-theme ds-overlay-provider${dotted ? ' ds-theme--dotted' : ''} ${className}`} data-density={density} lang={locale} style={style}>{children}</div></OverlayContext.Provider>;
+ return <OverlayContext.Provider value={target}><div ref={container ? undefined : setLocal} className={`ds-theme ds-overlay-provider${dotted ? ' ds-theme--dotted' : ''} ${className}`} data-density={density} data-surface={surface} lang={locale} style={style}>{children}</div></OverlayContext.Provider>;
 }
 export const OverlayProvider = DesignSystemProvider;
 function portalContainer(explicit: HTMLElement | null | undefined, context: HTMLElement | null) { return explicit ?? context ?? (typeof document !== 'undefined' ? document.body : undefined); }

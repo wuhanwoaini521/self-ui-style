@@ -5,8 +5,7 @@ import { Button, Card, DesignSystemProvider, Dialog, DialogContent, DialogDescri
 
 function Demo() {
   const { toast } = useToast();
-  return <DesignSystemProvider dotted className="consumer" style={{ maxWidth: 900, margin: '24px auto', padding: 24 }}>
-    <Card>
+  return <Card>
       <h1>团队成员</h1><p>中性消费页面：通过已打包的公开 exports 加载组件。</p>
       <FormField label="成员名称" htmlFor="member" hint="支持较长的中文姓名" required><Input placeholder="输入成员名称" /></FormField>
       <FormField label="团队" htmlFor="team"><Combobox id="team" name="team" required label="团队搜索" options={[{ value: 'core', label: '核心团队' }, { value: 'design', label: '设计团队' }]} /></FormField>
@@ -17,7 +16,6 @@ function Demo() {
         <DialogTrigger asChild><Button>查看说明</Button></DialogTrigger>
         <DialogContent aria-describedby="desc"><DialogTitle>组件运行正常</DialogTitle><DialogDescription id="desc">主题、局部浮层和键盘 Escape 均由消费包提供。</DialogDescription></DialogContent>
       </Dialog>
-    </Card>
-  </DesignSystemProvider>;
+    </Card>;
 }
-createRoot(document.getElementById('root')!).render(<StrictMode><ToastProvider><Demo /></ToastProvider></StrictMode>);
+createRoot(document.getElementById('root')!).render(<StrictMode><DesignSystemProvider dotted surface="workbench" density="compact" className="consumer" style={{ maxWidth: 900, margin: '24px auto', padding: 24 }}><ToastProvider><Demo /></ToastProvider></DesignSystemProvider></StrictMode>);

@@ -24,6 +24,10 @@ export function Example() {
 
 `DesignSystemProvider` 建立局部 tokens 作用域，可设置 `className`、`style`、`density="compact"`、`locale` 与 `dotted`。Radix 浮层 portal 保留 Provider tokens；显式 `container` 可覆盖挂载位置，且应位于主题作用域内以继承定制变量。定制令牌时，在 Provider 的 `style` 上覆盖 CSS 自定义属性，例如 `style={{ '--c-accent': '#4f5f91' } as React.CSSProperties}`。
 
+## 工作台变体
+
+新增可选 `surface="workbench"`（默认 `default`），与已有 `density="compact"`、`dotted` 独立组合。`TabsList className="ds-tabs"` 区分内容导航与分段操作；其余组件 API 不变。`Badge` 为平面状态，行展开请用 `Button variant="ghost"` 并维护展开语义。原生表格仍不负责排序、虚拟化或数据请求。接入代码、Portal 作用域、文字工具类与组件效果见 [工作台说明](workbench.md)。
+
 ## 导出与状态
 
 | 能力 | 导出 | 当前状态 | 备注 |

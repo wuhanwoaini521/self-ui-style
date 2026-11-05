@@ -3,18 +3,11 @@
 @import url("../theme/base.css");
 @import url("../ui/ui.css");
 .ds-theme--dotted { background-image: var(--bg-dots), var(--bg-ambient-light), var(--bg-ambient-shade); background-size: var(--dot-gap) var(--dot-gap), 100% 100%, 100% 100%; background-repeat: repeat, no-repeat, no-repeat; }
-.ds-heading { font-size: var(--fs-20); font-weight: 600; line-height: var(--lh-tight); color: var(--c-text-strong); }
-.ds-link { color: var(--c-accent-ink); text-underline-offset: 3px; }
-.ds-link:hover { color: var(--c-accent); }
-.ds-code, .ds-kbd { font-family: var(--font-mono); font-size: .92em; }
-.ds-kbd { padding: 1px 6px; border-radius: var(--r-xs); background: var(--c-bg); box-shadow: var(--sh-inset-xs); }
 .ds-divider { border: 0; border-top: 1px solid var(--c-line); width: 100%; }
 .ds-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ds-button-group { display: inline-flex; align-items: center; gap: 8px; }
 .ds-field.ds-is-invalid :is(input,textarea,button[role="combobox"]) { box-shadow: var(--sh-input), inset 0 0 0 1px var(--c-danger); }
 .ds-field-error[role="alert"] { display: flex; }
-.ds-theme[data-density="compact"] { --sp-2: 6px; --sp-3: 8px; --sp-4: 12px; --h-sm: 24px; --h-md: 28px; --h-lg: 32px; --h-xl: 36px; }
-.ds-theme[data-density="compact"] .ds-table td { padding-top: 6px; padding-bottom: 6px; }
 .ds-theme :where(button,a,input,select,textarea,[tabindex]):focus-visible { outline: 2px solid var(--c-accent-ink); outline-offset: 2px; }
 .ds-theme :where(button,a,input,select,textarea,[tabindex]):disabled { cursor: not-allowed; }
 .ds-theme .ds-disabled { opacity: .5; }

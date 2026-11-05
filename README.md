@@ -58,6 +58,16 @@ DESIGN.md                  设计规范与验收记录
 CHANGELOG.md               版本与变更记录
 ```
 
+## 可选：密集桌面工作台
+
+新增未发布的 `data-surface="workbench"`（React Provider：`surface="workbench"`），可独立组合已有 compact 密度与点阵。默认入口、API 和旧阴影值保持兼容；点阵不删除、不减弱。
+
+- [通用组合示例](examples/workbench.html)：标题 + 紧凑指标 + Tabs + 筛选 + 数据表格，无项目专属逻辑。
+- [表面/文字/组件接入说明](docs/workbench.md) · [升级与回滚](docs/migration.md)。
+- 截图：`docs/screenshots/workbench-{1280x800,1440x900,1920x1080}.png`，另有 `workbench-focus-expanded-*` 与 `workbench-overlay-*`；重拍 `node tools/screenshot.mjs --workbench`。
+
+![通用工作台 1440×900](docs/screenshots/workbench-1440x900.png)
+
 ## React 消费示例
 
 `examples/react-consumer/` 通过打包生成的 tarball 和正式 `@self/ui-style/react` exports 导入组件，运行 StrictMode、局部主题、FormField、Dialog、Toast 示例。重新验证：
@@ -188,11 +198,12 @@ import { DS } from '@self/ui-style';
 
 ## 验证状态
 
-已在本机 Chromium（headless，CDP 驱动）实际跑过 `npm run verify`，**49/49 通过**：
+已在本机 Chromium（headless，CDP 驱动）实际跑过 `npm run verify`：类型检查、**11 个 React 测试**、构建和 **70/70 浏览器检查通过**；本地打包消费端也完成类型与生产构建验证。
 
-- 三视口 × 两个页面：无横向溢出、主操作可见、无 console 错误；变量只在 `.ds-theme` 内生效。
+- 既有两页和新增通用工作台均覆盖三个视口；无页面横向溢出，主操作和工作台列表滚动区可见，无 console 错误；变量只在 `.ds-theme` 内生效。
 - 对比度：正文 12.05、标题 14.23、次要 5.78、辅助 5.69、主按钮白字 4.54、强调文字 6.86、状态色 6.00 / 5.69 / 6.46。
-- 样式抽查：按钮 8px 圆角与外阴影、输入内凹、标签描边浮起、卡片 8/16、点阵来自 CSS、过渡 0.3s。
+- 默认外观回归：按钮 8px 圆角与外阴影、输入内凹、标签描边浮起、卡片 8/16、点阵来自 CSS、过渡 0.3s。
+- 工作台：平面标签/行操作、14px 正文/12px 辅助字、轻内凹、原样点阵、文字对比度 ≥4.5、hover/active/disabled、键盘 Tabs 与输入焦点、筛选/重置/空态/展开/弹层回焦。三尺寸默认页和弹层另经 axe 检查，无自动化违规；9 张截图已目视检查。
 - 键盘：Tab 有 2px 强调色焦点环；抽屉打开聚焦首字段、Esc 关闭并回焦触发按钮、Tab 不逃逸。
 - 交互：空名校验、保存后插入新行 + 成功 toast、状态筛选、搜索空态、刷新骨架、导出失败 toast 可重试、组件页分段/Toast/抽屉。
 

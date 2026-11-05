@@ -320,6 +320,78 @@ const gDrawer = await evaluate(`(() => ({
 }))()`);
 check('组件页抽屉打开并聚焦首字段', gDrawer.open && gDrawer.focus === 'g-d-name', JSON.stringify(gDrawer));
 
+/* ---------- 7. 通用工作台：三个尺寸、表面与真实交互 ---------- */
+for (const vp of VIEWPORTS) {
+  await goto('examples/workbench.html', vp.w, vp.h);
+  const workbench = await evaluate(`(() => {
+    const cs = s => getComputedStyle(document.querySelector(s));
+    const table = document.querySelector('.ds-table-scroll').getBoundingClientRect();
+    return {
+      overflow: document.documentElement.scrollWidth > innerWidth,
+      tableBottom: table.bottom,
+      font: cs('.ds-table').fontSize,
+      meta: cs('.ds-cell-meta').fontSize,
+      tag: cs('.ds-tag').boxShadow,
+      action: cs('[data-detail]').boxShadow,
+      input: cs('.ds-input').boxShadow,
+      primary: cs('.ds-btn-primary').boxShadow,
+      dots: cs('body').getPropertyValue('--dot-gap').trim() === '22px' && cs('body').backgroundImage.includes('2.4px'),
+      rows: document.querySelectorAll('[data-detail]').length,
+      clipped: [...document.querySelectorAll('.ds-cell-title, .ds-tag, .wb-numeric')].some(el => el.scrollWidth > el.clientWidth + 1),
+    };
+  })()`);
+  check(`工作台 ${vp.w}×${vp.h} 无页面溢出且列表滚动区可见`, !workbench.overflow && !workbench.clipped && workbench.tableBottom < vp.h && workbench.rows === 12, JSON.stringify(workbench));
+  check(`工作台 ${vp.w}×${vp.h} 文字/平面状态/轻内凹/主要操作/点阵层级`, workbench.font === '14px' && workbench.meta === '12px' && workbench.tag === 'none' && workbench.action === 'none' && workbench.input.includes('inset') && workbench.primary !== 'none' && workbench.dots);
+  check(`工作台 ${vp.w}×${vp.h} 无 console 错误`, consoleErrors.length === 0, consoleErrors.join(' | '));
+}
+const workbenchContrast = await evaluate(`(() => {
+  const luminance = rgb => rgb.map(v => { v /= 255; return v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
+  const parse = color => color.match(/[\\d.]+/g).slice(0, 3).map(Number);
+  return ['.ds-heading', '.ds-cell-title', '.ds-cell-meta', '.ds-text-muted', '.ds-tag--info', '.ds-tag--warn', '.ds-tag--neutral', '.ds-btn-primary', '.ds-link'].map(selector => {
+    const el = document.querySelector(selector);
+    let parent = el;
+    while (getComputedStyle(parent).backgroundColor === 'rgba(0, 0, 0, 0)') parent = parent.parentElement;
+    const fg = luminance(parse(getComputedStyle(el).color));
+    const bg = luminance(parse(getComputedStyle(parent).backgroundColor));
+    return [selector, (Math.max(fg, bg) + .05) / (Math.min(fg, bg) + .05)];
+  });
+})()`);
+check('工作台正文/辅助/链接/状态/主按钮对比度 ≥ 4.5', workbenchContrast.every(([, ratio]) => ratio >= 4.5), JSON.stringify(workbenchContrast));
+const primaryCenter = await evaluate(`(() => { const r = document.querySelector('#summary-open').getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; })()`);
+const defaultPrimary = await evaluate(`getComputedStyle(document.querySelector('#summary-open')).backgroundColor`);
+await send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...primaryCenter });
+await sleep(350);
+const hoverPrimary = await evaluate(`getComputedStyle(document.querySelector('#summary-open')).backgroundColor`);
+await send('Input.dispatchMouseEvent', { type: 'mousePressed', button: 'left', clickCount: 1, ...primaryCenter });
+await sleep(350);
+const activePrimary = await evaluate(`getComputedStyle(document.querySelector('#summary-open')).backgroundColor`);
+check('工作台主操作 hover/active 不只靠阴影区分', defaultPrimary !== hoverPrimary && hoverPrimary !== activePrimary);
+await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 1, y: 1, buttons: 1 });
+await send('Input.dispatchMouseEvent', { type: 'mouseReleased', button: 'left', clickCount: 1, x: 1, y: 1 });
+check('工作台禁用操作不可聚焦且无浮起', await evaluate(`(() => { const el = document.querySelector('.wb-filters button:disabled'); el.focus(); const cs = getComputedStyle(el); return document.activeElement !== el && cs.cursor === 'not-allowed' && cs.boxShadow === 'none' && Number(cs.opacity) <= .55; })()`));
+await evaluate(`document.querySelector('#tab-all').focus()`);
+await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39 });
+await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowRight', code: 'ArrowRight', windowsVirtualKeyCode: 39 });
+check('工作台 Tabs 键盘切换及筛选', await evaluate(`document.activeElement.id === 'tab-active' && document.querySelectorAll('[data-detail]').length === 7 && document.querySelector('#record-panel').getAttribute('aria-labelledby') === 'tab-active'`));
+await pressTab();
+check('工作台输入框键盘焦点可见', await evaluate(`document.activeElement.id === 'record-search' && getComputedStyle(document.activeElement).outlineStyle === 'solid' && getComputedStyle(document.activeElement).outlineWidth === '2px'`));
+await evaluate(`document.querySelector('#tab-all').click(); const input = document.querySelector('#record-search'); input.value = 'ITEM-009'; input.dispatchEvent(new Event('input'));`);
+check('工作台名称/编号搜索', await evaluate(`document.querySelectorAll('[data-detail]').length === 1 && document.querySelector('#record-rows').textContent.includes('本地化词汇表')`));
+await evaluate(`document.querySelector('[data-detail]').click()`);
+check('工作台行展开为平面且状态明确', await evaluate(`document.querySelector('[data-detail]').getAttribute('aria-expanded') === 'true' && !document.querySelector('.wb-detail').hidden && getComputedStyle(document.querySelector('[data-detail]')).boxShadow === 'none'`));
+await evaluate(`{ const input = document.querySelector('#record-search'); input.value = '<img src=x onerror=alert(1)>'; input.dispatchEvent(new Event('input')); }`);
+check('工作台空状态且搜索文本不注入 HTML', await evaluate(`!!document.querySelector('.ds-empty') && !document.querySelector('#record-rows img')`));
+await evaluate(`{ document.querySelector('.wb-filters').reset(); const owner = document.querySelector('#owner-filter'); owner.value = 'Alex'; owner.dispatchEvent(new Event('change')); }`);
+check('工作台负责人筛选', await evaluate(`document.querySelectorAll('[data-detail]').length === 4`));
+await evaluate(`document.querySelector('.wb-filters').reset()`);
+check('工作台重置筛选', await evaluate(`document.querySelectorAll('[data-detail]').length === 12`));
+await evaluate(`document.querySelector('#summary-open').focus(); document.querySelector('#summary-open').click()`);
+check('工作台弹层聚焦并保留浮层阴影', await evaluate(`document.querySelector('#summary').open && document.querySelector('#summary').contains(document.activeElement) && getComputedStyle(document.querySelector('#summary')).boxShadow !== 'none'`));
+await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+await sleep(100);
+check('工作台弹层 Escape 关闭并还原焦点', await evaluate(`!document.querySelector('#summary').open && document.activeElement.id === 'summary-open'`));
+
 /* ---------- 汇总 ---------- */
 ws.close();
 chrome.kill();
