@@ -31,6 +31,7 @@
     },
     "./react/style.css": "./src/react/index.css",
     "./theme.css": "./src/theme/index.css",
+    "./theme-dark.css": "./src/theme/dark.css",
     "./tokens.css": "./src/tokens/tokens.css",
     "./background.css": "./src/theme/background.css",
     "./base.css": "./src/theme/base.css",

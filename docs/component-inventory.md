@@ -4,7 +4,6 @@
 
 | 能力 | 当前情况 | Token / 实现 | 主要缺口 |
 |---|---|---|---|
-| 可选工作台表面 / 共享 compact 密度 | 实验中 | `data-surface="workbench"`、Provider `surface`；[说明](workbench.md) | 不含业务布局 / DataTable；长时间真人使用与跨浏览器待验证 |
 | Tokens、浅色局部主题、点阵背景 | 实验中 | `src/tokens/tokens.css`、`src/theme/{base,background}.css` | 暗色与高对比主题未实现 |
 | Button、IconButton、ButtonGroup、Link、Text、Heading、Code、Kbd、Icon | 实验中 | `src/react/index.tsx`、`src/react/index.css` | React 故事与键盘状态覆盖不全；仅 IconButton 已强制 aria-label |
 | Input、Textarea、SearchInput、NumberInput、FormField、Fieldset、Label | 实验中 | 同上 | NumberInput 缺 min/max/step 的组件级校验；异步校验、提交生命周期、错误聚焦未实现 |

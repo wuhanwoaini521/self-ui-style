@@ -48,6 +48,7 @@
   justify-content: center;
   gap: 7px;
   height: var(--h-lg);
+  min-height: 0;
   padding: 0 var(--sp-4);
   font-size: var(--fs-13);
   font-weight: 500;
@@ -162,6 +163,8 @@
 .ds-select,
 .ds-textarea {
   width: 100%;
+  min-width: 0;
+  min-height: 0;
   height: var(--h-lg);
   padding: 0 12px;
   font-size: var(--fs-13);
@@ -210,6 +213,7 @@
 }
 .ds-check input {
   width: 16px; height: 16px;
+  min-height: 0;
   margin: 0;
   accent-color: var(--c-accent);
   cursor: pointer;
@@ -229,6 +233,7 @@
   align-items: center;
   gap: 6px;
   height: 26px;
+  min-height: 0;
   padding: 0 10px;
   font-size: var(--fs-12);
   color: var(--c-text-muted);
@@ -701,66 +706,3 @@
 }
 .ds-desc dt { color: var(--c-text-muted); }
 .ds-desc dd { margin: 0; color: var(--c-text); min-width: 0; }
-
-/* 工作台：可选表面层级，与 compact 密度正交；点阵仍由背景层原样绘制。 */
-.ds-theme[data-surface="workbench"] { background-color: var(--surface-page); }
-.ds-theme[data-surface="workbench"] .ds-link:hover { color: var(--c-accent-active); text-decoration-thickness: 2px; }
-.ds-theme[data-surface="workbench"] :is(.ds-card, .ds-table-panel, .ds-metric) {
-  background: var(--surface-panel);
-  border: 1px solid var(--c-line);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-panel);
-}
-.ds-theme[data-surface="workbench"] :is(.ds-metric-icon, .ds-avatar, .ds-empty-mark, .ds-nav-item .ds-badge) {
-  background: var(--c-bg-soft);
-  box-shadow: none;
-}
-.ds-theme[data-surface="workbench"] .ds-metric-value { font-size: var(--fs-20); line-height: 1.4; }
-.ds-theme[data-surface="workbench"] .ds-metric-note { line-height: 1.5; }
-.ds-theme[data-surface="workbench"] .ds-btn {
-  background: var(--surface-control);
-  border: 1px solid var(--c-stroke);
-  box-shadow: var(--shadow-control);
-}
-.ds-theme[data-surface="workbench"] .ds-btn:hover { background: var(--c-bg-soft); border-color: var(--c-text-faint); }
-.ds-theme[data-surface="workbench"] .ds-btn:active { background: var(--c-bg-deep); box-shadow: var(--shadow-input); }
-.ds-theme[data-surface="workbench"] :is(.ds-btn-ghost, .ds-btn-icon) { background: transparent; border-color: transparent; box-shadow: none; }
-.ds-theme[data-surface="workbench"] :is(.ds-btn-ghost, .ds-btn-icon):hover { background: var(--c-bg-soft); border-color: var(--c-stroke); }
-.ds-theme[data-surface="workbench"] :is(.ds-btn-ghost, .ds-btn-icon):active { background: var(--c-bg-deep); box-shadow: none; }
-.ds-theme[data-surface="workbench"] .ds-btn-primary { color: #fff; background: var(--c-accent); border-color: transparent; box-shadow: var(--shadow-primary); }
-.ds-theme[data-surface="workbench"] .ds-btn-primary:hover { background: var(--c-accent-hover); border-color: transparent; }
-.ds-theme[data-surface="workbench"] .ds-btn-primary:active { background: var(--c-accent-active); box-shadow: var(--shadow-input); }
-.ds-theme[data-surface="workbench"] .ds-btn:is(:disabled, [aria-disabled="true"]) { opacity: .5; cursor: not-allowed; box-shadow: none; }
-.ds-theme[data-surface="workbench"] :is(.ds-input, .ds-select, .ds-textarea, .ds-search input, .ds-table-search input) {
-  border: 1px solid var(--c-stroke);
-  box-shadow: var(--shadow-input);
-  font-size: var(--fs-14);
-}
-.ds-theme[data-surface="workbench"] :is(.ds-input, .ds-select, .ds-textarea, .ds-search input, .ds-table-search input):focus {
-  border-color: var(--c-accent-ink);
-  box-shadow: var(--shadow-input);
-}
-.ds-theme[data-surface="workbench"] .ds-field.ds-is-invalid :is(input, select, textarea, button[role="combobox"]) { border-color: var(--c-danger); box-shadow: var(--shadow-input); }
-.ds-theme[data-surface="workbench"] :is(input, select, textarea):disabled { opacity: .55; cursor: not-allowed; background-color: var(--c-bg-soft); }
-.ds-theme[data-surface="workbench"] .ds-tag { height: 22px; padding-inline: 6px; border: 0; border-radius: var(--r-xs); background: var(--c-bg-soft); box-shadow: none; font-weight: 400; }
-.ds-theme[data-surface="workbench"] .ds-table { font-size: var(--fs-14); line-height: var(--lh-body); }
-.ds-theme[data-surface="workbench"] .ds-table th { font-size: var(--fs-13); font-weight: 600; }
-.ds-theme[data-surface="workbench"] .ds-table td { box-shadow: none; }
-.ds-theme[data-surface="workbench"] .ds-table tbody tr:is(:hover, :focus-within) { background: var(--c-bg-soft); }
-.ds-theme[data-surface="workbench"] .ds-cell-title { line-height: 1.5; }
-.ds-theme[data-surface="workbench"] .ds-cell-meta { line-height: 1.5; white-space: normal; overflow-wrap: anywhere; }
-.ds-theme[data-surface="workbench"] .ds-segmented { background: var(--c-bg-soft); box-shadow: none; }
-.ds-theme[data-surface="workbench"] .ds-segmented button { font-size: var(--fs-13); }
-.ds-theme[data-surface="workbench"] .ds-segmented button[aria-selected="true"] { box-shadow: var(--shadow-control); }
-/* Tabs 是内容导航，不是带凸起轨道的分段操作；显式加类，兼容现有 TabsList。 */
-.ds-theme[data-surface="workbench"] .ds-tabs { gap: 8px; padding: 4px 0 2px; background: transparent; border-bottom: 1px solid var(--c-line); border-radius: 0; }
-.ds-theme[data-surface="workbench"] .ds-tabs button { height: var(--h-xl); border: 0; border-bottom: 2px solid transparent; border-radius: var(--r-xs) var(--r-xs) 0 0; }
-.ds-theme[data-surface="workbench"] .ds-tabs button[aria-selected="true"] { background: transparent; border: 0; border-bottom: 2px solid var(--c-accent); box-shadow: none; }
-.ds-theme[data-surface="workbench"] .ds-segmented button:active { background: var(--c-bg-deep); }
-.ds-theme[data-surface="workbench"] .ds-nav-item[aria-current="page"] { background: var(--c-accent-wash); border-color: transparent; box-shadow: inset 3px 0 var(--c-accent); }
-.ds-theme[data-surface="workbench"] .ds-nav-item:active { background: var(--c-bg-deep); }
-.ds-theme[data-surface="workbench"] :is(.ds-checkbox, .ds-radio-item, .ds-switch, .ds-kbd) { box-shadow: var(--shadow-input); }
-.ds-theme[data-surface="workbench"] .ds-switch-thumb { box-shadow: var(--shadow-control); }
-.ds-theme[data-surface="workbench"] :is(.ds-alert, .ds-banner) { border: 1px solid var(--c-line); box-shadow: none; }
-.ds-theme[data-surface="workbench"] :is(.ds-drawer, .ds-toast, .ds-menu, .ds-popover, .ds-tooltip, .ds-combobox-list) { background: var(--surface-overlay); border: 1px solid var(--c-line); box-shadow: var(--shadow-overlay); }
-.ds-theme[data-surface="workbench"] :where(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--c-accent-ink); outline-offset: 2px; }

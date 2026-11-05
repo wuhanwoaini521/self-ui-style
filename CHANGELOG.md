@@ -2,10 +2,8 @@
 
 ## 未发布
 
-- 新增可选 `data-surface="workbench"` / React Provider `surface="workbench"`：语义表面与阴影、贴地面板、平面状态/行操作、轻内凹输入和独立弹层层级；不修改旧阴影值与点阵。
-- 共享文字层级、系统字体回退、等宽数字工具类；已有 compact 密度支持原生 CSS 入口；新增可选 `.ds-tabs` 下划线内容导航。
-- 新增不绑定业务的 `examples/workbench.html`、三尺寸默认/焦点展开/浮层截图及回归检查。详见 `docs/workbench.md` 与迁移指南。
-- 兼容：原导出、导入路径、Provider 默认值和现有组件调用不变；React 层继续实验中，版本暂维持 0.8.1，未发布。工作台需显式启用。
+- 新增可选黑金暗色主题：导入 `@self/ui-style/theme-dark.css` 并为主题容器添加 `ds-theme--dark`。
+- 重置按钮、表单控件、分段按钮和 React checkbox/switch/radio 的默认最小高度，避免宿主全局控件规则撑开固定尺寸组件。
 
 ## 0.8.1 — 2026-11-03
 

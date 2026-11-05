@@ -1,0 +1,68 @@
+/* Optional black and gold theme. Import instead of theme.css, then add both classes. */
+@import url("./index.css");
+
+.ds-theme.ds-theme--dark {
+  color-scheme: dark;
+  --c-bg: #191817;
+  --c-bg-soft: #24211d;
+  --c-bg-deep: #100f0e;
+  --c-shadow-dark: #0d0c0b;
+  --c-shadow-light: #292621;
+  --c-accent: #d5ad57;
+  --c-accent-hover: #e2bf70;
+  --c-accent-active: #bc9340;
+  --c-accent-ink: #e5c779;
+  --c-accent-wash: rgba(213, 173, 87, .14);
+  --c-text: #e5e0d6;
+  --c-text-strong: #f4efe5;
+  --c-text-muted: #b5ad9e;
+  --c-text-faint: #aaa292;
+  --c-success: #83bd94;
+  --c-warn: #e5c779;
+  --c-danger: #e28c83;
+  --c-info: var(--c-accent-ink);
+  --c-line: #39342b;
+  --c-stroke: rgba(184, 158, 104, .28);
+  --c-stroke-accent: rgba(213, 173, 87, .58);
+  --sh-raised: 0 4px 12px rgba(0, 0, 0, .24), 0 -2px 10px rgba(255, 255, 255, .025);
+  --sh-raised-xs: 0 2px 7px rgba(0, 0, 0, .2), 0 -1px 6px rgba(255, 255, 255, .025);
+  --sh-raised-hover: 0 3px 9px rgba(0, 0, 0, .22), 0 -1px 7px rgba(255, 255, 255, .03);
+  --sh-raised-hover-xs: 0 2px 6px rgba(0, 0, 0, .2), 0 -1px 5px rgba(255, 255, 255, .03);
+  --sh-inset: inset 0 3px 8px rgba(0, 0, 0, .28), inset 0 -1px 6px rgba(255, 255, 255, .035);
+  --sh-inset-sm: inset 0 2px 6px rgba(0, 0, 0, .24), inset 0 -1px 5px rgba(255, 255, 255, .035);
+  --sh-inset-xs: inset 0 1px 4px rgba(0, 0, 0, .22), inset 0 -1px 4px rgba(255, 255, 255, .03);
+  --sh-input: inset 0 2px 7px rgba(0, 0, 0, .26), inset 0 -1px 6px rgba(255, 255, 255, .035);
+  --sh-input-focus: inset 0 1px 4px rgba(0, 0, 0, .18), inset 0 -1px 4px rgba(255, 255, 255, .03);
+  --sh-accent: 4px 4px 8px rgba(0, 0, 0, .35), -4px -4px 8px rgba(255, 255, 255, .035);
+  --sh-accent-hover: 2px 2px 4px rgba(0, 0, 0, .4), -2px -2px 4px rgba(255, 255, 255, .04);
+  --sh-accent-active: inset 2px 2px 4px rgba(0, 0, 0, .4), inset -2px -2px 4px rgba(255, 255, 255, .08);
+  --sh-track: inset 1px 1px 3px var(--c-shadow-dark), inset -2px -2px 4px var(--c-shadow-light);
+  --sh-selected: 0 1px 3px rgba(0, 0, 0, .55);
+}
+
+@media (min-width: 768px) {
+  .ds-theme.ds-theme--dark {
+    --sh-raised: 0 6px 16px rgba(0, 0, 0, .24), 0 -2px 12px rgba(255, 255, 255, .025);
+    --sh-raised-xs: 0 3px 9px rgba(0, 0, 0, .2), 0 -1px 7px rgba(255, 255, 255, .025);
+    --sh-raised-hover: 0 4px 12px rgba(0, 0, 0, .22), 0 -1px 9px rgba(255, 255, 255, .03);
+    --sh-raised-hover-xs: 0 2px 7px rgba(0, 0, 0, .2), 0 -1px 6px rgba(255, 255, 255, .03);
+    --sh-inset: inset 0 4px 10px rgba(0, 0, 0, .28), inset 0 -2px 8px rgba(255, 255, 255, .035);
+    --sh-inset-sm: inset 0 3px 8px rgba(0, 0, 0, .24), inset 0 -1px 7px rgba(255, 255, 255, .035);
+    --sh-input: inset 0 3px 9px rgba(0, 0, 0, .26), inset 0 -2px 8px rgba(255, 255, 255, .035);
+    --sh-accent: 0 6px 16px rgba(0, 0, 0, .3), 0 -2px 12px rgba(255, 255, 255, .03);
+    --sh-accent-hover: 0 4px 12px rgba(0, 0, 0, .32), 0 -1px 9px rgba(255, 255, 255, .035);
+    --sh-accent-active: inset 0 3px 8px rgba(0, 0, 0, .3), inset 0 -2px 8px rgba(255, 255, 255, .06);
+  }
+}
+
+.ds-theme--dark.ds-theme--dotted {
+  --c-dot: #50452e;
+  --bg-dots: radial-gradient(circle, var(--c-dot) .5px, rgba(80, 69, 46, 0) 2.4px);
+  --bg-ambient-light: radial-gradient(ellipse 78% 72% at 26% 18%, rgba(255, 255, 255, .035), transparent 72%);
+  --bg-ambient-shade: radial-gradient(ellipse 72% 70% at 78% 82%, rgba(0, 0, 0, .18), transparent 74%);
+}
+
+.ds-theme--dark .ds-btn-ghost:hover,
+.ds-theme--dark .ds-segmented button:hover,
+.ds-theme--dark .ds-table tbody tr:hover,
+.ds-theme--dark .ds-nav-item:hover { background-color: rgba(229, 199, 121, .08); }

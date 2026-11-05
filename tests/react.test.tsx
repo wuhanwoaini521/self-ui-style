@@ -14,16 +14,6 @@ describe('React package', () => {
   it('imports and renders on the server without touching the DOM', () => {
     expect(() => renderToString(<Button>Server render</Button>)).not.toThrow();
   });
-  it('preserves provider defaults and opts into workbench independently of density and dots', () => {
-    const { container, rerender } = render(<DesignSystemProvider>Default</DesignSystemProvider>);
-    expect(container.firstChild).toHaveAttribute('data-surface', 'default');
-    expect(container.firstChild).toHaveAttribute('data-density', 'default');
-    expect(container.firstChild).not.toHaveClass('ds-theme--dotted');
-    rerender(<DesignSystemProvider surface="workbench" density="compact" dotted>Workbench</DesignSystemProvider>);
-    expect(container.firstChild).toHaveAttribute('data-surface', 'workbench');
-    expect(container.firstChild).toHaveAttribute('data-density', 'compact');
-    expect(container.firstChild).toHaveClass('ds-theme--dotted');
-  });
   it('forwards native button props, className, style, and ref in StrictMode', () => {
     const ref = React.createRef<HTMLButtonElement>();
     render(<StrictMode><Button ref={ref} className="custom" style={{ marginTop: 3 }} disabled>Save</Button></StrictMode>);
@@ -49,12 +39,11 @@ describe('React package', () => {
     expect(screen.getByRole('switch')).toHaveAttribute('data-state', 'checked');
   });
   it('keeps dialog content inside the provider theme and restores focus', async () => {
-    render(<StrictMode><DesignSystemProvider surface="workbench" density="compact" dotted><Dialog><DialogTrigger asChild><Button>Open dialog</Button></DialogTrigger><DialogContent aria-describedby="dialog-desc"><DialogTitle>Settings</DialogTitle><DialogDescription id="dialog-desc">Local content</DialogDescription><button>Inside</button></DialogContent></Dialog></DesignSystemProvider></StrictMode>);
+    render(<StrictMode><DesignSystemProvider><Dialog><DialogTrigger asChild><Button>Open dialog</Button></DialogTrigger><DialogContent aria-describedby="dialog-desc"><DialogTitle>Settings</DialogTitle><DialogDescription id="dialog-desc">Local content</DialogDescription><button>Inside</button></DialogContent></Dialog></DesignSystemProvider></StrictMode>);
     const trigger = screen.getByRole('button', { name: 'Open dialog' });
     trigger.focus(); fireEvent.click(trigger);
     expect(await screen.findByRole('dialog', { name: 'Settings' })).toBeInTheDocument();
     expect(screen.getByRole('dialog').closest('.ds-theme')).toBeTruthy();
-    expect(screen.getByRole('dialog').closest('[data-surface="workbench"]')).toHaveAttribute('data-density', 'compact');
     fireEvent.keyDown(document, { key: 'Escape' });
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
     expect(trigger).toHaveFocus();

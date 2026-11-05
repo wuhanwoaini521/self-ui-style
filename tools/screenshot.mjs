@@ -89,21 +89,6 @@ await send('Runtime.enable');
 for (const vp of VIEWPORTS) {
   const size = `${vp.w}x${vp.h}`;
 
-  // --workbench 只生成新增截图，避免覆盖消费端已有的参考截图。
-  await send('Emulation.setDeviceMetricsOverride', { width: vp.w, height: vp.h, deviceScaleFactor: 1, mobile: false });
-  await send('Page.navigate', { url: 'file://' + path.join(ROOT, 'examples/workbench.html') });
-  await sleep(900);
-  await evaluate('document.fonts.ready.then(() => true)');
-  await send('Page.bringToFront');
-  await capture(`workbench-${size}.png`, false);
-  await evaluate(`document.querySelector('[data-detail]').focus(); document.querySelector('[data-detail]').click()`);
-  await sleep(350);
-  await capture(`workbench-focus-expanded-${size}.png`, false);
-  await evaluate(`document.querySelector('#summary-open').click()`);
-  await sleep(350);
-  await capture(`workbench-overlay-${size}.png`, false);
-  if (process.argv.includes('--workbench')) continue;
-
   // 工作台：默认视图
   await send('Emulation.setDeviceMetricsOverride', { width: vp.w, height: vp.h, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: 'file://' + path.join(ROOT, 'index.html') });
