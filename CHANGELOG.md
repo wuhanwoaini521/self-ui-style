@@ -1,5 +1,30 @@
 # 变更记录
 
+## 0.9.0 — 2026-11-05
+
+- 新增受控/非受控 React DataTable：排序、行选择、本地/服务端分页、加载、错误与空状态。
+- 新增 SidebarLayout、NavigationGroup、NavigationItem 与 Breadcrumbs 页面骨架；补充移动端侧栏布局。
+- Button 增加 loading/禁用防重入状态；Combobox 增加受控开合、Home/End、禁用项跳过、原生表单值和必选校验。
+- 新增纯白主题 `theme-white.css`，React Provider 可通过 `theme="white"` 切换；同步调整局部主题 tokens 与 reduced-motion。
+- 重做 React 消费 Demo，覆盖表格、表单、导航、反馈、浮层、复制示例和浅色/纯白切换；同步 API、能力清单与接入文档。
+- 扩充 React 自动化用例，覆盖加载、Combobox 表单提交、DataTable 排序/选择/分页、白色主题与导航语义。
+- 新增 DateRangePicker、FileUpload、Slider、Tree 与 CommandPalette，覆盖日期范围校验、拖放文件限制、原生滑块、树键盘导航和命令过滤。
+- React 消费 Demo 增加日期/上传/数值/树/命令示例；统一 SVG 图标尺寸，修复消费页图标放大问题。
+- DataTable 增加受控/非受控列显隐菜单；Demo 导出按钮改为生成真实 UTF-8 CSV 文件。
+- DataTable 增加可控逐列筛选、批量操作插槽、sticky header 和滚动视口；服务端过滤模式可由调用方提供。
+- 新增主题 Portal 支持的 Radix ContextMenu，以及带过期请求保护的 `useAsyncAction` 异步生命周期 hook。
+- Demo 展示逐列筛选、右键菜单和保存成功/失败/重置状态；同步 React API 与能力清单。
+- 补充 DataTable 筛选、异步动作、ContextMenu 的交互测试。
+- DataTable 增加起始/末端固定列与固定行高虚拟滚动；消费 Demo 新增 240 行可切换长表示例。
+- 将表面悬浮、行 hover、粘性列阴影、强调光晕与遮罩纳入主题变量，并为纯白主题调整对应值。
+- 同步更新 DataTable 虚拟滚动边界、设计主题对照、接入说明与组件能力清单。
+- 新增 Form 与 useForm 表单编排 API，支持同步/异步跨字段验证、服务端字段错误映射、提交生命周期和可取消重置；Demo 增加真实表单示例。
+- 同步更新表单 API、组件能力清单、接入文档、设计稿与自动化覆盖。
+- FileUpload 新增可插拔 `uploadFile` 传输适配，统一管理进度、成功/失败、取消与重试；Demo 提供可中止的模拟上传。
+- 修正异步表单校验后的首个错误字段聚焦时机；覆盖上传进度和完成状态的自动化用例。
+- 表单字段编辑时使过期的异步校验/提交响应失效；FileUpload 支持单文件重复选择时替换旧文件。
+- DesignSystemProvider 与 React Demo 增加暗色主题切换；设计稿新增与亮色工作台对应的完整黑金暗色工作台画板。
+
 ## 未发布
 
 - 新增可选黑金暗色主题：导入 `@self/ui-style/theme-dark.css` 并为主题容器添加 `ds-theme--dark`。

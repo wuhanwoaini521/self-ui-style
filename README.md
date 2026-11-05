@@ -1,9 +1,10 @@
 # 方寸 · 设计系统与 React 组件（实验中）
 
-一套以浅色新拟物为基准的可复用设计语言，包含框架无关 Tokens/CSS/原生 JS，以及 **React 18+ + TypeScript 组件层（实验中）**。适用于按需复用基础视觉与交互的项目；工作台仅作组合示例，不是通用页面模板。
+一套以方寸浅色新拟物为基准的可复用 UI 框架，包含框架无关 Tokens/CSS/原生 JS，以及 **React 18+ + TypeScript 组件层（实验中）**。支持方寸浅色与纯白主题；工作台和 React 消费示例用于展示常见页面组合。
 
 - 样板页（业务示例）：`index.html` —「衡准 · 质量工作台 / 巡检任务」
 - 组件展示（通用示例）：`examples/components.html`
+- 可操作 React 示例：`examples/react-consumer/`（DataTable 筛选/固定列/虚拟长表/选择/分页、异步动作、表单、导航、浮层和主题切换）
 - 规范文档：`DESIGN.md`（视觉规则与验收数据）、`docs/`（接入与迁移）
 - 设计源文件：`design/design.pen` + `design/design-previews/`
 
@@ -24,7 +25,8 @@ index.html                 工作台样板页（业务内容，可整体替换�
 src/
   tokens/tokens.css        设计变量（颜色/字号/间距/圆角/阴影/层级/点阵），作用域 .ds-theme
   theme/base.css           基础样式：字体栈、页面底纹、焦点环、.ds-mono / .ds-sr-only
-  theme/index.css          一次性引入变量 + 基础 + 组件
+  theme/index.css          一次性引入变量 + 基础 + 组件（方寸浅色）
+  theme/white.css          高明度纯白主题变量覆盖
   ui/ui.css                通用组件样式（.ds- 前缀，跨项目复用主体）
   ui/ui.js                 DS.toast() / DS.drawer()（原生 JS，无依赖）
   ui/icons.js              线性 SVG 图标 symbol
@@ -60,13 +62,15 @@ CHANGELOG.md               版本与变更记录
 
 ## React 消费示例
 
-`examples/react-consumer/` 通过打包生成的 tarball 和正式 `@self/ui-style/react` exports 导入组件，运行 StrictMode、局部主题、FormField、Dialog、Toast 示例。重新验证：
+`examples/react-consumer/` 通过正式 `@self/ui-style/react` exports 展示 DataTable 排序/逐列筛选/固定列/虚拟长表/选择/分页/列显隐/加载、异步动作成功与失败、受控表单、导航、Toast、Dialog、DropdownMenu、ContextMenu 与亮色/纯白主题切换。重新构建包并运行：
 
 ```bash
 npm run package:consumer
+cd examples/react-consumer && npm run dev
 ```
 
 React API 处于实验中，完整边界见 [`docs/react-components.md`](docs/react-components.md)。
+主题支持方寸浅色、纯白和黑金暗色。纯白按需导入 `@self/ui-style/theme-white.css`；暗色需导入 `@self/ui-style/theme-dark.css`，React 使用 `DesignSystemProvider theme="dark"` 切换。消费 Demo 可直接切换三种主题。
 
 ## 环境与命令
 
@@ -124,7 +128,7 @@ import '@self/ui-style/theme-dark.css';
 ## 新项目接入
 
 ```bash
-npm install file:../self-ui-style#v0.8.1     # 或 git+ssh://…/self-ui-style.git#v0.8.1
+npm install file:../self-ui-style#v0.9.0     # 或 git+ssh://…/self-ui-style.git#v0.9.0
 ```
 
 ```js
@@ -165,7 +169,7 @@ import { DS } from '@self/ui-style';
 
 - **长标题行**：设计稿任务行高 55px，但两行标题会溢出；网页让该行自动增高（示例约 72px），避免内容重叠，保证完整可读。
 - **字体**：维持 Google Fonts 在线加载 Noto Sans SC / JetBrains Mono，并保留系统字体回退。暂不内嵌字体文件；离线时字宽可能略有差异。若项目需要离线运行或跨设备截图一致，再评估许可并加入 WOFF2 子集。
-- **按需扩展**：深色主题、行选择/批量操作/表头吸顶，以及更细的 Pencil 组件资产拆分，当前不纳入基础系统；有项目需求时再实现。
+- **按需扩展**：剩余重点是 DataTable 动态行高虚拟滚动/复杂筛选算子、日期快捷区间、树懒加载，以及 schema 适配和分步表单；FileUpload 的传输由调用方注入，并提供进度/取消/重试状态。现有能力与限制见组件清单。
 - **截图**：保留 1280×800、1440×900、1920×1080 三种视口，便于持续核对布局；当前体积可接受，后续优先无损压缩。
 
 ## 截图
@@ -213,14 +217,14 @@ import { DS } from '@self/ui-style';
 
 ## 已知限制与按需扩展
 
-- 当前仅提供浅色主题；深色主题需重新校准双光源与阴影。
+- React Provider 支持方寸浅色和纯白主题；黑金暗色通过独立主题 CSS 接入。
 - 新拟物本身对比度偏低，本系统把最弱文字守在 4.5:1；对低视力用户建议额外提供高对比模式。
-- 通用表格不含行选择、批量操作或表头吸顶；这些能力由具体业务需要时再扩展。
+- DataTable 虚拟滚动要求行高一致；复杂筛选算子、服务端请求和动态行高虚拟化仍由业务层适配。
 - 抽屉/Toast 是 DOM 工具，不含虚拟列表或动画编排。
 
 ## 版本维护
 
-当前版本 **0.8.1**（React 层处于实验中，见 `package.json`、`docs/react-components.md` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
+当前版本 **0.9.0**（React 层处于实验中，见 `package.json`、`docs/react-components.md` 与 `CHANGELOG.md`）。项目侧用 `file:` 或 Git tag 固定版本；升级时先在一个代表性页面替换并截图对比，再推广。修改 tokens 或组件后请更新 `CHANGELOG.md` 并跑 `npm run verify` 与 `npm run screenshot`。
 
 ## 许可
 

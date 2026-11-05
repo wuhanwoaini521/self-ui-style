@@ -7,8 +7,10 @@ npm run build
 npm pack --pack-destination artifacts >/dev/null
 npm run test -- --run
 cd examples/react-consumer
-npm install --package-lock-only --ignore-scripts --force
-rm -rf node_modules/@self/ui-style
+# This consumer intentionally installs the freshly packed local artifact. Its
+# same-version contents change during development, so a cached lock integrity
+# would otherwise keep installing the previous tarball.
+rm -rf node_modules package-lock.json
 npm install --force
 npm run typecheck
 npm run build

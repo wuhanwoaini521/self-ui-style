@@ -8,9 +8,9 @@
 
 ```bash
 # 同一台机器 / monorepo 里
-npm install file:../self-ui-style#v0.8.1
+npm install file:../self-ui-style#v0.9.0
 # 或私有 Git 仓库（走 SSH，能固定 tag 或 commit）
-npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.8.1
+npm install git+ssh://git@github.com/<you>/self-ui-style.git#v0.9.0
 ```
 
 安装后在 `package.json` 里会留下固定版本：
@@ -68,6 +68,21 @@ import '@self/ui-style/ui.css';
 ```
 
 这样接入已有项目时不会污染对方的 `body`、全局字体或按钮样式。去掉这个类，所有 `.ds-` 组件都会失去配色与阴影。
+
+### 3.1 纯白主题
+
+浅色方寸主题使用偏冷的纸白背景与 22px 点阵；需要更清晰、接近纯白的工作区时，在 `theme.css` 后导入白色覆盖层：
+
+```js
+import '@self/ui-style/theme.css';
+import '@self/ui-style/theme-white.css';
+```
+
+```html
+<main class="ds-theme ds-theme--white">…</main>
+```
+
+React 使用 `<DesignSystemProvider theme="white">` 切换。白色变体仍复用方寸靛紫、圆角和双光源阴影，只重新校准表面、分隔线和文字对比。黑金暗色主题需另外导入 `@self/ui-style/theme-dark.css`，再使用 `<DesignSystemProvider theme="dark">`。
 
 ## 4. 用组件
 
@@ -177,8 +192,8 @@ DS.toast({ type: 'danger', title: '导出失败', desc: '服务返回 502，请�
 
 ## 8. 已知限制与按需扩展
 
-- 当前只有浅色主题；需要深色时，应重新校准双光源方向与阴影颜色。
+- 内置亮色和纯白主题；黑金暗色主题由独立 `theme-dark.css` 提供，React Demo 可切换三种主题，画板包含完整暗色工作台。
 - 新拟物对比度天然偏低，本系统把正文对比度守在 12:1、最小文字 4.5:1；对低视力用户建议额外提供高对比模式。
-- 通用表格不含行选择、批量操作或表头吸顶；按业务需求在业务层扩展。
+- DataTable 支持选择、批量操作、固定列和固定行高虚拟滚动；动态行高虚拟化、复杂筛选算子与服务端请求适配由业务层组合。
 - 更细的 Pencil 组件资产拆分不属于运行时依赖，可在设计稿需要跨项目维护时再补充。
 - 抽屉与 Toast 是 DOM 工具，不带虚拟列表、动画编排或焦点管理之外的无障碍树计算。

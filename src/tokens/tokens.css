@@ -9,6 +9,12 @@
   --c-bg:          #f7fafc; /* 主表面：页面、卡片、按钮、输入框 */
   --c-bg-soft:     #eef3f8; /* 抬升表面：表头、品牌块、提示卡 */
   --c-bg-deep:     #e7eef6; /* 按下时的底色微沉，不改变色系 */
+  --c-hover-wash: rgba(255, 255, 255, .45);
+  --c-row-hover: rgba(255, 255, 255, .4);
+  --c-sticky-shadow-start: 2px 0 4px rgba(36, 51, 73, .08);
+  --c-sticky-shadow-end: -2px 0 4px rgba(36, 51, 73, .08);
+  --c-accent-glow: rgba(109, 93, 252, .08);
+  --c-scrim: rgba(50, 64, 86, .3);
 
   /* ---------- 双光源 ---------- */
   --c-shadow-dark: #c9d4e2; /* 右下 (+X, +Y) */

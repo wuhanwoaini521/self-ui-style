@@ -11,7 +11,7 @@
 ## 1. 加依赖、只引样式
 
 ```bash
-npm install file:../self-ui-style#v0.8.1
+npm install file:../self-ui-style#v0.9.0
 ```
 
 ```js

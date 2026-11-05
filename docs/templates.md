@@ -6,14 +6,14 @@
 
 - `PageHeader` 语义区（当前由 `Heading` + 辅助 `Text` 组合）：标题、说明、一个主操作。
 - 筛选区使用 `SearchInput`、`Select`、`ButtonGroup`；活跃筛选摘要以 `Badge` 展示，并提供清除动作。
-- 批量操作仅在有选择项时出现；当前仓库没有 DataTable/行选择组件，列表用语义 HTML table 并由业务层维护排序、分页和键盘策略。
+- DataTable 支持排序、逐列筛选、行选择、批量操作区、分页、固定列、固定行高虚拟滚动、吸顶表头与加载/空/错状态；服务端请求和动态行高虚拟化由业务层组合。
 - 内容区域覆盖 loading / empty / error / populated 四态，重试函数由消费方注入 `ErrorState`。
 
 ## 新建 / 编辑
 
 - 用 `FormField` 绑定 label、hint、error；相关控件必须有稳定 id。
 - 分组用 `Fieldset` + `legend`；提交中状态通过 `Button disabled` 与文案表达。
-- 表单异步校验、提交锁、错误聚焦和未保存离开提醒由项目表单层实现，基础库不假装提供。
+- 表单字段级异步校验、跨字段校验、错误聚焦和未保存离开提醒由项目表单层实现；`useAsyncAction` 可提供通用动作的 pending/success/error 状态，不替代完整表单编排。
 - 页面或 Drawer 底部放取消/保存操作；长表单主体内部滚动，标题与操作区保持可达。
 
 ## 详情页

@@ -1,0 +1,43 @@
+/* 高明度纯白主题：保留方寸靛紫与双光源层次，提升白底上的边界清晰度。 */
+.ds-theme.ds-theme--white {
+  color-scheme: light;
+  --c-bg: #ffffff;
+  --c-bg-soft: #f7f9fc;
+  --c-bg-deep: #edf1f7;
+  --c-hover-wash: rgba(48, 66, 96, .045);
+  --c-row-hover: rgba(48, 66, 96, .035);
+  --c-sticky-shadow-start: 3px 0 6px rgba(48, 66, 96, .12);
+  --c-sticky-shadow-end: -3px 0 6px rgba(48, 66, 96, .12);
+  --c-accent-glow: rgba(109, 93, 252, .07);
+  --c-scrim: rgba(32, 42, 58, .24);
+  --c-shadow-dark: #d5deea;
+  --c-shadow-light: #ffffff;
+  --c-text: #303744;
+  --c-text-strong: #202633;
+  --c-text-muted: #566173;
+  --c-text-faint: #626e80;
+  --c-line: #dce4ef;
+  --c-stroke: rgba(177, 191, 211, .72);
+  --c-stroke-accent: rgba(109, 93, 252, .48);
+  --sh-raised: 4px 4px 12px rgba(63, 82, 110, .14), -3px -3px 10px rgba(255, 255, 255, .96);
+  --sh-raised-xs: 2px 2px 7px rgba(63, 82, 110, .13), -2px -2px 7px rgba(255, 255, 255, .96);
+  --sh-raised-hover: 3px 3px 9px rgba(63, 82, 110, .14), -2px -2px 8px rgba(255, 255, 255, .96);
+  --sh-raised-hover-xs: 1px 1px 4px rgba(63, 82, 110, .13), -1px -1px 4px rgba(255, 255, 255, .96);
+  --sh-inset: inset 3px 3px 8px rgba(63, 82, 110, .13), inset -3px -3px 8px rgba(255, 255, 255, .94);
+  --sh-inset-sm: inset 2px 2px 6px rgba(63, 82, 110, .12), inset -2px -2px 6px rgba(255, 255, 255, .94);
+  --sh-inset-xs: inset 1px 1px 4px rgba(63, 82, 110, .1), inset -1px -1px 4px rgba(255, 255, 255, .94);
+  --sh-input: inset 2px 2px 6px rgba(63, 82, 110, .13), inset -3px -3px 8px rgba(255, 255, 255, .94);
+  --sh-input-focus: inset 1px 1px 3px rgba(63, 82, 110, .1), inset -1px -1px 3px rgba(255, 255, 255, .92);
+  --sh-accent: 4px 4px 12px rgba(74, 60, 190, .3), -3px -3px 10px rgba(255, 255, 255, .96);
+  --sh-accent-hover: 3px 3px 9px rgba(74, 60, 190, .32), -2px -2px 8px rgba(255, 255, 255, .96);
+  --sh-accent-active: inset 2px 2px 5px rgba(48, 36, 140, .38), inset -2px -2px 5px rgba(255, 255, 255, .34);
+  --sh-track: inset 1px 1px 3px rgba(63, 82, 110, .12), inset -1px -1px 3px rgba(255, 255, 255, .94);
+  --sh-selected: 0 1px 3px rgba(63, 82, 110, .18);
+}
+
+.ds-theme--white.ds-theme--dotted {
+  --c-dot: #c9d3e1;
+  --bg-dots: radial-gradient(circle, var(--c-dot) .5px, rgba(201, 211, 225, 0) 2.4px);
+  --bg-ambient-light: radial-gradient(ellipse 78% 72% at 26% 18%, rgba(255, 255, 255, .72), transparent 72%);
+  --bg-ambient-shade: radial-gradient(ellipse 72% 70% at 78% 82%, rgba(202, 214, 231, .22), transparent 74%);
+}
