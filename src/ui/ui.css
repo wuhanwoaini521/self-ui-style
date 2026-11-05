@@ -470,6 +470,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2px;
+  background:
+    radial-gradient(ellipse 54% 18% at 30% 12%, rgba(109, 93, 252, .065), transparent 78%),
+    radial-gradient(ellipse 58% 20% at 76% 39%, rgba(109, 93, 252, .05), transparent 78%),
+    radial-gradient(ellipse 52% 19% at 38% 73%, rgba(109, 93, 252, .045), transparent 78%);
 }
 .ds-nav-group + .ds-nav-group { margin-top: 14px; }
 .ds-nav-group > .ds-nav-title {
@@ -478,6 +482,7 @@
   font-weight: 500;
   letter-spacing: .6px;
   color: var(--c-text-muted);
+  text-shadow: 0 0 8px rgba(109, 93, 252, .08);
 }
 .ds-nav-item {
   display: flex;
@@ -491,6 +496,7 @@
   text-decoration: none;
   border-radius: var(--r-sm);
   transition: box-shadow var(--t), color var(--t), background-color var(--t);
+  text-shadow: 0 0 8px rgba(109, 93, 252, .08);
 }
 .ds-nav-item .ds-ico { flex: none; }
 .ds-nav-item:hover { color: var(--c-text); background: rgba(255, 255, 255, .55); }

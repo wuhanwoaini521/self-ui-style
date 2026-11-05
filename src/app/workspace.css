@@ -29,7 +29,16 @@
   box-shadow: inset 0 -1px 0 var(--c-line);
 }
 
-.ds-page-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ds-page-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 5px 10px;
+  margin: -5px -10px;
+  border-radius: var(--r-md);
+  background: radial-gradient(ellipse at 45% 50%, rgba(109, 93, 252, .09), transparent 76%);
+}
 .ds-page-title h1 {
   font-size: var(--fs-20);
   line-height: var(--lh-tight);
@@ -53,7 +62,7 @@
   min-height: 0;
   padding: var(--sp-3) 12px var(--sp-2);
   background: transparent; /* 与页面共用底层点阵，只留一条发丝接缝 */
-  box-shadow: inset -1px 0 0 var(--c-line);
+  box-shadow: 0 0 22px rgba(109, 93, 252, .075), inset -1px 0 0 var(--c-line);
 }
 .ds-brand {
   display: flex;
